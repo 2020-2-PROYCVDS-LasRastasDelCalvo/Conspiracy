@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Rastas:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Rastas</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Rastas.war">
+      <element id="artifact" artifact-name="Rastas:war exploded" />
+    </root>
+  </artifact>
+</component>
