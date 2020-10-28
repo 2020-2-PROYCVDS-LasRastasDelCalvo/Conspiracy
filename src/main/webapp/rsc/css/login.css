@@ -1,0 +1,31 @@
+.contenedor-principal{
+    height: 600px;
+    width: auto;
+    background-image: url("../img/banner1.jpg");
+    background-size: 100% 100%;
+}
+
+.contenedor-principal > .contenedor {
+    height: 50%;
+    width: 50%;
+    float: right;
+    margin-top: 100px;
+    margin-right: 25%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.circulo{
+
+    margin: auto;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    background-color: #852525;
+}
+
+.circulo > .imagenCircular{
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+}
