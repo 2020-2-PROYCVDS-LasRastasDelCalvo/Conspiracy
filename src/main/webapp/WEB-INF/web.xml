@@ -4,4 +4,49 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>/faces/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>golfing</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>golfing</servlet-name>
+    <url-pattern>/golfing/*</url-pattern>
+  </servlet-mapping>
+
+  <welcome-file-list>
+    <welcome-file>faces/index.html</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>securityFilter</filter-name>
+    <filter-class>org.apache.shiro.web.servlet.IniShiroFilter</filter-class>
+    <!-- no init-param means load the INI config from classpath:shiro.ini -->
+  </filter>
+  <filter-mapping>
+    <filter-name>rewriteFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>securityFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+  </filter-mapping>
+  <!--
+
+  <listener>
+    <listener-class>edu.eci.cvds.guice.GuiceContextListener</listener-class>
+  </listener> -->
 </web-app>
