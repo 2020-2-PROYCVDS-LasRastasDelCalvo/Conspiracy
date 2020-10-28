@@ -7,23 +7,22 @@
 <h:head>
     <title>Registrar de Items</title>
     <link rel="stylesheet" href="rsc/css/login.css"/>
+    <link rel="icon" href="rsc/img/logo.png" />
 </h:head>
-    <div class="contenedor-principal">
-        <div class="contenedor" align="center">
-            <div class="circulo">
-                <img class="imagenCircular" src="rsc/img/banner1.jpg"/>
-            </div>
-
-            <p:inputText value="UserName" style="margin-top: 50px"/>
-            <p:inputText value="UserName" style="margin-top: 50px"/>
-
-        </div>
-
-
-    </div>
-
-
 <h:body>
-
+    <div class="contenedorNegro">
+        <form >
+            <h:outputText  value="Usuario"/>
+            <p:inputText />
+            <h:outputText value="Contraseña"/>
+            <p:inputText />
+        </form>
+        <div class="contenedor-circular">
+            <img class="imagenCircular" src="rsc/img/logo.png"/>
+        </div>
+    </div>
+    <div id="negro" align="center">
+        <a href="index.html">VOLVER</a>
+    </div>
 </h:body>
 </html>
