@@ -25,6 +25,7 @@ public class Usuario {
         this.contraseña = contraseña;
         this.estado = estado;
         this.rol = rol;
+        equipos = new ArrayList<Equipo>();
     }
 
     public Usuario(int idUsuario, int estado, String nombre, String correo, String contraseña, String rol, ArrayList<Equipo> equipos){
