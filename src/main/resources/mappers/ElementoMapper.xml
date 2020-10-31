@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper">
+    <resultMap id="ClienteResult" type="Cliente">
+        <id property="documento" column="documento"/>
+        <result property="nombre" column="nombre"/>
+        <result property="telefono" column="telefono"/>
+        <result property="direccion" column="direccion"/>
+        <result property="email" column="email"/>
+        <result property="vetado" column="vetado"/>
+        <collection property='rentados' javaType='ArrayList' ofType='ItemRentado' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.TotalRentado' columnPrefix="itemrentado_">
+        </collection>
+    </resultMap>
+    <insert id="registrarElemento" parameterType="map">
+        INSERT INTO Elemento VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
+    </insert>
+</mapper>
