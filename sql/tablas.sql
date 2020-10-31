@@ -5,11 +5,9 @@ CREATE TABLE IF NOT EXISTS Usuario(
   idUsuario INTEGER PRIMARY KEY ,
   nombre VARCHAR(40)  NOT NULL,
   correo VARCHAR(50)  NOT NULL,
-  contraseña VARCHAR(50)  NOT NULL,
+  contraseña VARCHAR(80)  NOT NULL,
   estado INTEGER  NOT NULL,
-  rol VARCHAR(10) NOT NULL
-  
-  
+  rol VARCHAR(30) NOT NULL
 );
 
 -- -----------------------------------------------------
@@ -28,8 +26,6 @@ CREATE TABLE IF NOT EXISTS Equipo (
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
   disponible INT  NOT NULL
-  
-  
 );
 
 -- -----------------------------------------------------
@@ -40,8 +36,8 @@ CREATE TABLE IF NOT EXISTS Elemento (
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
   tipo INT  NOT NULL,
   nombre VARCHAR(50)  NOT NULL,
-  descripcion VARCHAR(500)  NOT NULL);
-
+  descripcion VARCHAR(500)  NOT NULL
+);
 
 -- -----------------------------------------------------
 -- Table `Novedad`
@@ -73,12 +69,6 @@ CREATE TABLE IF NOT EXISTS Asigna (
 );
 
 
-
-
-
-
-
-
 DROP TABLE Tiene;
 DROP TABLE Asigna;
 DROP TABLE Novedad;
@@ -86,7 +76,3 @@ DROP TABLE Elemento;
 DROP TABLE Equipo;
 DROP TABLE Usuario;
 DROP TABLE Laboratorio; 
-  
-
-
-

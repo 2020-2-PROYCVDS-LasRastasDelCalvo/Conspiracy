@@ -1,8 +1,9 @@
-.img{
+.img {
     width: 75%;
     height: 200px;
 }
-.panelSeparacion{
+
+.panelSeparacion {
     height: 100%;
     width: 100%;
     margin-top: 50px;
@@ -11,32 +12,32 @@
     font-family: Ubuntu,sans-serif;
 }
 
-.panelInformacion{
+.panelInformacion {
     height: 100%;
     width: 40%;
     color: white;
 }
 
-div#descripcion1{
+div#descripcion1 {
     position: -webkit-sticky;
     margin-left: 20px;
     width: 500px;
     padding-top: 40px;
 }
 
-div#descripcion2{
+div#descripcion2 {
     float: right;
     width: 500px;
     background-color: black;
 }
 
-a{
+a {
     color: white;
     background-color: #852525;
     border: 2px solid white;
 }
 
-.panelCircular{
+.panelCircular {
     height: 100px;
     width: 100px;
     margin: auto;
@@ -44,14 +45,13 @@ a{
     border-radius: 100%;
 }
 
-.panelCircular > .imagenCircular{
+.panelCircular > .imagenCircular {
     height: 100%;
     width: 100%;
     border-radius: 100%;
 }
 
-
-.banner{
+.banner {
     height: 300px;
     width: 70%;
     border: 2px solid black ;
@@ -66,7 +66,7 @@ a{
         background-image: url("../img/banner1.jpg");
         opacity: 1;
     }
-    31%, 34%{
+    31%, 34% {
         opacity: 0.1;
     }
 
@@ -75,7 +75,7 @@ a{
         opacity: 1;
     }
 
-    66%, 69%{
+    66%, 69% {
         opacity: 0.1;
     }
 

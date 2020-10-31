@@ -15,8 +15,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.7</maven.compiler.source>
-    <maven.compiler.target>1.7</maven.compiler.target>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+      <slf4j.version>1.7.2</slf4j.version>
+      <logback.version>1.0.7</logback.version>
   </properties>
 
   <dependencies>
@@ -25,6 +27,12 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.191</version>
     </dependency>
 
     <dependency>
@@ -38,6 +46,11 @@
       <artifactId>mybatis</artifactId>
       <version>3.4.5</version>
     </dependency>
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis-guice</artifactId>
+          <version>3.10</version>
+      </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
     <dependency>
@@ -74,12 +87,6 @@
         <version>1.2</version>
     </dependency>
 
-    <dependency>
-        <groupId>com.h2database</groupId>
-        <artifactId>h2</artifactId>
-        <version>1.4.191</version>
-    </dependency>
-
     <!-- https://mvnrepository.com/artifact/javax/javaee-web-api -->
     <dependency>
         <groupId>javax</groupId>
@@ -90,12 +97,48 @@
       <dependency>
           <groupId>org.apache.shiro</groupId>
           <artifactId>shiro-core</artifactId>
-          <version>1.1.0</version>
+          <version>1.4.2</version>
       </dependency>
+
       <dependency>
           <groupId>org.apache.shiro</groupId>
           <artifactId>shiro-web</artifactId>
-          <version>1.1.0</version>
+          <version>1.4.0</version>
+      </dependency>
+
+      <!--performance
+      https://mvnrepository.com/artifact/org.apache.shiro/shiro-ehcache -->
+      <dependency>
+          <groupId>org.apache.shiro</groupId>
+          <artifactId>shiro-ehcache</artifactId>
+          <version>1.7.0</version>
+      </dependency>
+      <!-- Logger -->
+
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-api</artifactId>
+          <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>jcl-over-slf4j</artifactId>
+          <version>${slf4j.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>ch.qos.logback</groupId>
+          <artifactId>logback-classic</artifactId>
+          <version>${logback.version}</version>
+          <scope>runtime</scope>
+      </dependency>
+
+      <dependency>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+          <version>1.1.1</version>
+          <scope>provided</scope>
       </dependency>
   </dependencies>
 
@@ -103,11 +146,6 @@
     <finalName>Rastas</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
-        </plugin>
         <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
@@ -134,6 +172,56 @@
           <version>2.8.2</version>
         </plugin>
 
+        <!-- clean project (also local H2 database)-->
+        <plugin>
+            <artifactId>maven-clean-plugin</artifactId>
+            <version>2.6.1</version>
+            <executions>
+                <execution>
+                    <id>auto-clean</id>
+                    <phase>initialize</phase>
+                    <goals>
+                        <goal>clean</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <!-- create local H2 database -->
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sql-maven-plugin</artifactId>
+            <version>1.5</version>
+            <dependencies>
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>1.4.184</version>
+                </dependency>
+            </dependencies>
+            <configuration>
+                <driver>org.h2.Driver</driver>
+                <url>jdbc:h2:file:./target/db/testdb;MODE=PostgreSQL</url>
+                <username>sa</username>
+                <password></password>
+                <autocommit>false</autocommit>
+                <skip>${maven.test.skip}</skip>
+            </configuration>
+            <executions>
+                <execution>
+                    <id>create-db</id>
+                    <phase>process-test-resources</phase>
+                    <goals>
+                        <goal>execute</goal>
+                    </goals>
+                    <configuration>
+                        <srcFiles>
+                            <srcFile>tables.sql</srcFile>
+                        </srcFiles>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         <!-- Plugin configuration for Heroku compatibility. -->
 
         <plugin>
