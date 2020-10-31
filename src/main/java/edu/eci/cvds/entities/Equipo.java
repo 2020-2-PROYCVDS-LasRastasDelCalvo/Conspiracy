@@ -18,11 +18,14 @@ public class Equipo {
     private ArrayList<Elemento>elementos;
     private ArrayList<Novedad> novedades;
 
-    public Equipo(int idEquipo,Date fechaRegistro,int disponible,ArrayList<Elemento>elementos){
+
+
+    public Equipo(int idEquipo, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos){
        this.idEquipo = idEquipo;
        this.fechaRegistro = fechaRegistro;
        this.disponible = disponible;
        this.elementos = elementos;
+       this.novedades = new ArrayList<Novedad>();
     }
 
     public int getIdEquipo() {
@@ -47,5 +50,21 @@ public class Equipo {
 
     public void setDisponible(int disponible) {
         this.disponible = disponible;
+    }
+
+    public ArrayList<Elemento> getElementos() {
+        return elementos;
+    }
+
+    public void setElementos(ArrayList<Elemento> elementos) {
+        this.elementos = elementos;
+    }
+
+    public ArrayList<Novedad> getNovedades() {
+        return novedades;
+    }
+
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
     }
 }

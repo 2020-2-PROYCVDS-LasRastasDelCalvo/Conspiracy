@@ -1,5 +1,7 @@
 package edu.eci.cvds.entities;
 
+import java.util.ArrayList;
+
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -12,9 +14,14 @@ public class Elemento {
     private int tipo;
     private String nombre;
     private String descripcion;
+    private ArrayList<Novedad> novedades;
 
-    public Elemento(){
-
+    public Elemento(int id, int tipo, String nombre, String descripcion){
+        this.idElemento = id;
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.novedades = new ArrayList<Novedad>();
     }
 
     public int getIdElemento() {
@@ -47,6 +54,14 @@ public class Elemento {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public ArrayList<Novedad> getNovedades() {
+        return novedades;
+    }
+
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
     }
 
 }

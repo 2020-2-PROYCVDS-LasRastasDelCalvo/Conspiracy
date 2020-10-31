@@ -1,5 +1,7 @@
 package edu.eci.cvds.entities;
 
+import java.util.ArrayList;
+
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -10,8 +12,12 @@ package edu.eci.cvds.entities;
 public class Laboratorio {
     private int idLaboratorio;
     private String nombre;
+    private ArrayList<Equipo> equipos;
 
-    public Laboratorio(){
+    public Laboratorio(int id, String nombre, ArrayList<Equipo> equipos){
+        this.idLaboratorio = id;
+        this.nombre = nombre;
+        this.equipos = equipos;
     }
 
     public int getIdLaboratorio() {
@@ -28,5 +34,17 @@ public class Laboratorio {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public ArrayList<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
+    }
+
+    public void agregarEquipo(Equipo equipo){
+        equipos.add(equipo);
     }
 }

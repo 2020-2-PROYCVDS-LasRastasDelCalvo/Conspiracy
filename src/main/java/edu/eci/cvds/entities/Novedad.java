@@ -1,5 +1,9 @@
 package edu.eci.cvds.entities;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -11,7 +15,14 @@ public class Novedad {
     private int idNovedad;
     private  String titulo;
     private String detalle;
-    public  Novedad(){}
+    private Date fecha;
+
+    public  Novedad(int id, String titulo, String detalle){
+        this.idNovedad = id;
+        this.titulo = titulo;
+        this.detalle = detalle;
+        setFecha();
+    }
 
     public int getIdNovedad() {
         return idNovedad;
@@ -35,6 +46,13 @@ public class Novedad {
 
     public void setDetalle(String detalle) {
         this.detalle = detalle;
+    }
+
+    public Date getFecha() { return fecha; }
+
+    public void setFecha() {
+        long millis=System.currentTimeMillis();
+        fecha = new java.sql.Date(millis);
     }
 
 }
