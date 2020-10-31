@@ -4,15 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper">
-    <resultMap id="ClienteResult" type="Cliente">
-        <id property="documento" column="documento"/>
+    <select parameterType="map" id="consultarElemento" resultMap="ResultadoElemento" >
+        select
+
+            c.idElemento,
+            c.idEquipo,
+            c.tipo,
+            c.nombre,
+            c.descripcion
+        FROM Elemento as c
+    </select>
+    <resultMap id="Elemento" type="ResultadoElemento">
+        <id property="idElemento" column="idElemento"/>
+        <result property="idEquipo" column="idEquipo"/>
+        <result property="tipo" column="tipo"/>
         <result property="nombre" column="nombre"/>
-        <result property="telefono" column="telefono"/>
-        <result property="direccion" column="direccion"/>
-        <result property="email" column="email"/>
-        <result property="vetado" column="vetado"/>
-        <collection property='rentados' javaType='ArrayList' ofType='ItemRentado' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemRentadoMapper.TotalRentado' columnPrefix="itemrentado_">
-        </collection>
+        <result property="descripcion" column="descripcion"/>
     </resultMap>
     <insert id="registrarElemento" parameterType="map">
         INSERT INTO Elemento VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
