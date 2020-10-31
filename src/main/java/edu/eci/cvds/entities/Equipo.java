@@ -19,7 +19,6 @@ public class Equipo {
     private ArrayList<Novedad> novedades;
 
 
-
     public Equipo(int idEquipo, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos){
        this.idEquipo = idEquipo;
        this.fechaRegistro = fechaRegistro;
