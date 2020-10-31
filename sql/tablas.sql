@@ -45,32 +45,14 @@ CREATE TABLE IF NOT EXISTS Elemento (
 CREATE TABLE IF NOT EXISTS Novedad (
   idNovedad serial PRIMARY KEY,
   titulo VARCHAR(20) NOT NULL,
-  detalle VARCHAR(200) NOT NULL
-);
-
--- -----------------------------------------------------
--- Table `Tiene`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Tiene (
-  idNovedad INT REFERENCES Novedad(idNovedad) DEFERRABLE,
+  detalle VARCHAR(200) NOT NULL,
+  fecha DATE NOT NULL,
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
-  fechaNovedad DATE NOT NULL,
-  PRIMARY KEY (idNovedad, idEquipo)
-);
-
--- -----------------------------------------------------
--- Table `Asigna`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Asigna (
-  idNovedad INT REFERENCES Novedad(idNovedad) DEFERRABLE,
-  idElemento INT REFERENCES Elemento(idElemento) DEFERRABLE,
-  fechaNovedad DATE NOT NULL,
-  PRIMARY KEY (idNovedad, idElemento)
+  idElemento INT REFERENCES Elemento(idElemento) DEFERRABLE
 );
 
 
-DROP TABLE Tiene;
-DROP TABLE Asigna;
+
 DROP TABLE Novedad;
 DROP TABLE Elemento;
 DROP TABLE Equipo;
