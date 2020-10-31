@@ -1,6 +1,7 @@
 package edu.eci.cvds.entities;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 /**
  * @author Ana Gabriela Silva
@@ -14,9 +15,14 @@ public class Equipo {
     private int idEquipo;
     private Date fechaRegistro;
     private int disponible;
+    private ArrayList<Elemento>elementos;
+    private ArrayList<Novedad> novedades;
 
-    public Equipo(){
-
+    public Equipo(int idEquipo,Date fechaRegistro,int disponible,ArrayList<Elemento>elementos){
+       this.idEquipo = idEquipo;
+       this.fechaRegistro = fechaRegistro;
+       this.disponible = disponible;
+       this.elementos = elementos;
     }
 
     public int getIdEquipo() {

@@ -1,5 +1,7 @@
 package edu.eci.cvds.entities;
 
+import java.util.ArrayList;
+
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -14,6 +16,7 @@ public class Usuario {
     private String correo;
     private String contraseña;
     private String rol;
+    private ArrayList<Equipo> equipos;
 
     public Usuario(int idUsuario, int estado, String nombre, String correo, String contraseña, String rol ){
         this.idUsuario = idUsuario;
@@ -22,6 +25,16 @@ public class Usuario {
         this.contraseña = contraseña;
         this.estado = estado;
         this.rol = rol;
+    }
+
+    public Usuario(int idUsuario, int estado, String nombre, String correo, String contraseña, String rol, ArrayList<Equipo> equipos){
+        this.idUsuario = idUsuario;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.contraseña = contraseña;
+        this.estado = estado;
+        this.rol = rol;
+        this.equipos = equipos;
     }
 
     public int getIdUsuario() {
@@ -70,5 +83,13 @@ public class Usuario {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+
+    public ArrayList<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
     }
 }
