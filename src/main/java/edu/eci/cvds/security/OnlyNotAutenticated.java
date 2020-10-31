@@ -13,7 +13,7 @@ import javax.servlet.ServletResponse;
  */
 public class OnlyNotAutenticated extends AccessControlFilter {
 
-    String welcomeurl = "/usuario.xhtml";
+    String welcomeurl ="/index.html";
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
@@ -24,6 +24,13 @@ public class OnlyNotAutenticated extends AccessControlFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+        Subject subject = getSubject(request, response);
+        if( subject.hasRole("administrador")){
+            welcomeurl = "admin/admin.xhtml";
+        }
+        else if( subject.hasRole("usuario") ){
+            welcomeurl = "usuario/usuario.xhtml";
+        }
         WebUtils.issueRedirect(request, response, welcomeurl);
         return false;//What to do if try to go to login -> go welcome page of auth users
     }
