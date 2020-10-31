@@ -30,13 +30,14 @@ public class LoginBean extends BasePageBean  {
     private String contraseña;
     private Subject usuarioActual;
     private String message;
+    private FacesMessage.Severity estado;
     /**
      * Metodo que realiza el login del usuario
      * FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"log","Usuario desconocido."));
      */
     public void doLogIn(){
         try{
-            message ="";
+            sinErrores();
             usuarioActual = SecurityUtils.getSubject();
             if (log.isLogged()) {
                 System.out.println("Ya esta loggeado----------------------------");
@@ -49,9 +50,17 @@ public class LoginBean extends BasePageBean  {
         }
         catch( Exception exception){
             message = exception.getMessage();
-            estadoLogin();
-
+            estado = FacesMessage.SEVERITY_WARN;
+            restablecer();
         }
+    }
+
+    /**
+     * metodo que establece los mensajes a mostrar en caso que no exista un error
+     */
+    public void sinErrores(){
+        message ="Login exitoso";
+        estado = FacesMessage.SEVERITY_INFO;
     }
 
     /**
@@ -142,15 +151,12 @@ public class LoginBean extends BasePageBean  {
     public void restablecer(){
         contraseña = "";
         correo = "";
-        message = "";
     }
 
     /**
      * Metodo que muestra en un mensaje del estado del log in
      */
     public void estadoLogin() {
-        if( message != ""){
-            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "LogIn", message));
-        }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "LogIn", message));
     }
 }

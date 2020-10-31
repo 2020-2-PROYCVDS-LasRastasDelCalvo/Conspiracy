@@ -20,14 +20,14 @@
             <img class="imagenCircular" src="rsc/img/logo.png" />
         </div>
         <div id="div1" class="form"  align="center">
-            <h:form id="idH">
+            <h:form id="loginForm">
                 <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                             closable="true" globalOnly="true"/>
                 <h:outputText styleClass="myText" value="Usuario:"/>
-                <p:inputText id="correo" styleClass="input-text" type="String" value="#{login.correo}"/>
+                <p:inputText id="correo" styleClass="input-text" type="String" value="#{login.correo}" />
                 <h:outputText styleClass="myText" value="Contraseña:"/>
                 <p:password id="contraseña" styleClass="input-text" type="String" value="#{login.contraseña}" />
-                <p:commandButton  styleClass="myButton" actionListener="#{login.doLogIn}" value="Ingresar" action="#{login.estadoLogin}">
+                <p:commandButton  styleClass="myButton" actionListener="#{login.doLogIn}" update="loginForm" value="Ingresar" action="#{login.estadoLogin}">
                 </p:commandButton>
             </h:form>
 
