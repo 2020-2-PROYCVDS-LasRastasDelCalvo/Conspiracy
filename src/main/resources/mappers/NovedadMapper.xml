@@ -26,7 +26,7 @@
         <result property="titulo" column="n_titulo"/>
         <result property="detalle" column="n_detalle"/>
         <result property="fecha" column="n_fecha"/>
-        <result property="usuario" column="n_usuario"/>
+        <result property="idUsuario" column="n_usuario"/>
         <result property="idElemento" column="n_idElemento"/>
         <result property="idEquipo" column="n_idEquipo"/>
         <result property="correo" column="u_correo"/>
