@@ -16,3 +16,22 @@ CREATE TRIGGER AD_fechaRegistro_Equipo
   BEFORE INSERT ON public.Equipo
   FOR EACH ROW
 EXECUTE PROCEDURE fechaEquipo();
+
+-- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+CREATE OR REPLACE FUNCTION Elemento() 
+	RETURNS TRIGGER 
+AS 
+$$
+BEGIN
+	NEW.idEquipo := 0;
+	RETURN NEW;
+END;
+$$ 
+LANGUAGE plpgsql;
+
+CREATE TRIGGER AD_idEquipo
+  BEFORE INSERT ON public.Elemento
+  FOR EACH ROW
+EXECUTE PROCEDURE Elemnto();
