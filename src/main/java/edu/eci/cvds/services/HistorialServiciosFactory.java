@@ -1,7 +1,8 @@
 package edu.eci.cvds.services;
 
 import com.google.inject.Injector;
-
+import edu.eci.cvds.persistence.mybatis.MyBATISNovedadDAO;
+import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -13,7 +14,6 @@ import static com.google.inject.Guice.createInjector;
 public class HistorialServiciosFactory {
 
     private static HistorialServiciosFactory instance = new HistorialServiciosFactory();
-
     private static Optional<Injector> optInjector;
 
     private Injector myBatisInjector(String env, String pathResource) {
@@ -23,13 +23,7 @@ public class HistorialServiciosFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(Log.class).to(ShiroLogger.class);
-                /*
-                bind(ItemDAO.class).to(MyBATISItemDAO.class);
-                bind(ItemRentadoDAO.class).to(edu.eci.cvds.sampleprj.dao.mybatis.MYBATISItemRentadoDAO.class);
-                bind(TipoItemDAO.class).to(MyBATISTipoItemDAO.class);
-                bind(ClienteDAO.class).to(MyBATISClienteDAO.class);
-                bind(ServiciosAlquiler.class).to(edu.eci.cvds.samples.services.impl.ServiciosAlquilerImpl.class);
-                */
+                bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
             }
         });
     }
