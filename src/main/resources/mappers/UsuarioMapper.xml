@@ -2,13 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.eci.cvdscvds.persistence.mybatis.mappers.UsuarioMapper">
-    <select id="consultarUsuario" parameterType="map" resultMap="UsuarioResult">
-
-    </select>
-    <insert id="registrarUsuario" parameterType="map">
-
-    </insert>
+<mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.UsuarioMapper">
     <resultMap id="UsuarioResult" type="Usuario" >
         <id property="idUsuario" column="idUsuario"/>
         <result property="estado" column="estado" />
