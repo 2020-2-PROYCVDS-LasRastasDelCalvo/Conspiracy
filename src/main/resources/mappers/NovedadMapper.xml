@@ -18,8 +18,7 @@
             novedad n
             INNER JOIN
             usuario u
-            ON n.usuario = u.idusuario
-        WHERE idElemento IS NOT NULL;
+            ON n.usuario = u.idusuario;
     </select>
     <resultMap id="NovedadResult" type="Novedad" >
         <id property="idNovedad" column="n_idNovedad"/>
