@@ -15,6 +15,7 @@
         <p:commandButton actionListener="#{novedad.consultar}" value="consultar" update="infoNovedades">
 
         </p:commandButton>
+        <p:separator/>
         <p:dataTable id="infoNovedades" value="#{novedad.novedades}" var="novedad"
                      rows="10"
                      paginator="true"
