@@ -20,10 +20,10 @@ public class Novedad {
     private int idUsuario;
     private int idElemento;
     private int idEquipo;
-    private String nombreUsuario;
+    private String correo;
 
 
-    public  Novedad(int id, String titulo, String detalle, Date fecha, int idUsuario, int idElemento, int idEquipo){
+    public  Novedad(int id, String titulo, String detalle, Date fecha, int idUsuario, int idElemento, int idEquipo, String correo){
         this.idNovedad = id;
         this.titulo = titulo;
         this.detalle = detalle;
@@ -31,8 +31,6 @@ public class Novedad {
         this.idUsuario = idUsuario;
         this.idElemento = idElemento;
         this.idEquipo = idEquipo;
-        System.out.println("entre");
-        System.out.println(idUsuario);
     }
 
     public  Novedad(int id, String titulo, String detalle){
@@ -101,11 +99,11 @@ public class Novedad {
         this.idEquipo = idEquipo;
     }
 
-    public String getNombreUsuario() {
-        return nombreUsuario;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 }
