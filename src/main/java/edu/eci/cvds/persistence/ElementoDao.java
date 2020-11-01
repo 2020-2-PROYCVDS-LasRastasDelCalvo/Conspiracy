@@ -1,4 +1,4 @@
-package edu.eci.cvds.persistence.mybatis.mappers;
+package edu.eci.cvds.persistence;
 
 import edu.eci.cvds.entities.Elemento;
 import org.apache.ibatis.annotations.Param;
@@ -12,8 +12,9 @@ import java.util.ArrayList;
  * @author Iván Camilo Rincón Saavedra
  * @version 31/10/2020
  */
-public interface ElementoMapper {
+public interface ElementoDao {
+    public void registrarElemento(Elemento elemento);
     public ArrayList<Elemento> consultarElementos();
-    public void registrarElemento(@Param("tipo") Elemento elemento);
 
 }
+

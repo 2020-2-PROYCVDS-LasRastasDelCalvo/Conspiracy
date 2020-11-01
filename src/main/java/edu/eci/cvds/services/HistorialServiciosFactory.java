@@ -2,6 +2,8 @@ package edu.eci.cvds.services;
 
 import com.google.inject.Injector;
 
+import edu.eci.cvds.persistence.ElementoDao;
+import edu.eci.cvds.persistence.mybatis.MyBatisElementoDao;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
 import org.mybatis.guice.XMLMyBatisModule;
@@ -23,6 +25,7 @@ public class HistorialServiciosFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(Log.class).to(ShiroLogger.class);
+                bind(ElementoDao.class).to(MyBatisElementoDao.class);
                 /*
                 bind(ItemDAO.class).to(MyBATISItemDAO.class);
                 bind(ItemRentadoDAO.class).to(edu.eci.cvds.sampleprj.dao.mybatis.MYBATISItemRentadoDAO.class);
