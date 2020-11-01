@@ -6,6 +6,8 @@
       xmlns:p="http://primefaces.org/ui" xmlns:P="http://java.sun.com/jsf/html">
 <h:head>
     <title>Registrar de Items</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.18/datatables.min.css"/>
+
 </h:head>
 
 <h:body>
@@ -16,7 +18,10 @@
 
         </p:commandButton>
         <p:separator/>
-        <p:dataTable id="infoNovedades" value="#{novedad.novedades}" var="novedad"
+        <p:dataTable id="infoNovedades"
+                     value="#{novedad.novedades}"
+                     var="novedad"
+                     rowKey="#{novedad.idNovedad}"
                      rows="10"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -25,25 +30,26 @@
             <f:facet name="header">
                 Novedades
             </f:facet>
-            <p:column headerText="idNovedad"  >
+
+            <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}"  sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Titulo">
+            <p:column headerText="Titulo"  filterBy="#{novedad.titulo}"  sortBy="#{novedad.titulo}">
                 <p:outputLabel value="#{novedad.titulo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Fecha">
+            <p:column headerText="Fecha"  filterBy="#{novedad.fecha}"  sortBy="#{novedad.fecha}">
                 <p:outputLabel value="#{novedad.fecha}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Detalle">
+            <p:column headerText="Detalle" filterBy="#{novedad.detalle}"  sortBy="#{novedad.detalle}">
                 <p:outputLabel value="#{novedad.detalle}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Usuario">
+            <p:column headerText="Usuario" filterBy="#{novedad.correo}"  sortBy="#{novedad.correo}">
                 <p:outputLabel value="#{novedad.correo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="idEquipo">
+            <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}"  sortBy="#{novedad.idEquipo}">
                 <p:outputLabel value="#{novedad.idEquipo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="idElemento">
+            <p:column headerText="idElemento" filterBy="#{novedad.idElemento}"  sortBy="#{novedad.idElemento}">
                 <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
             </p:column>
         </p:dataTable>
