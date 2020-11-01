@@ -17,6 +17,11 @@ public class Novedad {
     private String detalle;
     private Date fecha;
 
+    private String idUsuario;
+    private String idElemento;
+    private String idEquipo;
+    private String nombreUsuario;
+
 
     public  Novedad(int id, String titulo, String detalle, Date fecha){
         this.idNovedad = id;
