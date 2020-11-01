@@ -27,4 +27,14 @@ public class MyBatisElementoDao implements ElementoDao {
     public ArrayList<Elemento> consultarElementos() {
         return elementoMapper.consultarElementos();
     }
+
+    @Override
+    public int consultarElementoDisponible() {
+        return elementoMapper.consultarElementoDisponible();
+    }
+
+    @Override
+    public void asociarEquipo() {
+        elementoMapper.asociarEquipo(elementoMapper);
+    }
 }

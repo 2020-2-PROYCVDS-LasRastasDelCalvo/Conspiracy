@@ -32,6 +32,6 @@ $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER AD_idEquipo
-  BEFORE INSERT ON public.Elemento
+  BEFORE INSERT ON Elemento
   FOR EACH ROW
-EXECUTE PROCEDURE Elemnto();
+EXECUTE PROCEDURE Elemento();

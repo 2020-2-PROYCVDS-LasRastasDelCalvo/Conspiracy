@@ -15,5 +15,7 @@ import java.util.ArrayList;
 public interface ElementoMapper {
     public ArrayList<Elemento> consultarElementos();
     public void registrarElemento(@Param("tipo") Elemento elemento);
+    public int consultarElementoDisponible();//id equipo siempre es 0 "significa que esta disponible"
+    public void asociarEquipo(@Param("idEquipo") int idEquipo);//asociar  un equipo con un elemento disponible
 
 }

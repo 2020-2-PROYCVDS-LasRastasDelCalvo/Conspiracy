@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Elemento {
     private int idElemento;
+    private int idEquipo;
     private int tipo;
     private String nombre;
     private String descripcion;
