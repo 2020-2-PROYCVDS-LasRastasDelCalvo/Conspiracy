@@ -8,13 +8,20 @@
             idNovedad,
             titulo,
             detalle,
-            fecha
-        FROM Novedad;
+            fecha,
+            usuario,
+            idElemento,
+            idEquipo
+        FROM Novedad
+        WHERE idElemento IS NOT NULL;
     </select>
     <resultMap id="NovedadResult" type="Novedad" >
         <id property="idNovedad" column="idNovedad"/>
         <result property="titulo" column="titulo"/>
         <result property="detalle" column="detalle"/>
         <result property="fecha" column="fecha"/>
+        <result property="usuario" column="idUsuario"/>
+        <result property="idElemento" column="idElemento"/>
+        <result property="idEquipo" column="idEquipo"/>
     </resultMap>
 </mapper>

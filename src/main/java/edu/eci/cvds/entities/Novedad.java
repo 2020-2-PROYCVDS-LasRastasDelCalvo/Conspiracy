@@ -17,17 +17,22 @@ public class Novedad {
     private String detalle;
     private Date fecha;
 
-    private String idUsuario;
-    private String idElemento;
-    private String idEquipo;
+    private int idUsuario;
+    private int idElemento;
+    private int idEquipo;
     private String nombreUsuario;
 
 
-    public  Novedad(int id, String titulo, String detalle, Date fecha){
+    public  Novedad(int id, String titulo, String detalle, Date fecha, int idUsuario, int idElemento, int idEquipo){
         this.idNovedad = id;
         this.titulo = titulo;
         this.detalle = detalle;
         this.fecha = fecha;
+        this.idUsuario = idUsuario;
+        this.idElemento = idElemento;
+        this.idEquipo = idEquipo;
+        System.out.println("entre");
+        System.out.println(idUsuario);
     }
 
     public  Novedad(int id, String titulo, String detalle){
@@ -68,4 +73,39 @@ public class Novedad {
         fecha = new java.sql.Date(millis);
     }
 
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(int idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public int getIdEquipo() {
+        return idEquipo;
+    }
+
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
 }
