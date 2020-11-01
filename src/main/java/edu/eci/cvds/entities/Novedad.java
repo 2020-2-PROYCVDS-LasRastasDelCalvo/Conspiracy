@@ -17,6 +17,14 @@ public class Novedad {
     private String detalle;
     private Date fecha;
 
+
+    public  Novedad(int id, String titulo, String detalle, Date fecha){
+        this.idNovedad = id;
+        this.titulo = titulo;
+        this.detalle = detalle;
+        this.fecha = fecha;
+    }
+
     public  Novedad(int id, String titulo, String detalle){
         this.idNovedad = id;
         this.titulo = titulo;

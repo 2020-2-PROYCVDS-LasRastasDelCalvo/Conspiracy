@@ -23,16 +23,16 @@ public class NovedadBean  extends BasePageBean {
     private HistorialServicios historialServicios;
     private List<Novedad> novedades;
 
-    public List<Novedad> consultar(){
+    public void consultar(){
         try{
             if( novedades == null ){
                  novedades = historialServicios.consultarNovedades();
             }
-            return novedades;
+            System.out.println(novedades);
         }
         catch (Exception exception) {
+            exception.printStackTrace();
         }
-        return null;
     }
 
     public List<Novedad> getNovedades() {
