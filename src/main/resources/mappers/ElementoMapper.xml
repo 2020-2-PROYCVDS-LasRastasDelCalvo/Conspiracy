@@ -4,31 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper">
-    <select parameterType="map" id="consultarElemento" resultMap="ResultadoElemento" >
+    <select parameterType="map" id="consultarElementos" resultMap="ElementoResult" >
         select
             c.idElemento,
-            c.idEquipo,
             c.tipo,
             c.nombre,
             c.descripcion
         FROM Elemento as c
     </select>
 
-    <select parameterType="map" id="consultarElementoDisponible" resultMap="ResultadoNuevoElemento" >
-        select
-            c.idElemento,
-            c.idEquipo,
-            c.tipo,
-            c.nombre,
-            c.descripcion
-        FROM Elemento as c WHERE c.idEquipo = 0
-    </select>
-
     <insert id="registrarElemento" parameterType="map">
         INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
     </insert>
 
-    <resultMap id="Elemento" type="ResultadoElemento">
+    <resultMap id="ElementoResult" type="Elemento">
         <id property="idElemento" column="idElemento"/>
         <result property="tipo" column="tipo"/>
         <result property="nombre" column="nombre"/>

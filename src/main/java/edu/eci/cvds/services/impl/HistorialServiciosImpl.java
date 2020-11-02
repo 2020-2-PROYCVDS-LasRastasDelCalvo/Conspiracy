@@ -1,7 +1,9 @@
 package edu.eci.cvds.services.impl;
 
+
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
+import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
@@ -18,6 +20,9 @@ import java.util.List;
 public class HistorialServiciosImpl implements HistorialServicios{
     @Inject
     private NovedadDAO novedadDAO;
+
+    @Inject
+    private ElementoDAO elementoDAO;
 
     @Override
     public List<Novedad> consultarNovedades() throws HistorialEquiposException{
