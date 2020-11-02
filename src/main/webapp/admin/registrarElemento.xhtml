@@ -36,21 +36,30 @@
     <h:form>
         <div class="form-group">
             <label for="nombreElemento">Nombre Elemento</label>
-            <p:inputText  id="nombreElemento" type="String" class="form-control"  placeholder="Nombre"/>
+            <p:inputText  id="nombreElemento" type="String" class="form-control"  placeholder="Nombre" value="#{elemento.nombre}"/>
         </div>
         <div class="form-group">
             <label for="opcionesTipo">Tipo Elemento</label>
-            <h:selectOneMenu id="opcionesTipo" value="fsafasf">
+            <h:selectOneMenu id="opcionesTipo" value="#{elemento.tipo}">
                 <f:selectItems value="#{elemento.opciones}" />
             </h:selectOneMenu>
         </div>
         <div class="form-group">
             <label for="descripcionEquipo">Descripcion</label>
-            <h:inputTextarea class="form-control" id="descripcionEquipo" rows="3" ></h:inputTextarea>
+            <h:inputTextarea class="form-control" id="descripcionEquipo" rows="3" value="#{elemento.descripcion}"></h:inputTextarea>
         </div>
+
     </h:form>
     <h:form>
-        <p:dataTable class="table table-dark" id="infoNovedades"
+        <div align="center">
+            <p:commandButton class="btn btn-dark" value="Registrar" actionListener="#{elemento.registrarElemento}">
+
+            </p:commandButton>
+            <p:commandButton class="btn btn-dark" update="infoElementos" value="actualizar" actionListener="#{elemento.elementos}">
+
+            </p:commandButton>
+        </div>
+        <p:dataTable class="table table-dark" id="infoElementos"
                      value="#{elemento.elementos}"
                      var="elemento"
                      rowKey="#{elemento.idElemento}"

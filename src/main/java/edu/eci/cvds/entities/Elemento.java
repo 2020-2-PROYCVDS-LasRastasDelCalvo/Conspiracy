@@ -19,6 +19,13 @@ public class Elemento {
     public Elemento(){
 
     }
+    public Elemento( String tipo, String nombre, String descripcion){
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.novedades = new ArrayList<Novedad>();
+    }
+
     public Elemento(int id, String tipo, String nombre, String descripcion){
         this.idElemento = id;
         this.tipo = tipo;

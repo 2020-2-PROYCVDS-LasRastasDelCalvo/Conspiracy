@@ -1,6 +1,7 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 
 import javax.annotation.PostConstruct;
@@ -37,6 +38,13 @@ public class ElementoBean extends BasePageBean {
             elementos = historialServicios.consultarElementos();
         }
         catch (Exception exception){
+        }
+    }
+
+    public void registrarElemento(){
+        try {
+            historialServicios.insertarElemento( tipo, nombre, descripcion);
+        } catch (HistorialEquiposException e) {
         }
     }
 
