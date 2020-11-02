@@ -46,9 +46,9 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarElemento(String tipo, String nombre, String descripcion) throws HistorialEquiposException {
+    public void insertarElemento(String tipo, String nombre, String descripcion, int cantidad) throws HistorialEquiposException {
         try{
-            Elemento elemento = new Elemento(tipo, nombre, descripcion );
+            Elemento elemento = new Elemento(tipo, nombre, descripcion, cantidad );
             elementoDAO.registrarElemento( elemento );
         }
         catch (PersistenceException persistenceException){

@@ -29,6 +29,7 @@ public class ElementoBean extends BasePageBean {
     private String nombre;
     private String descripcion;
     private String[] opciones = {"Torre","Pantalla","Mouse","Teclado"};
+    private int cantidad;
     private List<Elemento> elementos;
 
     @PostConstruct
@@ -43,7 +44,7 @@ public class ElementoBean extends BasePageBean {
 
     public void registrarElemento(){
         try {
-            historialServicios.insertarElemento( tipo, nombre, descripcion);
+            historialServicios.insertarElemento( tipo, nombre, descripcion, cantidad);
         } catch (HistorialEquiposException e) {
         }
     }
@@ -87,4 +88,8 @@ public class ElementoBean extends BasePageBean {
     public void setElementos(List<Elemento> elementos) {
         this.elementos = elementos;
     }
+
+    public int getCantidad() { return cantidad; }
+
+    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
 }

@@ -37,11 +37,12 @@ public class Elemento {
         this.novedades = new ArrayList<Novedad>();
     }
 
-    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades){
+    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades, int cantidad){
         this.idElemento = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
         this.novedades = novedades;
     }
 

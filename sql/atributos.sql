@@ -29,7 +29,7 @@ CHECK(
 );
 
 ALTER TABLE Elemento
-AD CONSTRAINT CH_Elemento_Quantity
+ADD CONSTRAINT CH_Elemento_Quantity
 CHECK (
     cantidad > 0
 );
