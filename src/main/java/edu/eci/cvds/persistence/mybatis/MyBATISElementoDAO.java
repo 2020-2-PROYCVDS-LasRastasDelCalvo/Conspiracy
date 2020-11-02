@@ -2,7 +2,7 @@ package edu.eci.cvds.persistence.mybatis;
 
 import com.google.inject.Inject;
 import edu.eci.cvds.entities.Elemento;
-import edu.eci.cvds.persistence.ElementoDao;
+import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
 import edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
  * @author Iván Camilo Rincón Saavedra
  * @version 31/10/2020
  */
-public class MyBatisElementoDao implements ElementoDao {
+public class MyBATISElementoDAO implements ElementoDAO {
     @Inject
     private ElementoMapper elementoMapper;
 
@@ -34,7 +34,7 @@ public class MyBatisElementoDao implements ElementoDao {
     }
 
     @Override
-    public void asociarEquipo() {
-        elementoMapper.asociarEquipo(elementoMapper);
+    public void asociarEquipo(int idEquipo) {
+        elementoMapper.asociarEquipo(idEquipo);
     }
 }

@@ -6,7 +6,6 @@
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper">
     <select parameterType="map" id="consultarElemento" resultMap="ResultadoElemento" >
         select
-
             c.idElemento,
             c.idEquipo,
             c.tipo,
@@ -28,7 +27,7 @@
     <insert id="registrarElemento" parameterType="map">
         INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
     </insert>
-    
+
     <update id="asociarEquipo" parameterMap="map">
         UPDATE Elemento SET idEquipo=#{idEquipo} WHERE Elemento.idEquipo= 0; /*NO SABEMOS SI ESTA BIEN xd*//*Queremos asociar el 0 por el id del equipo el cual va a tomar el elemento*/
     </update>

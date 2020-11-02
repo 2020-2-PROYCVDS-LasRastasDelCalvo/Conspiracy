@@ -1,4 +1,4 @@
-package edu.eci.cvds.persistence;
+package edu.eci.cvds.persistence.mybatis.dao;
 
 import edu.eci.cvds.entities.Elemento;
 import org.apache.ibatis.annotations.Param;
@@ -12,12 +12,10 @@ import java.util.ArrayList;
  * @author Iván Camilo Rincón Saavedra
  * @version 31/10/2020
  */
-public interface ElementoDao {
+public interface ElementoDAO {
     public void registrarElemento(Elemento elemento);
     public ArrayList<Elemento> consultarElementos();
     public int consultarElementoDisponible();
-    public void asociarEquipo();
-
-
+    public void asociarEquipo(int idEquipo);
 }
 
