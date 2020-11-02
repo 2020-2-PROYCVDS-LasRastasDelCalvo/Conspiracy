@@ -40,6 +40,7 @@
         <result property="tipo" column="e_tipo"/>
         <result property="nombre" column="e_nombre"/>
         <result property="descripcion" column="e_descripcion"/>
+        <result property="cantidad" column="e_cantidad"/>
         <collection property="novedades" ofType="Novedad" resultMap="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper.NovedadResult"/>
     </resultMap>
 

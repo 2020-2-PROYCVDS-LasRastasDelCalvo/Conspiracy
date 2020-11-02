@@ -28,6 +28,12 @@ CHECK(
     tipo IN ('Torre','Pantalla','Mouse','Teclado')
 );
 
+ALTER TABLE Elemento
+AD CONSTRAINT CH_Elemento_Quantity
+CHECK (
+    cantidad > 0
+);
+
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------

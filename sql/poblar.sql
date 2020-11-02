@@ -29,20 +29,20 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
-INSERT INTO Elemento(tipo,nombre,descripcion)
-VALUES('Torre','Torre A','Descripcion de la torre A');
+INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
+VALUES('Torre','Torre A','Descripcion de la torre A',1000);
 
-INSERT INTO Elemento(tipo,nombre,descripcion)
-VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A');
+INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
+VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1000);
 
-INSERT INTO Elemento(tipo,nombre,descripcion)
-VALUES('Mouse','Mouse A','Descripcion del mouse A');
+INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
+VALUES('Mouse','Mouse A','Descripcion del mouse A',1000);
 
-INSERT INTO Elemento(tipo,nombre,descripcion)
-VALUES('Teclado','Teclado A','Descripcion del teclado A');
+INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
+VALUES('Teclado','Teclado A','Descripcion del teclado A',1000);
 
-INSERT INTO Elemento(tipo,nombre,descripcion)
-VALUES('Torre','Torre B','Descripcion de la torre B');
+INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
+VALUES('Torre','Torre B','Descripcion de la torre B',1000);
 
 -- -----------------------------------------------------
 -- Table `Equipo`

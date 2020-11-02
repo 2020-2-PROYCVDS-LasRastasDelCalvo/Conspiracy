@@ -84,6 +84,9 @@
             <p:column headerText="Descripcion" filterBy="#{elemento.descripcion}"  sortBy="#{novedad.detalle}">
                 <p:outputLabel value="#{elemento.descripcion}"></p:outputLabel>
             </p:column>
+            <p:column headerText="Cantidad Disponibñe" filterBy="#{elemento.cantidad}">
+                <p:outputLabel value="#{elemento.cantidad}"></p:outputLabel>
+            </p:column>
 
         </p:dataTable>
     </h:form>

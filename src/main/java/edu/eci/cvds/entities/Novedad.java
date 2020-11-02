@@ -22,7 +22,7 @@ public class Novedad {
     private int idEquipo;
     private String correo;
 
-    public Novedad(){};
+    public Novedad(){}
 
     public  Novedad(int id, String titulo, String detalle, Date fecha, int idUsuario, int idElemento, int idEquipo, String correo){
         this.idNovedad = id;

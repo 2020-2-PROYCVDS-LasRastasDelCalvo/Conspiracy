@@ -14,23 +14,26 @@ public class Elemento {
     private String tipo;
     private String nombre;
     private String descripcion;
+    private int cantidad;
     private ArrayList<Novedad> novedades;
 
     public Elemento(){
 
     }
-    public Elemento( String tipo, String nombre, String descripcion){
+    public Elemento( String tipo, String nombre, String descripcion, int cantidad){
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
         this.novedades = new ArrayList<Novedad>();
     }
 
-    public Elemento(int id, String tipo, String nombre, String descripcion){
+    public Elemento(int id, String tipo, String nombre, String descripcion, int cantidad){
         this.idElemento = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
         this.novedades = new ArrayList<Novedad>();
     }
 
@@ -82,4 +85,7 @@ public class Elemento {
         this.novedades = novedades;
     }
 
+    public int getCantidad() { return cantidad;}
+
+    public void setCantidad(int cantidad) { this.cantidad = cantidad;}
 }
