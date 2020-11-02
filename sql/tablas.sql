@@ -15,16 +15,17 @@ CREATE TABLE IF NOT EXISTS Usuario(
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Laboratorio (
   idLaboratorio serial PRIMARY KEY,
-  nombre INT NOT NULL);
+  nombre VARCHAR(40) NOT NULL);
 
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Equipo (
   idEquipo serial PRIMARY KEY,
-  usuario INT REFERENCES Usuario(idUsuario) DEFERRABLE, 
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
+  nombre VARCHAR(50)  NOT NULL,
+  descripcion VARCHAR(500)  NOT NULL,
   disponible INT  NOT NULL
 );
 
@@ -44,17 +45,34 @@ CREATE TABLE IF NOT EXISTS Elemento (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Novedad (
   idNovedad serial PRIMARY KEY,
-  titulo VARCHAR(20) NOT NULL,
+  titulo VARCHAR(40) NOT NULL,
   detalle VARCHAR(200) NOT NULL,
   fecha DATE NOT NULL,
+  usuario INT REFERENCES Usuario(idUsuario) DEFERRABLE,
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
   idElemento INT REFERENCES Elemento(idElemento) DEFERRABLE
 );
 
 
+-- -----------------------------------------------------
+-- Drops
+-- -----------------------------------------------------
+DROP TABLE
+IF EXISTS Novedad
+CASCADE;
 
-DROP TABLE Novedad;
-DROP TABLE Elemento;
-DROP TABLE Equipo;
-DROP TABLE Usuario;
-DROP TABLE Laboratorio; 
+DROP TABLE
+IF EXISTS Elemento
+CASCADE ;
+
+DROP TABLE
+IF EXISTS Equipo
+CASCADE;
+
+DROP TABLE
+IF EXISTS Usuario
+CASCADE;
+
+DROP TABLE
+IF EXISTS Laboratorio
+CASCADE;
