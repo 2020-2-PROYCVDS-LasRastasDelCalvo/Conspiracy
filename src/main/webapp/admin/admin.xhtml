@@ -6,19 +6,52 @@
       xmlns:p="http://primefaces.org/ui" xmlns:P="http://java.sun.com/jsf/html">
 <h:head>
     <title>Registrar de Items</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </h:head>
 
 <h:body>
     <h1>Estoy en admin</h1>
-    <p:separator />
-    <h:form>
-        <p:messages id="messages" showDetail="true" closable="true">
-            <p:autoUpdate />
-        </p:messages>
-        <a href="novedades.xhtml">NOVEDADES</a>
-        <p:commandButton actionListener="#{login.logOut}" value="salir" />
-        <p:commandButton id="aRegistrarEquipo"></p:commandButton>
-        <p:commandButton id="aRegsitrarElemento"></p:commandButton>
-    </h:form>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="admin.xhtml">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Registrar</a>
+                    <div class="dropdown-menu" >
+                        <a class="dropdown-item" href="#">Equipo</a>
+                        <a class="dropdown-item" href="#">Elemento</a>
+                        <a class="dropdown-item" href="#">Novedad</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Usuario</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Consultar</a>
+                    <div class="dropdown-menu" >
+                        <a class="dropdown-item" href="#">Equipos</a>
+                        <a class="dropdown-item" href="#">Elementos</a>
+                        <a class="dropdown-item" href="../admin/novedades.xhtml">Novedades</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Usuarios</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <h:form>
+                        <p:commandButton  class="btn btn-link" style="color:#FFFFFF;" actionListener="#{login.logOut}" value="salir" />
+                    </h:form>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </h:body>
+
 </html>

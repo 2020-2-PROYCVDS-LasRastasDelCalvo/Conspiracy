@@ -1,8 +1,12 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Novedad;
+import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.util.List;
@@ -17,19 +21,27 @@ import java.util.List;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "novedad")
-@SessionScoped
+@RequestScoped
 public class NovedadBean  extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
     private List<Novedad> novedades;
 
+    @PostConstruct
+    public void init(){
+        super.init();
+        try {
+            novedades = historialServicios.consultarNovedades();
+        } catch (HistorialEquiposException e) {
+            e.printStackTrace();
+        }
+    }
     public void consultar(){
         novedades = null;
         try{
             novedades = historialServicios.consultarNovedades();
         }
         catch (Exception exception) {
-            System.out.println(exception.getMessage());
         }
     }
 
