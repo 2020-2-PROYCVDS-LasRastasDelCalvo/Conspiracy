@@ -26,35 +26,41 @@ VALUES('Redes de Computadores');
 INSERT INTO Laboratorio( nombre )
 VALUES('Multimedia y Móviles');
 
+-- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+INSERT INTO Elemento(tipo,nombre,descripcion)
+VALUES('Torre','Torre A','Descripcion de la torre A');
+
+INSERT INTO Elemento(tipo,nombre,descripcion)
+VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A');
+
+INSERT INTO Elemento(tipo,nombre,descripcion)
+VALUES('Mouse','Mouse A','Descripcion del mouse A');
+
+INSERT INTO Elemento(tipo,nombre,descripcion)
+VALUES('Teclado','Teclado A','Descripcion del teclado A');
+
+INSERT INTO Elemento(tipo,nombre,descripcion)
+VALUES('Torre','Torre B','Descripcion de la torre B');
 
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(laboratorio,nombre,descripcion)
-VALUES(1,'Equipo1','Detalle del equipo1');
+INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(1,'Equipo1','Detalle del equipo1',1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion)
-VALUES(2,'Equipo2','Detalle del equipo2');
+INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(2,'Equipo2','Detalle del equipo2',1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion)
-VALUES(2,'Equipo3','Detalle del equipo3');
+INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(2,'Equipo3','Detalle del equipo3',1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion)
-VALUES(1,'Equipo4','Detalle del equipo4');
+INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(1,'Equipo4','Detalle del equipo4',1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion)
-VALUES(3,'Equipo5','Detalle del equipo5');
--- -----------------------------------------------------
--- Table `Elemento`
--- -----------------------------------------------------
-INSERT INTO Elemento(idEquipo,tipo,nombre,descripcion)
-VALUES(NULL,1,'Torre','Descripcion de la torre 1');
-
-INSERT INTO Elemento(idEquipo,tipo,nombre,descripcion)
-VALUES(NULL,2,'Pantalla Plasma.','Descripcion Pantalla Plasma...');
-
-INSERT INTO Elemento(idEquipo,tipo,nombre,descripcion)
-VALUES(1,1,'Pantalla Plasma 2.0','Descripcion Pantalla Plasma 2.0...');
+INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(3,'Equipo5','Detalle del equipo5',1,2,3,4);
 
 -- -----------------------------------------------------
 -- Table `Novedad`

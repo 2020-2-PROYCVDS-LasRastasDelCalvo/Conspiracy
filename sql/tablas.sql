@@ -12,6 +12,16 @@ CREATE TABLE IF NOT EXISTS Usuario(
 );
 
 -- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Elemento (
+  idElemento serial PRIMARY KEY,
+  tipo VARCHAR(8) NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(500)  NOT NULL
+);
+
+-- -----------------------------------------------------
 -- Table `Laboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Laboratorio (
@@ -27,18 +37,11 @@ CREATE TABLE IF NOT EXISTS Equipo (
   fechaRegistro DATE NOT NULL,
   nombre VARCHAR(50)  NOT NULL,
   descripcion VARCHAR(500)  NOT NULL,
+  idTorre INT NOT NULL REFERENCES Elemento(idElemento),
+  idPantalla INT NOT NULL REFERENCES Elemento(idElemento),
+  idMouse INT NOT NULL REFERENCES Elemento(idElemento),
+  idTeclado INT NOT NULL REFERENCES Elemento(idElemento),
   disponible INT  NOT NULL
-);
-
--- -----------------------------------------------------
--- Table `Elemento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Elemento (
-  idElemento serial PRIMARY KEY,
-  idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
-  tipo INT  NOT NULL,
-  nombre VARCHAR(50)  NOT NULL,
-  descripcion VARCHAR(500)  NOT NULL
 );
 
 -- -----------------------------------------------------
@@ -76,8 +79,4 @@ CASCADE;
 
 DROP TABLE
 IF EXISTS Laboratorio
-<<<<<<< HEAD
 CASCADE;
-=======
-CASCADE;
->>>>>>> NovedadBack

@@ -19,6 +19,14 @@ CHECK(
 	estado  IN (0,1) 
 );
 
+-- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+ALTER TABLE Elemento
+ADD CONSTRAINT CH_Elemento_Tipo
+CHECK(
+    tipo IN ('Torre','Pantalla','Mouse','Teclado')
+);
 
 -- -----------------------------------------------------
 -- Table `Equipo`

@@ -14,6 +14,7 @@
             c.descripcion
         FROM Elemento as c
     </select>
+
     <select parameterType="map" id="consultarElementoDisponible" resultMap="ResultadoNuevoElemento" >
         select
             c.idElemento,
@@ -21,8 +22,16 @@
             c.tipo,
             c.nombre,
             c.descripcion
-        FROM Elemento as c WHERE c.idEquipo =0
+        FROM Elemento as c WHERE c.idEquipo = 0
     </select>
+
+    <insert id="registrarElemento" parameterType="map">
+        INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
+    </insert>
+    
+    <update id="asociarEquipo" parameterMap="map">
+        UPDATE Elemento SET idEquipo=#{idEquipo} WHERE Elemento.idEquipo= 0; /*NO SABEMOS SI ESTA BIEN xd*//*Queremos asociar el 0 por el id del equipo el cual va a tomar el elemento*/
+    </update>
 
     <resultMap id="Elemento" type="ResultadoElemento">
         <id property="idElemento" column="idElemento"/>
@@ -31,10 +40,5 @@
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>
     </resultMap>
-    <insert id="registrarElemento" parameterType="map">
-        INSERT INTO Elemento VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
-    </insert>
-    <update id="asociarEquipo" parameterMap="map">
-        UPDATE Elemento SET idEquipo=#{idEquipo} WHERE Elemento.idEquipo= 0; /*NO SABEMOS SI ESTA BIEN xd*//*Queremos asociar el 0 por el id del equipo el cual va a tomar el elemento*/
-    </update>
+
 </mapper>
