@@ -17,6 +17,23 @@ public class Novedad {
     private String detalle;
     private Date fecha;
 
+    private int idUsuario;
+    private int idElemento;
+    private int idEquipo;
+    private String correo;
+
+    public Novedad(){};
+
+    public  Novedad(int id, String titulo, String detalle, Date fecha, int idUsuario, int idElemento, int idEquipo, String correo){
+        this.idNovedad = id;
+        this.titulo = titulo;
+        this.detalle = detalle;
+        this.fecha = fecha;
+        this.idUsuario = idUsuario;
+        this.idElemento = idElemento;
+        this.idEquipo = idEquipo;
+    }
+
     public  Novedad(int id, String titulo, String detalle){
         this.idNovedad = id;
         this.titulo = titulo;
@@ -55,4 +72,39 @@ public class Novedad {
         fecha = new java.sql.Date(millis);
     }
 
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getIdElemento() {
+        return idElemento;
+    }
+
+    public void setIdElemento(int idElemento) {
+        this.idElemento = idElemento;
+    }
+
+    public int getIdEquipo() {
+        return idEquipo;
+    }
+
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
 }

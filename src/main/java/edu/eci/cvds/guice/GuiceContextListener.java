@@ -3,8 +3,13 @@ package edu.eci.cvds.guice;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+
+import edu.eci.cvds.persistence.mybatis.MyBATISNovedadDAO;
+import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
+import edu.eci.cvds.services.HistorialServicios;
+import edu.eci.cvds.services.impl.HistorialServiciosImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
@@ -34,6 +39,8 @@ public class GuiceContextListener implements ServletContextListener {
 
                 // TODO Add service class associated to Stub implementation
                 bind(Log.class).to(ShiroLogger.class);
+                bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
+                bind(HistorialServicios.class).to(HistorialServiciosImpl.class);
             }
         });
 

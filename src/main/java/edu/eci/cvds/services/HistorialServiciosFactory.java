@@ -1,11 +1,11 @@
 package edu.eci.cvds.services;
 
 import com.google.inject.Injector;
-
-import edu.eci.cvds.persistence.ElementoDao;
-import edu.eci.cvds.persistence.mybatis.MyBatisElementoDao;
+import edu.eci.cvds.persistence.mybatis.MyBATISNovedadDAO;
+import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
+import edu.eci.cvds.services.impl.HistorialServiciosImpl;
 import org.mybatis.guice.XMLMyBatisModule;
 
 import java.util.Optional;
@@ -15,7 +15,6 @@ import static com.google.inject.Guice.createInjector;
 public class HistorialServiciosFactory {
 
     private static HistorialServiciosFactory instance = new HistorialServiciosFactory();
-
     private static Optional<Injector> optInjector;
 
     private Injector myBatisInjector(String env, String pathResource) {
@@ -25,14 +24,8 @@ public class HistorialServiciosFactory {
                 setEnvironmentId(env);
                 setClassPathResource(pathResource);
                 bind(Log.class).to(ShiroLogger.class);
-                bind(ElementoDao.class).to(MyBatisElementoDao.class);
-                /*
-                bind(ItemDAO.class).to(MyBATISItemDAO.class);
-                bind(ItemRentadoDAO.class).to(edu.eci.cvds.sampleprj.dao.mybatis.MYBATISItemRentadoDAO.class);
-                bind(TipoItemDAO.class).to(MyBATISTipoItemDAO.class);
-                bind(ClienteDAO.class).to(MyBATISClienteDAO.class);
-                bind(ServiciosAlquiler.class).to(edu.eci.cvds.samples.services.impl.ServiciosAlquilerImpl.class);
-                */
+                bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
+                bind(HistorialServicios.class).to(HistorialServiciosImpl.class);
             }
         });
     }
@@ -64,4 +57,3 @@ public class HistorialServiciosFactory {
     }
 
 }
-

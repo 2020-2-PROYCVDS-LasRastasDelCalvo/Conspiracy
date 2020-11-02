@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper">
+    <select id="consultarNovedades" parameterType="map" resultMap="NovedadResult">
+        SELECT
+            n.idNovedad AS n_idNovedad,
+            n.titulo AS n_titulo ,
+            n.detalle AS n_detalle ,
+            n.fecha AS n_fecha,
+            n.usuario AS n_usuario,
+            n.idElemento AS n_idElemento,
+            n.idEquipo AS n_idEquipo,
+
+            u.correo AS u_correo
+        FROM
+            novedad n
+            INNER JOIN
+            usuario u
+            ON n.usuario = u.idusuario
+            ORDER BY fecha DESC, n_idEquipo;
+    </select>
+    <insert id="">
+
+    </insert>
+    <resultMap id="NovedadResult" type="Novedad" >
+        <id property="idNovedad" column="n_idNovedad"/>
+        <result property="titulo" column="n_titulo"/>
+        <result property="detalle" column="n_detalle"/>
+        <result property="fecha" column="n_fecha"/>
+        <result property="idUsuario" column="n_usuario"/>
+        <result property="idElemento" column="n_idElemento"/>
+        <result property="idEquipo" column="n_idEquipo"/>
+        <result property="correo" column="u_correo"/>
+    </resultMap>
+</mapper>

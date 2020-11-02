@@ -18,3 +18,13 @@ ADD CONSTRAINT CK_estado_Usuario
 CHECK( 
 	estado  IN (0,1) 
 );
+
+
+-- -----------------------------------------------------
+-- Table `Equipo`
+-- -----------------------------------------------------
+ALTER TABLE Equipo
+ADD CONSTRAINT CK_disponible_Equipo
+CHECK(
+	disponible  IN (0,1)
+);

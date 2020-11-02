@@ -1,3 +1,4 @@
+
 -- -----------------------------------------------------
 -- Table `Usuario`
 -- -----------------------------------------------------
@@ -75,4 +76,8 @@ CASCADE;
 
 DROP TABLE
 IF EXISTS Laboratorio
+<<<<<<< HEAD
 CASCADE;
+=======
+CASCADE;
+>>>>>>> NovedadBack

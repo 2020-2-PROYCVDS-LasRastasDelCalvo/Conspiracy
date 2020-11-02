@@ -10,7 +10,6 @@ package edu.eci.cvds.persistence;
  * Clase que representa las posibles excepciones que pueden encontrarse al momento de estar realizando persistencia
  */
 public class PersistenceException extends Exception {
-
     public PersistenceException(String message,Exception exception){
         super(message,exception);
     }
