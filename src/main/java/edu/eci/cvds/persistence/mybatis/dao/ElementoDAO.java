@@ -15,7 +15,5 @@ import java.util.ArrayList;
 public interface ElementoDAO {
     public void registrarElemento(Elemento elemento);
     public ArrayList<Elemento> consultarElementos();
-    public int consultarElementoDisponible();
     public void asociarEquipo(int idEquipo);
 }
-

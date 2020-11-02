@@ -11,17 +11,28 @@ import java.util.ArrayList;
  */
 public class Elemento {
     private int idElemento;
-    private int tipo;
+    private String tipo;
     private String nombre;
     private String descripcion;
     private ArrayList<Novedad> novedades;
 
-    public Elemento(int id, int tipo, String nombre, String descripcion){
+    public Elemento(){
+
+    }
+    public Elemento(int id, String tipo, String nombre, String descripcion){
         this.idElemento = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.novedades = new ArrayList<Novedad>();
+    }
+
+    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades){
+        this.idElemento = id;
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.novedades = novedades;
     }
 
     public int getIdElemento() {
@@ -32,11 +43,11 @@ public class Elemento {
         this.idElemento = idElemento;
     }
 
-    public int getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 

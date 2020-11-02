@@ -28,13 +28,8 @@
         INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{Elemento.tipo}, #{Elemento.nombre} , #{Elemento.descripción});
     </insert>
 
-    <update id="asociarEquipo" parameterMap="map">
-        UPDATE Elemento SET idEquipo=#{idEquipo} WHERE Elemento.idEquipo= 0; /*NO SABEMOS SI ESTA BIEN xd*//*Queremos asociar el 0 por el id del equipo el cual va a tomar el elemento*/
-    </update>
-
     <resultMap id="Elemento" type="ResultadoElemento">
         <id property="idElemento" column="idElemento"/>
-        <result property="idEquipo" column="idEquipo"/>
         <result property="tipo" column="tipo"/>
         <result property="nombre" column="nombre"/>
         <result property="descripcion" column="descripcion"/>

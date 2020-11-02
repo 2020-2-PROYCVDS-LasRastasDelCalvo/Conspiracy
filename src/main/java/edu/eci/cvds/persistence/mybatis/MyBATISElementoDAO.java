@@ -29,11 +29,6 @@ public class MyBATISElementoDAO implements ElementoDAO {
     }
 
     @Override
-    public int consultarElementoDisponible() {
-        return elementoMapper.consultarElementoDisponible();
-    }
-
-    @Override
     public void asociarEquipo(int idEquipo) {
         elementoMapper.asociarEquipo(idEquipo);
     }

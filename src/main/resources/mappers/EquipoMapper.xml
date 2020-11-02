@@ -11,13 +11,4 @@
         <result property="disponible" column="disponible"/>
         <association property="laboratorio" resultMap="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper"/>
     </resultMap>
-    <select id="consultarEquipo" resultMap=""
-    CREATE TABLE IF NOT EXISTS Equipo (
-    idEquipo serial PRIMARY KEY,
-    laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
-    fechaRegistro DATE NOT NULL,
-    nombre VARCHAR(50)  NOT NULL,
-    descripcion VARCHAR(500)  NOT NULL,
-    disponible INT  NOT NULL
-    );
 </mapper>
