@@ -11,3 +11,10 @@ ON Equipo;
 
 DROP TRIGGER AD_fecha_Novedad
 ON Novedad;
+
+-- -----------------------------------------------------
+-- Table `Equipo`
+-- -----------------------------------------------------
+
+DROP TRIGGER AD_disponible_Equipo
+ON Equipo;

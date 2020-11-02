@@ -30,18 +30,20 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(laboratorio,nombre,descripcion,disponible)
-VALUES(1,'Equipo1','Detalle del equipo1',1);
+INSERT INTO Equipo(laboratorio,nombre,descripcion)
+VALUES(1,'Equipo1','Detalle del equipo1');
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,disponible)
-VALUES(2,'Equipo2','Detalle del equipo2',1);
+INSERT INTO Equipo(laboratorio,nombre,descripcion)
+VALUES(2,'Equipo2','Detalle del equipo2');
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,disponible)
-VALUES(2,'Equipo3','Detalle del equipo3',1);
+INSERT INTO Equipo(laboratorio,nombre,descripcion)
+VALUES(2,'Equipo3','Detalle del equipo3');
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,disponible)
-VALUES(1,'Equipo4','Detalle del equipo4',1);
+INSERT INTO Equipo(laboratorio,nombre,descripcion)
+VALUES(1,'Equipo4','Detalle del equipo4');
 
+INSERT INTO Equipo(laboratorio,nombre,descripcion)
+VALUES(3,'Equipo5','Detalle del equipo5');
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
