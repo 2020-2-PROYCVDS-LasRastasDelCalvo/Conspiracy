@@ -1,6 +1,7 @@
 package edu.eci.cvds.persistence.mybatis.dao;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.persistence.PersistenceException;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @version 31/10/2020
  */
 public interface ElementoDAO {
-    public void registrarElemento(Elemento elemento);
-    public ArrayList<Elemento> consultarElementos();
-    public void asociarEquipo(int idEquipo);
+    public void registrarElemento(Elemento elemento) throws PersistenceException;
+    public ArrayList<Elemento> consultarElementos()  throws PersistenceException;
+    public void asociarEquipo(int idEquipo)  throws PersistenceException;
 }

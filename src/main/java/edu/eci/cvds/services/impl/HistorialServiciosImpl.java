@@ -1,6 +1,7 @@
 package edu.eci.cvds.services.impl;
 
 
+import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
@@ -28,6 +29,16 @@ public class HistorialServiciosImpl implements HistorialServicios{
     public List<Novedad> consultarNovedades() throws HistorialEquiposException{
         try{
             return novedadDAO.cargarNovedades();
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public List<Elemento> consultarElementos() throws HistorialEquiposException {
+        try{
+            return elementoDAO.consultarElementos();
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
