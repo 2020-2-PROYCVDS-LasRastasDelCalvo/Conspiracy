@@ -16,10 +16,12 @@ CREATE TABLE IF NOT EXISTS Usuario(
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Elemento (
   idElemento serial PRIMARY KEY,
-  tipo VARCHAR(8) UNIQUE NOT NULL,
-  nombre VARCHAR(50) UNIQUE NOT NULL,
+  tipo VARCHAR(8) NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
   descripcion VARCHAR(500)  NOT NULL,
-  cantidad INT NOT NULL
+  cantidad INT NOT NULL,
+  UNIQUE KEY(tipo,nombre)
+
 );
 
 -- -----------------------------------------------------
