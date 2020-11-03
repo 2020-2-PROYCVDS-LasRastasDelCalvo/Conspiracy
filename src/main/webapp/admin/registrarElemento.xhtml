@@ -33,7 +33,9 @@
             </ul>
         </div>
     </nav>
-    <h:form>
+    <h:form id="registrarElemento">
+        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
+                    closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="nombreElemento">Nombre Elemento</label>
             <p:inputText  id="nombreElemento" type="String" class="form-control"  placeholder="Nombre" value="#{elemento.nombre}"/>
@@ -50,16 +52,12 @@
         </div>
         <div class="form-group">
             <label for="cantidadElemento">Cantidad</label>
-            <h:inputTextarea class="form-control" id="cantidadElemento" value="#{elemento.cantidad}"></h:inputTextarea>
+            <h:inputText class="form-control" id="cantidadElemento" value="#{elemento.cantidad}"></h:inputText>
         </div>
-
-    </h:form>
-    <h:form>
         <div align="center">
-            <p:commandButton class="btn btn-dark" value="Registrar" actionListener="#{elemento.registrarElemento}">
-
+            <p:commandButton class="btn btn-dark"  update="registrarElemento" value="Registrar" action="#{elemento.info}" actionListener="#{elemento.registrarElemento}">
             </p:commandButton>
-            <p:commandButton class="btn btn-dark" update="infoElementos" value="actualizar" actionListener="#{elemento.elementos}">
+            <p:commandButton class="btn btn-dark" update="registrarElemento" value="actualizar" action="#{elemento.info}" actionListener="#{elemento.elementos}">
 
             </p:commandButton>
         </div>
@@ -85,10 +83,10 @@
             <p:column headerText="Nombre">
                 <p:outputLabel value="#{elemento.nombre}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Descripcion" filterBy="#{elemento.descripcion}"  sortBy="#{novedad.detalle}">
+            <p:column headerText="Descripcion" >
                 <p:outputLabel value="#{elemento.descripcion}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Cantidad Disponibñe" filterBy="#{elemento.cantidad}">
+            <p:column headerText="Cantidad Disponible">
                 <p:outputLabel value="#{elemento.cantidad}"></p:outputLabel>
             </p:column>
 

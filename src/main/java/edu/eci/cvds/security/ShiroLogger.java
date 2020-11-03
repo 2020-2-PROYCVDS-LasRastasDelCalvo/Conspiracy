@@ -19,7 +19,6 @@ public class ShiroLogger implements Log {
 
     @Override
     public void login(String correo, String constraseña, boolean recordarme) throws HistorialEquiposException {
-        System.out.println(new Sha256Hash(constraseña).toHex());
         try {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(correo, new Sha256Hash(constraseña).toHex(), recordarme);

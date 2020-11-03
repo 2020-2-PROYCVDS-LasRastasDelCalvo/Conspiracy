@@ -3,10 +3,11 @@ package edu.eci.cvds.managedBean;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
-
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.List;
 
@@ -20,11 +21,13 @@ import java.util.List;
 
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "elemento")
-@RequestScoped
+@SessionScoped
 public class ElementoBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
 
+    private String message;
+    private FacesMessage.Severity estado;
     private String tipo;
     private String nombre;
     private String descripcion;
@@ -38,15 +41,36 @@ public class ElementoBean extends BasePageBean {
         try{
             elementos = historialServicios.consultarElementos();
         }
-        catch (Exception exception){
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
         }
     }
 
     public void registrarElemento(){
         try {
+            sinErrores();
             historialServicios.insertarElemento( tipo, nombre, descripcion, cantidad);
-        } catch (HistorialEquiposException e) {
+            restablecer();
         }
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
+        }
+    }
+    public void restablecer(){
+        tipo = null ;
+        nombre =null;
+        descripcion = null;
+        cantidad = 1;
+    }
+
+    public void conErrores( String message){
+        this.message = message;
+        estado = FacesMessage.SEVERITY_WARN;
+    }
+
+    public void sinErrores( ){
+        this.message = "Se registro de forma exitosa.";
+        estado = FacesMessage.SEVERITY_INFO;
     }
 
     public String[] getOpciones() {
@@ -91,5 +115,14 @@ public class ElementoBean extends BasePageBean {
 
     public int getCantidad() { return cantidad; }
 
-    public void setCantidad(int cantidad) { this.cantidad = cantidad; }
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    /**
+     * Metodo que muestra en un mensaje del estado del log in
+     */
+    public void info() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));
+    }
 }
