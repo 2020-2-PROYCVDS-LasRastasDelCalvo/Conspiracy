@@ -25,8 +25,8 @@
           <mapper resource="mappers/UsuarioMapper.xml"></mapper>
           <mapper resource="mappers/NovedadMapper.xml"></mapper>
           <mapper resource="mappers/ElementoMapper.xml"></mapper>
-          <!--
           <mapper resource="mappers/EquipoMapper.xml"></mapper>
+          <!--
           <mapper resource="mappers/LaboratorioMapper.xml"></mapper>
           -->
       </mappers>

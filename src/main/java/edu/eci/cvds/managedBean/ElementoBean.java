@@ -119,8 +119,17 @@ public class ElementoBean extends BasePageBean {
         this.cantidad = cantidad;
     }
 
+    public void actualizar(){
+        try{
+            elementos = historialServicios.consultarElementos();
+        }
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
+        }
+    }
+
     /**
-     * Metodo que muestra en un mensaje del estado del log in
+     * Metodo que muestra en un mensaje del estado del registrar elemento
      */
     public void info() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));

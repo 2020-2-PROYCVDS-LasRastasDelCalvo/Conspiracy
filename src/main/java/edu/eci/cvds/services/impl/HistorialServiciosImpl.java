@@ -2,9 +2,11 @@ package edu.eci.cvds.services.impl;
 
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
+import edu.eci.cvds.persistence.mybatis.dao.EquipoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
@@ -24,6 +26,9 @@ public class HistorialServiciosImpl implements HistorialServicios{
 
     @Inject
     private ElementoDAO elementoDAO;
+
+    @Inject
+    private EquipoDAO equipoDAO;
 
     @Override
     public List<Novedad> consultarNovedades() throws HistorialEquiposException{
@@ -54,6 +59,23 @@ public class HistorialServiciosImpl implements HistorialServicios{
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
         }
+    }
+
+    @Override
+    public List<Equipo> consultarEquipos() throws HistorialEquiposException {
+        try{
+            System.out.println("**************************************************111");
+            System.out.println(elementoDAO);
+            return equipoDAO.consultarEquipos();
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public void insertarEquipo(int torreSeleccionada, int mouseSeleccionado, int pantallaSeleccionada, int tecladoSeleccionado) {
+
     }
 
 }

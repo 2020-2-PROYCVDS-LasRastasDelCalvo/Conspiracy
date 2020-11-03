@@ -21,13 +21,13 @@ public class Equipo {
 
     public Equipo(){
     }
-    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos){
+    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Novedad>novedades){
         this.idEquipo = idEquipo;
         this.fechaRegistro = fechaRegistro;
         this.disponible = disponible;
-        this.elementos = elementos;
+        this.elementos = new ArrayList<Elemento>();
         this.idLab = idLab;
-        this.novedades = new ArrayList<Novedad>();
+        this.novedades = novedades;
     }
 
     public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
@@ -35,7 +35,7 @@ public class Equipo {
        this.fechaRegistro = fechaRegistro;
        this.disponible = disponible;
        this.elementos = elementos;
-        this.idLab = idLab;
+       this.idLab = idLab;
        this.novedades = novedades;
     }
 

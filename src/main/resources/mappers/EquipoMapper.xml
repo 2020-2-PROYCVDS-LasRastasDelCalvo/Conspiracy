@@ -3,12 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.EquipoMapper">
+    <select id="consultarEquipos" parameterType="map" resultMap="EquipoResult" >
+
+
+    </select>
     <resultMap id="EquipoResult" type="Equipo">
-        <id property="idEquipo" column="idEquipo"/>
-        <result property="fechaRegistro" column="fechaRegistro"/>
-        <result property="nombre" column="nombre"/>
-        <result property="descripcion" column="descripcion"/>
-        <result property="disponible" column="disponible"/>
-        <association property="laboratorio" resultMap="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper"/>
+        <id property="idEquipo" column="eq_idEquipo"/>
+        <result property="fechaRegistro" column="eq_fecharegistro"/>
+        <result property="disponible" column="eq_disponible"/>
+        <result property="idLab" column="eq_laboratorio"/>
+        <collection property="novedades" ofType="Novedad" resultMap="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper"/>
     </resultMap>
 </mapper>
