@@ -13,18 +13,30 @@ import java.util.ArrayList;
 public class Equipo {
 
     private int idEquipo;
-    private Date fechaRegistro;
     private int disponible;
+    private int idLab;
+    private Date fechaRegistro;
     private ArrayList<Elemento>elementos;
     private ArrayList<Novedad> novedades;
 
+    public Equipo(){
+    }
+    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos){
+        this.idEquipo = idEquipo;
+        this.fechaRegistro = fechaRegistro;
+        this.disponible = disponible;
+        this.elementos = elementos;
+        this.idLab = idLab;
+        this.novedades = new ArrayList<Novedad>();
+    }
 
-    public Equipo(int idEquipo, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos){
+    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
        this.idEquipo = idEquipo;
        this.fechaRegistro = fechaRegistro;
        this.disponible = disponible;
        this.elementos = elementos;
-       this.novedades = new ArrayList<Novedad>();
+        this.idLab = idLab;
+       this.novedades = novedades;
     }
 
     public int getIdEquipo() {
@@ -59,11 +71,19 @@ public class Equipo {
         this.elementos = elementos;
     }
 
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
+    }
+
     public ArrayList<Novedad> getNovedades() {
         return novedades;
     }
 
-    public void setNovedades(ArrayList<Novedad> novedades) {
-        this.novedades = novedades;
+    public int getIdLab() {
+        return idLab;
+    }
+
+    public void setIdLab(int idLab) {
+        this.idLab = idLab;
     }
 }

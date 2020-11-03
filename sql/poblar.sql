@@ -47,20 +47,20 @@ VALUES('Torre','Torre B','Descripcion de la torre B',1000);
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(1,'Equipo1','Detalle del equipo1',1,2,3,4);
+INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(1,1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(2,'Equipo2','Detalle del equipo2',1,2,3,4);
+INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(2,1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(2,'Equipo3','Detalle del equipo3',1,2,3,4);
+INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(2,1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(1,'Equipo4','Detalle del equipo4',1,2,3,4);
+INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(1,1,2,3,4);
 
-INSERT INTO Equipo(laboratorio,nombre,descripcion,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(3,'Equipo5','Detalle del equipo5',1,2,3,4);
+INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
+VALUES(3,1,2,3,4);
 
 -- -----------------------------------------------------
 -- Table `Novedad`
