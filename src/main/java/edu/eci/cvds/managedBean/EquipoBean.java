@@ -21,7 +21,7 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 @ManagedBean(name = "equipoBean")
 @SessionScoped
-public class EquipoBean {
+public class EquipoBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
 
@@ -38,7 +38,9 @@ public class EquipoBean {
 
     @PostConstruct
     public void init(){
+        super.init();
         try{
+            System.out.println("Trying to init() on EquipoBean mah boi.");
             equipos = historialServicios.consultarEquipos();
         }
         catch (Exception exception) {
@@ -69,8 +71,7 @@ public class EquipoBean {
 
     public void actualizar(){
         try{
-            System.out.println("************************************************************* 0");
-            System.out.println(historialServicios);
+            System.out.println("Trying to actualizar() on EquipoBean mah boi.");
             equipos = historialServicios.consultarEquipos();
         }
         catch (Exception exception) {
