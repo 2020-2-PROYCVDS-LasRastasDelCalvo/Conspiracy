@@ -30,7 +30,7 @@
             RIGHT JOIN
             elemento e
             	ON e.idElemento = n.idElemento
-            ORDER BY fecha DESC, n_idEquipo;
+            ORDER BY n_idEquipo;
     </select>
 
     <insert id="registrarElemento" parameterType="map">

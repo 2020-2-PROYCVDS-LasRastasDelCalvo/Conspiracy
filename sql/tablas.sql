@@ -37,12 +37,10 @@ CREATE TABLE IF NOT EXISTS Elemento (
   nombre VARCHAR(50) NOT NULL,
   descripcion VARCHAR(500)  NOT NULL,
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
-  disponible INT NOT NULL, 
-  UNIQUE (tipo,nombre)
+  disponible INT NOT NULL,
+  UNIQUE(tipo,idEquipo)
 
 );
-
-
 -- -----------------------------------------------------
 -- Table `Novedad`
 -- -----------------------------------------------------

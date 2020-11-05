@@ -16,7 +16,7 @@ public class Equipo {
     private int disponible;
     private int idLab;
     private Date fechaRegistro;
-    private ArrayList<Elemento>elementos;
+    private ArrayList<Elemento> elementos;
     private ArrayList<Novedad> novedades;
 
     public Equipo(){
