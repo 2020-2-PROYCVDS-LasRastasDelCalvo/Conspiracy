@@ -50,10 +50,6 @@
             <label for="descripcionElemento">Descripcion</label>
             <h:inputTextarea class="form-control" id="descripcionElemento" rows="3" value="#{elemento.descripcion}"></h:inputTextarea>
         </div>
-        <div class="form-group">
-            <label for="cantidadElemento">Cantidad</label>
-            <h:inputText class="form-control" id="cantidadElemento" value="#{elemento.cantidad}"></h:inputText>
-        </div>
         <div align="center">
             <p:commandButton class="btn btn-dark"  update="registrarElemento" value="Registrar" action="#{elemento.info}" actionListener="#{elemento.registrarElemento}">
             </p:commandButton>
@@ -86,8 +82,11 @@
             <p:column headerText="Descripcion" >
                 <p:outputLabel value="#{elemento.descripcion}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Cantidad Disponible">
-                <p:outputLabel value="#{elemento.cantidad}"></p:outputLabel>
+            <p:column headerText="Disponible">
+                <p:outputLabel value="#{elemento.disponible}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="IdEquipo">
+                <p:outputLabel value="#{elemento.idEquipo}"></p:outputLabel>
             </p:column>
 
         </p:dataTable>
