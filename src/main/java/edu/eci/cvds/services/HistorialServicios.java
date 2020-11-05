@@ -18,7 +18,7 @@ public interface HistorialServicios {
 
     public List<Elemento> consultarElementos() throws HistorialEquiposException;
 
-    public void insertarElemento(String tipo, String nombre, String descripcion, int cantidad) throws HistorialEquiposException;
+    public void insertarElemento(String tipo, String nombre, String descripcion) throws HistorialEquiposException;
 
     public List<Equipo> consultarEquipos() throws HistorialEquiposException;
 

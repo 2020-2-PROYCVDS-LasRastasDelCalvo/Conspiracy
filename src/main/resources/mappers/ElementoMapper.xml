@@ -10,7 +10,8 @@
             e.tipo AS e_tipo,
             e.nombre AS e_nombre,
             e.descripcion AS e_descripcion,
-            e.cantidad AS e_cantidad,
+            e.idEquipo AS e_idEquipo,
+            e.disponible AS e_disponible,
 
             n.idNovedad AS n_idNovedad,
             n.titulo AS n_titulo ,
@@ -33,7 +34,7 @@
     </select>
 
     <insert id="registrarElemento" parameterType="map">
-        INSERT INTO Elemento(tipo,nombre,descripcion,cantidad) VALUES(#{tipo.tipo}, #{tipo.nombre} , #{tipo.descripcion},#{tipo.cantidad});
+        INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{tipo.tipo}, #{tipo.nombre} , #{tipo.descripcion});
     </insert>
 
     <resultMap id="ElementoResult" type="Elemento">
@@ -41,7 +42,8 @@
         <result property="tipo" column="e_tipo"/>
         <result property="nombre" column="e_nombre"/>
         <result property="descripcion" column="e_descripcion"/>
-        <result property="cantidad" column="e_cantidad"/>
+        <result property="idEquipo" column="e_idEquipo"/>
+        <result property="disponible" column="e_disponible"/>
         <collection property="novedades" ofType="Novedad" resultMap="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper.NovedadResult"/>
     </resultMap>
 

@@ -49,7 +49,7 @@ public class ElementoBean extends BasePageBean {
     public void registrarElemento(){
         try {
             sinErrores();
-            historialServicios.insertarElemento( tipo, nombre, descripcion, cantidad);
+            historialServicios.insertarElemento( tipo, nombre, descripcion);
             restablecer();
         }
         catch (Exception exception) {

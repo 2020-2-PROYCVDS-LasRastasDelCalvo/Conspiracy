@@ -11,39 +11,31 @@ import java.util.ArrayList;
  */
 public class Elemento {
     private int idElemento;
+    private int idEquipo;
     private String tipo;
     private String nombre;
     private String descripcion;
-    private int cantidad;
+    private int disponible;
     private ArrayList<Novedad> novedades;
+
 
     public Elemento(){
 
     }
-    public Elemento( String tipo, String nombre, String descripcion, int cantidad){
+    public Elemento( String tipo, String nombre, String descripcion){
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.cantidad = cantidad;
         this.novedades = new ArrayList<Novedad>();
     }
 
-    public Elemento(int id, String tipo, String nombre, String descripcion, int cantidad){
+    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades,int disponible){
         this.idElemento = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.cantidad = cantidad;
-        this.novedades = new ArrayList<Novedad>();
-    }
-
-    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades, int cantidad){
-        this.idElemento = id;
-        this.tipo = tipo;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.cantidad = cantidad;
         this.novedades = novedades;
+        this.disponible = disponible;
     }
 
     public int getIdElemento() {
@@ -86,7 +78,19 @@ public class Elemento {
         this.novedades = novedades;
     }
 
-    public int getCantidad() { return cantidad;}
+    public int getIdEquipo() {
+        return idEquipo;
+    }
 
-    public void setCantidad(int cantidad) { this.cantidad = cantidad;}
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
+    }
+
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
+    }
 }
