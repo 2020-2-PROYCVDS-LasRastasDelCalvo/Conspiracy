@@ -66,6 +66,13 @@
             WHERE e.tipo = #{tipo} AND e.disponible = 1
             ORDER BY e.idElemento;
     </select>
+    <update id="asociarEquipo" >
+        UPDATE elemento
+        SET disponible = 0,
+            idEquipo = #{idEquipo}
+        WHERE
+            idElemento = #{idElemento};
+    </update>
     <resultMap id="ElementoResult" type="Elemento">
         <id property="idElemento" column="e_idElemento"/>
         <result property="tipo" column="e_tipo"/>

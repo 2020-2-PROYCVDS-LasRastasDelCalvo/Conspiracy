@@ -38,19 +38,18 @@ public class MyBATISElementoDAO implements ElementoDAO {
         catch (Exception exception){
             throw new PersistenceException("Error al consultar los elementos", exception );
         }
-
     }
 
     @Override
-    public void asociarEquipo(int idEquipo)  throws PersistenceException {
+    public void asociarEquipo(int idElemento, int idEquipo)  throws PersistenceException {
         try{
-            elementoMapper.asociarEquipo(idEquipo);
+            elementoMapper.asociarEquipo(idElemento,idEquipo);
         }
         catch (Exception exception){
             throw new PersistenceException("Error al asociar el equipo con id: " + idEquipo, exception );
         }
-
     }
+
     @Override
     public List<Elemento> buscarElemento(String elemento) throws PersistenceException{
         try{

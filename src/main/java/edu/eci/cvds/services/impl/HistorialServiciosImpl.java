@@ -72,17 +72,26 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarEquipo(int torre, int pantalla, int mouse, int teclado, int idLab) throws HistorialEquiposException{
+    public void insertarEquipo(int idEquipo,int[] elementos, int idLab) throws HistorialEquiposException{
         try {
-            equipoDAO.registrarEquipo(idLab);
-        } catch (PersistenceException e) {
-
+            equipoDAO.registrarEquipo(idEquipo,idLab);
+            for( int elemento : elementos){
+                relacionarElementoEquipo(elemento,idEquipo);
+            }
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
         }
     }
 
     @Override
     public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException {
-
+            try{
+                elementoDAO.asociarEquipo( idElemento, idEquipo);
+            }
+            catch (PersistenceException persistenceException){
+                throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+            }
     }
 
     @Override

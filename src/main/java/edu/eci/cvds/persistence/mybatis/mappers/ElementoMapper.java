@@ -16,7 +16,7 @@ import java.util.List;
 public interface ElementoMapper {
     public ArrayList<Elemento> consultarElementos();
     public void registrarElemento(@Param("tipo") Elemento elemento);
-    public void asociarEquipo(@Param("idEquipo") int idEquipo);//asociar  un equipo con un elemento disponible
+    public void asociarEquipo(@Param("idElemento") int idElemento,@Param("idEquipo") int idEquipo);
     public List<Elemento> buscarElemento(@Param("tipo") String elemento);
 
 }

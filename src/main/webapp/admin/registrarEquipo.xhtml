@@ -118,13 +118,17 @@
                 <p:outputLabel value="#{teclado.nombre}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
-                    closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="lab">Laboratorio</label>
             <p:inputText id="lab" value="#{equipoBean.laboratorio}"/>
         </div>
+        <div class="form-group">
+            <label for="idEquipo">Numero del Equipo</label>
+            <p:inputText id="idEquipo" value="#{equipoBean.idEquipo}"/>
+        </div>
         <div align="center">
+            <p:messages id="mensaje" showDetail="true" autoUpdate="true"
+                        closable="true" globalOnly="true"/>
             <p:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}">
             </p:commandButton>
             <p:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}">

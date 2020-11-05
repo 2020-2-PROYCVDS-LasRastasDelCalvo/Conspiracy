@@ -27,6 +27,7 @@ public class EquipoBean extends BasePageBean {
 
     private int disponible;
     private int laboratorio;
+    private int idEquipo;
     private String message;
     private Elemento torreSeleccionada;
     private Elemento mouseSeleccionado;
@@ -44,19 +45,14 @@ public class EquipoBean extends BasePageBean {
     public void init(){
         super.init();
         try{
-            System.out.println("Trying to init() on EquipoBean mah boi.");
-            equipos = historialServicios.consultarEquipos();
-            tablaTorre = historialServicios.buscarElemento("Torre");
-            tablaMouse = historialServicios.buscarElemento("Mouse");
-            tablaPantalla = historialServicios.buscarElemento("Pantalla");
-            tablaTeclado = historialServicios.buscarElemento("Teclado");
+            actualizar();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
         }
     }
 
-    private boolean messirve(){
+    private boolean elementosSel(){
         boolean sirve = true;
         if (torreSeleccionada == null){
             sirve = false;
@@ -72,8 +68,10 @@ public class EquipoBean extends BasePageBean {
 
     public void registrarEquipo(){
         try {
-            if (messirve()){
-                historialServicios.insertarEquipo(torreSeleccionada.getIdElemento(), mouseSeleccionado.getIdElemento(), pantallaSeleccionada.getIdElemento(), tecladoSeleccionado.getIdElemento(),laboratorio);
+            if (elementosSel()){
+                sinErrores();
+                int[] elementos = {torreSeleccionada.getIdElemento(),mouseSeleccionado.getIdElemento(),pantallaSeleccionada.getIdElemento(),tecladoSeleccionado.getIdElemento()};
+                historialServicios.insertarEquipo(idEquipo,elementos,laboratorio);
             }
             else{
                 throw new Exception("Debe de seleccionar un elemento de cada tipo para poder registrar el equipo");
@@ -97,7 +95,12 @@ public class EquipoBean extends BasePageBean {
 
     public void actualizar(){
         try{
-            System.out.println("Trying to actualizar() on EquipoBean mah boi.");
+            sinErrores();
+            equipos = historialServicios.consultarEquipos();
+            tablaTorre = historialServicios.buscarElemento("Torre");
+            tablaMouse = historialServicios.buscarElemento("Mouse");
+            tablaPantalla = historialServicios.buscarElemento("Pantalla");
+            tablaTeclado = historialServicios.buscarElemento("Teclado");
             equipos = historialServicios.consultarEquipos();
         }
         catch (Exception exception) {
@@ -223,6 +226,14 @@ public class EquipoBean extends BasePageBean {
 
     public void setTablaTeclado(List<Elemento> tablaTeclado) {
         this.tablaTeclado = tablaTeclado;
+    }
+
+    public int getIdEquipo() {
+        return idEquipo;
+    }
+
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
     }
 }
 

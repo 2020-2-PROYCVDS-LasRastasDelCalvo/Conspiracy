@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @version 11/2/2020
  */
 public interface EquipoDAO {
-    public void registrarEquipo(int idLab) throws PersistenceException;
+    public void registrarEquipo(int idEquipo, int idLab) throws PersistenceException;
     public ArrayList<Equipo> consultarEquipos()  throws PersistenceException;
     public void generarNovedades(int idEquipo, int idElemento, String titulo, String detalle, int idUsuario )  throws PersistenceException;
 
