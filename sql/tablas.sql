@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Laboratorio (
 -- Table `Equipo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Equipo (
-  idEquipo serial PRIMARY KEY,
+  idEquipo  PRIMARY KEY,
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
   disponible INT  NOT NULL
