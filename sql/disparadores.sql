@@ -55,3 +55,25 @@ CREATE TRIGGER AD_disponible_Equipo
   BEFORE INSERT ON public.Equipo
   FOR EACH ROW
 EXECUTE PROCEDURE estadoEquipo();
+
+-- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+CREATE OR REPLACE FUNCTION estadoElemento()
+	RETURNS TRIGGER
+AS
+$$
+BEGIN
+	NEW.disponible := 1;
+	RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER AD_disponible_Elemento
+  BEFORE INSERT ON public.Elemento
+  FOR EACH ROW
+EXECUTE PROCEDURE estadoElemento();
+
+
+

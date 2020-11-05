@@ -18,3 +18,10 @@ ON Novedad;
 
 DROP TRIGGER AD_disponible_Equipo
 ON Equipo;
+
+-- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+
+DROP TRIGGER AD_disponible_Elemento
+ON Elemento;
