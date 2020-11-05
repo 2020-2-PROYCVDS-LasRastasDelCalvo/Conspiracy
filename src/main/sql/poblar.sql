@@ -29,21 +29,20 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(idEquipo,laboratorio)
-VALUES(1,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
+VALUES(1,1,CURRENT_DATE ,1);
 
-INSERT INTO Equipo(idEquipo,laboratorio)
-VALUES(2,2);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
+VALUES(2,2,CURRENT_DATE ,1);
 
-INSERT INTO Equipo(idEquipo,laboratorio)
-VALUES(3,2);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
+VALUES(3,2,CURRENT_DATE ,1);
 
-INSERT INTO Equipo(idEquipo,laboratorio)
-VALUES(4,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
+VALUES(4,1,CURRENT_DATE ,1);
 
-INSERT INTO Equipo(idEquipo,laboratorio)
-VALUES(5,3);
-
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
+VALUES(5,3,CURRENT_DATE ,1);
 
 -- -----------------------------------------------------
 -- Table `Elemento`
@@ -67,11 +66,11 @@ VALUES('Torre','Torre B','Descripcion de la torre B',null,1);
 -- -----------------------------------------------------
 -- Table `Novedad`
 -- -----------------------------------------------------
-INSERT INTO Novedad(titulo,detalle,usuario,idEquipo,idElemento)
-VALUES('Titulo novedad 1','novedad1.txt',10048240,1, NULL);
+INSERT INTO Novedad(titulo,detalle,fecha,usuario,idEquipo,idElemento)
+VALUES('Titulo novedad 1','novedad1.txt',CURRENT_DATE ,10048240,1, NULL);
 
-INSERT INTO Novedad(titulo,detalle,usuario,idEquipo,idElemento)
-VALUES('Titulo novedad Equipo','novedad Equipo.txt',10048240,1, NULL);
+INSERT INTO Novedad(titulo,detalle,fecha,usuario,idEquipo,idElemento)
+VALUES('Titulo novedad Equipo','novedad Equipo.txt',CURRENT_DATE ,10048240,1, NULL);
 
-INSERT INTO Novedad(titulo,detalle,usuario,idEquipo,idElemento)
-VALUES('Titulo novedad Elemento','novedad Elemento.txt',12345689,1, 3);
+INSERT INTO Novedad(titulo,detalle,fecha,usuario,idEquipo,idElemento)
+VALUES('Titulo novedad Elemento','novedad Elemento.txt',CURRENT_DATE ,12345689,1, 3);
