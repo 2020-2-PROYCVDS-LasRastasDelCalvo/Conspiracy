@@ -27,6 +27,25 @@ INSERT INTO Laboratorio( nombre )
 VALUES('Multimedia y Móviles');
 
 -- -----------------------------------------------------
+-- Table `Equipo`
+-- -----------------------------------------------------
+INSERT INTO Equipo(laboratorio)
+VALUES(1);
+
+INSERT INTO Equipo(laboratorio)
+VALUES(2);
+
+INSERT INTO Equipo(laboratorio)
+VALUES(2);
+
+INSERT INTO Equipo(laboratorio)
+VALUES(1);
+
+INSERT INTO Equipo(laboratorio)
+VALUES(3);
+
+
+-- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
@@ -44,23 +63,6 @@ VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0);
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
 VALUES('Torre','Torre B','Descripcion de la torre B',1,1);
 
--- -----------------------------------------------------
--- Table `Equipo`
--- -----------------------------------------------------
-INSERT INTO Equipo(laboratorio)
-VALUES(1);
-
-INSERT INTO Equipo(laboratorio)
-VALUES(2);
-
-INSERT INTO Equipo(laboratorio)
-VALUES(2);
-
-INSERT INTO Equipo(laboratorio)
-VALUES(1);
-
-INSERT INTO Equipo(laboratorio)
-VALUES(3);
 
 -- -----------------------------------------------------
 -- Table `Novedad`
