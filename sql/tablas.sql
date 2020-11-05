@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS Elemento (
   tipo VARCHAR(8) NOT NULL,
   nombre VARCHAR(50) NOT NULL,
   descripcion VARCHAR(500)  NOT NULL,
-  cantidad INT NOT NULL,
+  idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
+  disponible INT NOT NULL, 
   UNIQUE (tipo,nombre)
 
 );
@@ -38,10 +39,6 @@ CREATE TABLE IF NOT EXISTS Equipo (
   idEquipo serial PRIMARY KEY,
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
-  idTorre INT NOT NULL REFERENCES Elemento(idElemento),
-  idPantalla INT NOT NULL REFERENCES Elemento(idElemento),
-  idMouse INT NOT NULL REFERENCES Elemento(idElemento),
-  idTeclado INT NOT NULL REFERENCES Elemento(idElemento),
   disponible INT  NOT NULL
 );
 

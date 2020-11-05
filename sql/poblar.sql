@@ -29,38 +29,38 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
-INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
-VALUES('Torre','Torre A','Descripcion de la torre A',1000);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Torre','Torre A','Descripcion de la torre A',1,1);
 
-INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
-VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1000);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1,0);
 
-INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
-VALUES('Mouse','Mouse A','Descripcion del mouse A',1000);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Mouse','Mouse A','Descripcion del mouse A',1,0);
 
-INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
-VALUES('Teclado','Teclado A','Descripcion del teclado A',1000);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0);
 
-INSERT INTO Elemento(tipo,nombre,descripcion,cantidad)
-VALUES('Torre','Torre B','Descripcion de la torre B',1000);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Torre','Torre B','Descripcion de la torre B',1,1);
 
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(1,1,2,3,4);
+INSERT INTO Equipo(laboratorio)
+VALUES(1);
 
-INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(2,1,2,3,4);
+INSERT INTO Equipo(laboratorio)
+VALUES(2);
 
-INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(2,1,2,3,4);
+INSERT INTO Equipo(laboratorio)
+VALUES(2);
 
-INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(1,1,2,3,4);
+INSERT INTO Equipo(laboratorio)
+VALUES(1);
 
-INSERT INTO Equipo(laboratorio,idTorre,idPantalla,idMouse,idTeclado)
-VALUES(3,1,2,3,4);
+INSERT INTO Equipo(laboratorio)
+VALUES(3);
 
 -- -----------------------------------------------------
 -- Table `Novedad`
