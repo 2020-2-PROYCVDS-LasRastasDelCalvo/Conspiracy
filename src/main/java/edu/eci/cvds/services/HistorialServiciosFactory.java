@@ -50,12 +50,12 @@ public class HistorialServiciosFactory {
     }
 
 
-    public HistorialServiciosFactory getHistorialServiciosTesting(){
+    public HistorialServicios getHistorialServiciosTesting(){
         if (!optInjector.isPresent()) {
             optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
         }
 
-        return optInjector.get().getInstance(HistorialServiciosFactory.class);
+        return optInjector.get().getInstance(HistorialServicios.class);
     }
 
 
