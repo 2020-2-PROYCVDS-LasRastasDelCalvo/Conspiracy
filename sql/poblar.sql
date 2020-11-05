@@ -29,20 +29,20 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(1,laboratorio)
-VALUES(1);
+INSERT INTO Equipo(idEquipo,laboratorio)
+VALUES(1,1);
 
-INSERT INTO Equipo(2,laboratorio)
-VALUES(2);
+INSERT INTO Equipo(idEquipo,laboratorio)
+VALUES(2,2);
 
-INSERT INTO Equipo(3,laboratorio)
-VALUES(2);
+INSERT INTO Equipo(idEquipo,laboratorio)
+VALUES(3,2);
 
-INSERT INTO Equipo(4,laboratorio)
-VALUES(1);
+INSERT INTO Equipo(idEquipo,laboratorio)
+VALUES(4,1);
 
-INSERT INTO Equipo(5,laboratorio)
-VALUES(3);
+INSERT INTO Equipo(idEquipo,laboratorio)
+VALUES(5,3);
 
 
 -- -----------------------------------------------------
