@@ -63,21 +63,24 @@ public class EquipoBean extends BasePageBean {
         }
         if (mouseSeleccionado== null){
             sirve = false;}
-
-            if (pantallaSeleccionada== null){
+        if (pantallaSeleccionada== null){
                 sirve = false;}
-
-                if (tecladoSeleccionado== null){
+        if (tecladoSeleccionado== null){
                     sirve = false;}
-                return sirve;
+        return sirve;
     }
 
     public void registrarEquipo(){
         try {
-            historialServicios.insertarEquipo();
+            if (messirve()){
+                historialServicios.insertarEquipo(torreSeleccionada.getIdElemento(), mouseSeleccionado.getIdElemento(), pantallaSeleccionada.getIdElemento(), tecladoSeleccionado.getIdElemento(),laboratorio);
+            }
+            else{
+                throw new Exception("Debe de seleccionar un elemento de cada tipo para poder registrar el equipo");
+            }
         }
         catch (Exception exception) {
-            conErrores( exception.getMessage());
+            conErrores(exception.getMessage());
         }
     }
 

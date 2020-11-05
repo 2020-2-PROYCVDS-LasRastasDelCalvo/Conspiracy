@@ -20,9 +20,9 @@ public class MyBATISEquipoDAO implements EquipoDAO {
     private EquipoMapper equipoMapper;
 
     @Override
-    public void registrarEquipo(Equipo equipo) throws PersistenceException {
+    public void registrarEquipo(int idLab) throws PersistenceException {
         try{
-            equipoMapper.registrarEquipo(equipo);
+            equipoMapper.registrarEquipo(idLab);
         }
         catch (Exception exception){
             throw new PersistenceException("Surgio un error al Registrar el equipo.",exception);
@@ -32,8 +32,6 @@ public class MyBATISEquipoDAO implements EquipoDAO {
     @Override
     public ArrayList<Equipo> consultarEquipos() throws PersistenceException {
         try{
-            System.out.println("**************************************************");
-            System.out.println(equipoMapper);
             return equipoMapper.consultarEquipos();
         }
         catch (Exception exception){
