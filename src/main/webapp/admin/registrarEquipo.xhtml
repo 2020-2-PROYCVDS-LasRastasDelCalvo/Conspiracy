@@ -33,14 +33,6 @@
             </ul>
         </div>
     </nav>
-
-
-
-
-
-
-
-
     <h:form id="registrarEquipo">
         <p:dataTable class="table table-dark" id="selectTorre"
                      value="#{equipoBean.tablaTorre}"
@@ -63,8 +55,6 @@
                 <p:outputLabel value="#{torre.nombre}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-
         <p:dataTable class="table table-dark" id="selectPantalla"
                      value="#{equipoBean.tablaPantalla}"
                      var="pantalla"
@@ -86,9 +76,6 @@
                 <p:outputLabel value="#{pantalla.nombre}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-
-
         <p:dataTable class="table table-dark" id="selectMouse"
                      value="#{equipoBean.tablaMouse}"
                      var="mouse"
@@ -110,8 +97,6 @@
                 <p:outputLabel value="#{mouse.nombre}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-
         <p:dataTable class="table table-dark" id="selectTeclado"
                      value="#{equipoBean.tablaTeclado}"
                      var="teclado"
@@ -133,18 +118,18 @@
                 <p:outputLabel value="#{teclado.nombre}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
         <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                     closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="lab">Laboratorio</label>
             <p:inputText id="lab" value="#{equipoBean.laboratorio}"/>
         </div>
-
         <div align="center">
             <p:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}">
             </p:commandButton>
             <p:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}">
+            </p:commandButton>
+            <p:commandButton class="btn btn-dark" value="¿No encuentras un elemento? Registralo aquí." action="registrarElemento.xhtml">
             </p:commandButton>
         </div>
         <p:dataTable class="table table-dark" id="infoElementos"

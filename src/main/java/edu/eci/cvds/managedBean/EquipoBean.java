@@ -56,9 +56,25 @@ public class EquipoBean extends BasePageBean {
         }
     }
 
+    private boolean messirve(){
+        boolean sirve = true;
+        if (torreSeleccionada == null){
+            sirve = false;
+        }
+        if (mouseSeleccionado== null){
+            sirve = false;}
+
+            if (pantallaSeleccionada== null){
+                sirve = false;}
+
+                if (tecladoSeleccionado== null){
+                    sirve = false;}
+                return sirve;
+    }
+
     public void registrarEquipo(){
         try {
-            sinErrores();
+            historialServicios.insertarEquipo();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
