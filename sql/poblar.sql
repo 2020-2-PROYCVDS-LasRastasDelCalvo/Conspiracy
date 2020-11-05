@@ -49,7 +49,7 @@ VALUES(5,3);
 -- Table `Elemento`
 -- -----------------------------------------------------
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Torre','Torre A','Descripcion de la torre A',1,1);
+VALUES('Torre','Torre A','Descripcion de la torre A',1,0);
 
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
 VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1,0);
@@ -61,7 +61,7 @@ INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
 VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0);
 
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Torre','Torre B','Descripcion de la torre B',1,1);
+VALUES('Torre','Torre B','Descripcion de la torre B',null,1);
 
 
 -- -----------------------------------------------------

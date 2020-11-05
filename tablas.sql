@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Laboratorio (
 -- Table `Equipo`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Equipo (
-  idEquipo  PRIMARY KEY,
+  idEquipo INT PRIMARY KEY,
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
   disponible INT  NOT NULL
@@ -53,28 +53,3 @@ CREATE TABLE IF NOT EXISTS Novedad (
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
   idElemento INT REFERENCES Elemento(idElemento) DEFERRABLE
 );
-
-
-
--- -----------------------------------------------------
--- Drops
--- -----------------------------------------------------
-DROP TABLE
-IF EXISTS Novedad
-CASCADE;
-
-DROP TABLE
-IF EXISTS Elemento
-CASCADE ;
-
-DROP TABLE
-IF EXISTS Equipo
-CASCADE;
-
-DROP TABLE
-IF EXISTS Usuario
-CASCADE;
-
-DROP TABLE
-IF EXISTS Laboratorio
-CASCADE;

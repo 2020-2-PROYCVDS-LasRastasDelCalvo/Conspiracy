@@ -64,7 +64,11 @@ CREATE OR REPLACE FUNCTION estadoElemento()
 AS
 $$
 BEGIN
-	NEW.disponible := 1;
+    IF NEW.idequipo IS NULL THEN
+        NEW.disponible := 1;
+    ELSE
+        NEW.disponible := 0;
+    END IF;
 	RETURN NEW;
 END;
 $$
