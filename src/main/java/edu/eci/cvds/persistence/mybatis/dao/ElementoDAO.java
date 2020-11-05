@@ -5,6 +5,7 @@ import edu.eci.cvds.persistence.PersistenceException;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ana Gabriela Silva
@@ -17,4 +18,5 @@ public interface ElementoDAO {
     public void registrarElemento(Elemento elemento) throws PersistenceException;
     public ArrayList<Elemento> consultarElementos()  throws PersistenceException;
     public void asociarEquipo(int idEquipo)  throws PersistenceException;
+    public List<Elemento> buscarElemento(String elemento) throws PersistenceException;
 }

@@ -32,6 +32,10 @@ public class EquipoBean extends BasePageBean {
     private Elemento mouseSeleccionado;
     private Elemento pantallaSeleccionada;
     private Elemento tecladoSeleccionado;
+    private List<Elemento> tablaTorre;
+    private List<Elemento> tablaMouse;
+    private List<Elemento> tablaPantalla;
+    private List<Elemento> tablaTeclado;
     private FacesMessage.Severity estado;
     private List<Equipo> equipos;
 
@@ -42,6 +46,10 @@ public class EquipoBean extends BasePageBean {
         try{
             System.out.println("Trying to init() on EquipoBean mah boi.");
             equipos = historialServicios.consultarEquipos();
+            tablaTorre = historialServicios.buscarElemento("Torre");
+            tablaMouse = historialServicios.buscarElemento("Mouse");
+            tablaPantalla = historialServicios.buscarElemento("Pantalla");
+            tablaTeclado = historialServicios.buscarElemento("Teclado");
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -51,7 +59,6 @@ public class EquipoBean extends BasePageBean {
     public void registrarEquipo(){
         try {
             sinErrores();
-            historialServicios.insertarEquipo( torreSeleccionada.getIdElemento() , mouseSeleccionado.getIdElemento(), pantallaSeleccionada.getIdElemento(), tecladoSeleccionado.getIdElemento() );
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -165,6 +172,38 @@ public class EquipoBean extends BasePageBean {
 
     public void setEquipos(List<Equipo> equipos) {
         this.equipos = equipos;
+    }
+
+    public List<Elemento> getTablaTorre() {
+        return tablaTorre;
+    }
+
+    public void setTablaTorre(List<Elemento> tablaTorre) {
+        this.tablaTorre = tablaTorre;
+    }
+
+    public List<Elemento> getTablaMouse() {
+        return tablaMouse;
+    }
+
+    public void setTablaMouse(List<Elemento> tablaMouse) {
+        this.tablaMouse = tablaMouse;
+    }
+
+    public List<Elemento> getTablaPantalla() {
+        return tablaPantalla;
+    }
+
+    public void setTablaPantalla(List<Elemento> tablaPantalla) {
+        this.tablaPantalla = tablaPantalla;
+    }
+
+    public List<Elemento> getTablaTeclado() {
+        return tablaTeclado;
+    }
+
+    public void setTablaTeclado(List<Elemento> tablaTeclado) {
+        this.tablaTeclado = tablaTeclado;
     }
 }
 

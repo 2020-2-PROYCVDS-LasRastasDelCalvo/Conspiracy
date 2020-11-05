@@ -22,7 +22,7 @@ public interface HistorialServicios {
 
     public List<Equipo> consultarEquipos() throws HistorialEquiposException;
 
-    public void insertarEquipo( int torreSeleccionada, int mouseSeleccionado, int pantallaSeleccionada, int tecladoSeleccionado ) throws HistorialEquiposException;
+    public void insertarEquipo() throws HistorialEquiposException;
 
-
+    public List<Elemento> buscarElemento(String elemento) throws  HistorialEquiposException;
 }

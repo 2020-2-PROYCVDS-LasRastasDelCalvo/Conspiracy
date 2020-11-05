@@ -7,6 +7,7 @@ import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
 import edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ana Gabriela Silva
@@ -49,5 +50,14 @@ public class MyBATISElementoDAO implements ElementoDAO {
             throw new PersistenceException("Error al asociar el equipo con id: " + idEquipo, exception );
         }
 
+    }
+    @Override
+    public List<Elemento> buscarElemento(String elemento) throws PersistenceException{
+        try{
+            return elementoMapper.buscarElemento(elemento);
+        }
+        catch (Exception e){
+            throw new PersistenceException("Error al asociar el equipo con id: ", e );
+        }
     }
 }

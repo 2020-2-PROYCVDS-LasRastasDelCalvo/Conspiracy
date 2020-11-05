@@ -4,6 +4,7 @@ import edu.eci.cvds.entities.Elemento;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ana Gabriela Silva
@@ -16,5 +17,6 @@ public interface ElementoMapper {
     public ArrayList<Elemento> consultarElementos();
     public void registrarElemento(@Param("tipo") Elemento elemento);
     public void asociarEquipo(@Param("idEquipo") int idEquipo);//asociar  un equipo con un elemento disponible
+    public List<Elemento> buscarElemento(@Param("tipo") String elemento);
 
 }

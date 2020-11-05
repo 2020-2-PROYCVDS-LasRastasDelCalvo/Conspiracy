@@ -64,8 +64,6 @@ public class HistorialServiciosImpl implements HistorialServicios{
     @Override
     public List<Equipo> consultarEquipos() throws HistorialEquiposException {
         try{
-            System.out.println("**************************************************111");
-            System.out.println(elementoDAO);
             return equipoDAO.consultarEquipos();
         }
         catch (PersistenceException persistenceException){
@@ -74,8 +72,18 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarEquipo(int torreSeleccionada, int mouseSeleccionado, int pantallaSeleccionada, int tecladoSeleccionado) {
+    public void insertarEquipo() {
 
+    }
+
+    @Override
+    public List<Elemento> buscarElemento(String elemento) throws HistorialEquiposException{
+        try {
+            return elementoDAO.buscarElemento(elemento);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
     }
 
 }

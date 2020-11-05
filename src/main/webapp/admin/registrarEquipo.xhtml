@@ -33,7 +33,107 @@
             </ul>
         </div>
     </nav>
+
+
+
+
+
+
+
+
     <h:form id="registrarEquipo">
+        <p:dataTable class="table table-dark" id="selectTorre"
+                     value="#{equipoBean.tablaTorre}"
+                     var="torre"
+                     selection="#{equipoBean.torreSeleccionada}"
+                     rowKey="#{torre.idElemento}"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="1,5,10,15">
+            <f:facet name="header">
+                Selecciona una Torre
+            </f:facet>
+            <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:column headerText="elementoTorre" >
+                <p:outputLabel value="#{torre.idElemento}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="nombre">
+                <p:outputLabel value="#{torre.nombre}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+
+
+        <p:dataTable class="table table-dark" id="selectPantalla"
+                     value="#{equipoBean.tablaPantalla}"
+                     var="pantalla"
+                     selection="#{equipoBean.pantallaSeleccionada}"
+                     rowKey="#{pantalla.idElemento}"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="1,5,10,15">
+            <f:facet name="header">
+                Selecciona una Pantalla
+            </f:facet>
+            <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:column headerText="elementoPantalla" >
+                <p:outputLabel value="#{pantalla.idElemento}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="nombre">
+                <p:outputLabel value="#{pantalla.nombre}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+
+
+
+        <p:dataTable class="table table-dark" id="selectMouse"
+                     value="#{equipoBean.tablaMouse}"
+                     var="mouse"
+                     selection="#{equipoBean.mouseSeleccionado}"
+                     rowKey="#{mouse.idElemento}"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="1,5,10,15">
+            <f:facet name="header">
+                Selecciona un Mouse
+            </f:facet>
+            <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:column headerText="elementoMouse" >
+                <p:outputLabel value="#{mouse.idElemento}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="nombre">
+                <p:outputLabel value="#{mouse.nombre}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+
+
+        <p:dataTable class="table table-dark" id="selectTeclado"
+                     value="#{equipoBean.tablaTeclado}"
+                     var="teclado"
+                     selection="#{equipoBean.tecladoSeleccionado}"
+                     rowKey="#{teclado.idElemento}"
+                     rows="10"
+                     paginator="true"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="1,5,10,15">
+            <f:facet name="header">
+                Selecciona un Teclado
+            </f:facet>
+            <p:column selectionMode="single" style="width:16px;text-align:center"/>
+            <p:column headerText="elementoTeclado" >
+                <p:outputLabel value="#{teclado.idElemento}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="nombre">
+                <p:outputLabel value="#{teclado.nombre}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+
         <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                     closable="true" globalOnly="true"/>
         <div class="form-group">
