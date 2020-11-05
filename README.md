@@ -1,8 +1,8 @@
-# Conspiracy
+# __Conspiracy__
 
-## Plataforma Historial de Equipos
+## __Plataforma Historial de Equipos__
 
-## Integrantes
+## __Integrantes__
 
 |     Nombre    |     Rol         |
 |--------------|------------- |
@@ -12,24 +12,24 @@
 |Galeano Garzón |Developer   |
 |Andrés Pico|Developer   |
 
-## Descripción del producto
+## __Descripción del producto__
 
-### Descripción General
+### __Descripción General__
 La Plataforma Historial de Equipos, es una herramienta donde el personal del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería Julio Garavito, pueden registrar los laboratorio, equipos y elementos de cada equipo, junto con las novedades que se realizan a cada uno de estos. El sistema, más allá de facilitar el registro de los equipos y novedades, es una valiosa base de conocimiento donde el personal del laboratorio, puede revisar el histórico de novedades que se le han realizado a cada elemento a través del tiempo durante todo su ciclo de vida útil. El personal administrativo del laboratorio puede crear laboratorios, equipos y elementos, asociar unos a otros y registrar novedades para cada uno; además de tener una variedad de reportes que les permitirá tener el control administrativo de estos implementos.
 
-### Manual De usuario
+### __Manual De usuario__
 
-### Funcionalidades Principales
-
-
-## Arquitectura y Diseño 
-
-### Modelo E-R
-
-### Diagrama de clase
+### __Funcionalidades Principales__
 
 
-### Tecnologías utilizadas
+## __Arquitectura y Diseño__ 
+
+### __Modelo E-R__
+
+### __Diagrama de clase__
+
+
+### __Tecnologías utilizadas__
 
 ### _Integración continua_ ✔️
 [![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy)
@@ -45,9 +45,9 @@ La Plataforma Historial de Equipos, es una herramienta donde el personal del lab
 
 
 
-## Descripción del proceso
+## __Descripción del proceso:__
 
-## Integrantes:
+## __Integrantes:__
 
 |     Nombre    |     Git         |
 |--------------|------------- |
@@ -56,20 +56,20 @@ La Plataforma Historial de Equipos, es una herramienta donde el personal del lab
 |Galeano Garzón |[Ersocaut](https://github.com/Ersocaut)   |
 |Andrés Pico|[Jandres1420](https://github.com/Jandres1420) |
 
-### Metodología:
+### __Metodología:__
 
-## Taiga
+## __Taiga__
 [Taiga CVDS-2020-02](https://tree.taiga.io/project/gabrielaasilva-historial-de-equipos-labinfo/timeline)
 
-## Release-Burndown Chart
+## __Release-Burndown Chart:__
 
-### Sprint1:
+### __Sprint1:__
 
-### Sprint2: 
+### __Sprint2:__
 
-### Sprint3:
+### __Sprint3:__
 
-## Reporte De Pruebas:
+## __Reporte De Pruebas:__
 
 
-## Reporte de análisis estático de código:
+## __Reporte de análisis estático de código:__
