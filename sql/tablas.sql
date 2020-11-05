@@ -12,20 +12,6 @@ CREATE TABLE IF NOT EXISTS Usuario(
 );
 
 -- -----------------------------------------------------
--- Table `Elemento`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS Elemento (
-  idElemento serial PRIMARY KEY,
-  tipo VARCHAR(8) NOT NULL,
-  nombre VARCHAR(50) NOT NULL,
-  descripcion VARCHAR(500)  NOT NULL,
-  idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
-  disponible INT NOT NULL, 
-  UNIQUE (tipo,nombre)
-
-);
-
--- -----------------------------------------------------
 -- Table `Laboratorio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Laboratorio (
@@ -43,6 +29,21 @@ CREATE TABLE IF NOT EXISTS Equipo (
 );
 
 -- -----------------------------------------------------
+-- Table `Elemento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS Elemento (
+  idElemento serial PRIMARY KEY,
+  tipo VARCHAR(8) NOT NULL,
+  nombre VARCHAR(50) NOT NULL,
+  descripcion VARCHAR(500)  NOT NULL,
+  idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
+  disponible INT NOT NULL, 
+  UNIQUE (tipo,nombre)
+
+);
+
+
+-- -----------------------------------------------------
 -- Table `Novedad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Novedad (
@@ -54,6 +55,7 @@ CREATE TABLE IF NOT EXISTS Novedad (
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
   idElemento INT REFERENCES Elemento(idElemento) DEFERRABLE
 );
+
 
 
 -- -----------------------------------------------------

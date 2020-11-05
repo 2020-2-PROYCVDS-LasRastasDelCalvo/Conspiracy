@@ -23,16 +23,11 @@ CHECK(
 -- Table `Elemento`
 -- -----------------------------------------------------
 ALTER TABLE Elemento
-ADD CONSTRAINT CH_Elemento_Tipo
+ADD CONSTRAINT CK_disponible_Elemento
 CHECK(
-    tipo IN ('Torre','Pantalla','Mouse','Teclado')
+	disponible  IN (0,1)
 );
 
-ALTER TABLE Elemento
-ADD CONSTRAINT CH_Elemento_Quantity
-CHECK (
-    cantidad > 0
-);
 
 -- -----------------------------------------------------
 -- Table `Equipo`
