@@ -3,6 +3,7 @@ package edu.eci.cvds.services;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Novedad;
+import edu.eci.cvds.entities.Usuario;
 
 import java.util.List;
 
@@ -27,4 +28,8 @@ public interface HistorialServicios {
     public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException;
 
     public List<Elemento> buscarElemento(String elemento) throws  HistorialEquiposException;
+
+    public void insertarNovedad(Novedad novedad) throws  HistorialEquiposException;
+
+    public Usuario consultarUsuarioPorCorreo(String correo )throws  HistorialEquiposException;
 }

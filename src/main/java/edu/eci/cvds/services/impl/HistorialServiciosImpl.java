@@ -4,14 +4,17 @@ package edu.eci.cvds.services.impl;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Novedad;
+import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.EquipoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
+import edu.eci.cvds.persistence.mybatis.dao.UsuarioDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @author Ana Gabriela Silva
@@ -29,6 +32,9 @@ public class HistorialServiciosImpl implements HistorialServicios{
 
     @Inject
     private EquipoDAO equipoDAO;
+
+    @Inject
+    private UsuarioDAO usuarioDAO;
 
     @Override
     public List<Novedad> consultarNovedades() throws HistorialEquiposException{
@@ -103,5 +109,28 @@ public class HistorialServiciosImpl implements HistorialServicios{
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
         }
     }
+
+    @Override
+    public void insertarNovedad(Novedad novedad) throws HistorialEquiposException {
+        try{
+            novedadDAO.guardarNovedadEquipo( novedad );
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public Usuario consultarUsuarioPorCorreo(String correo) throws HistorialEquiposException {
+        try{
+            Optional<Usuario> usuarioOptional = Optional.ofNullable(usuarioDAO.consultarPorCorreo( correo ));
+            usuarioOptional.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_CLIENTE));
+            return usuarioOptional.get();
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
 
 }

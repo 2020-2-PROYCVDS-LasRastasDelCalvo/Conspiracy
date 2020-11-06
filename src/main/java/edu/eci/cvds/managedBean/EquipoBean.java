@@ -2,7 +2,12 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.entities.Novedad;
+import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +30,7 @@ public class EquipoBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
 
+    private Subject subject = SecurityUtils.getSubject();
     private int disponible;
     private int laboratorio;
     private int idEquipo;
@@ -72,12 +78,15 @@ public class EquipoBean extends BasePageBean {
                 sinErrores();
                 int[] elementos = {torreSeleccionada.getIdElemento(),mouseSeleccionado.getIdElemento(),pantallaSeleccionada.getIdElemento(),tecladoSeleccionado.getIdElemento()};
                 historialServicios.insertarEquipo(idEquipo,elementos,laboratorio);
+                Usuario usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
+                historialServicios.insertarNovedad( new Novedad("Registro del Equipo", "Detalle del Equipo con id "+idEquipo+"con elementos "+elementos.toString(),usuario.getIdUsuario() , idEquipo));
             }
             else{
                 throw new Exception("Debe de seleccionar un elemento de cada tipo para poder registrar el equipo");
             }
         }
         catch (Exception exception) {
+            exception.printStackTrace();
             conErrores(exception.getMessage());
         }
     }

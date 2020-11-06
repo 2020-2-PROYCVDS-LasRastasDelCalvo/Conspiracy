@@ -68,7 +68,7 @@
     </select>
     <update id="asociarEquipo" >
         UPDATE elemento
-        SET disponible = 0,
+        SET
             idEquipo = #{idEquipo}
         WHERE
             idElemento = #{idElemento};

@@ -2,8 +2,6 @@ package edu.eci.cvds.persistence.mybatis.dao;
 
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
-import org.apache.ibatis.annotations.Param;
-
 import java.util.List;
 
 /**
@@ -26,7 +24,7 @@ public interface NovedadDAO  {
      * @param idEquipo, int que representa el identificador del equipo
      * @return  List<Novedad>, la lista de novedades que posee ese equipo
      */
-    public List<Novedad> cargarNovedadesEquipo( @Param("idEquipo") int idEquipo )  throws PersistenceException;
+    public List<Novedad> cargarNovedadesEquipo( int idEquipo )  throws PersistenceException;
 
 
     /**
@@ -34,20 +32,12 @@ public interface NovedadDAO  {
      * @param idElemento, int que representa el identificador del elemento
      * @return  List<Novedad>, la lista de novedades que posee ese equipo
      */
-    public List<Novedad> cargarNovedadesElemento( @Param("idElemento") int idElemento ) throws PersistenceException;
+    public List<Novedad> cargarNovedadesElemento(int idElemento ) throws PersistenceException;
 
     /**
-     * Metodo que se encarga de añadir una nueva novedad para un equipo en la base de datos
+     * Metodo que se encarga de añadir una nueva novedad base de datos
      * @param novedad, Novedad novedad a insertar en la base de datos
-     * @param idEquipo, int id del equipo al cual se le insertara la novedad
      */
-    public void guardarNovedadEquipo( @Param("novedad") Novedad novedad, @Param("idEquipo") int idEquipo ) throws PersistenceException;
+    public void guardarNovedadEquipo( Novedad novedad  ) throws PersistenceException;
 
-    /**
-     * Metodo que se encarga de añadir una nueva novedad para un elemento en la base de datos
-     * @param novedad, Novedad novedad a insertar en la base de datos
-     * @param idEquipo, int id del equipo al cual se le insertara la novedad
-     * @param idElemento, , int id del elemento al cual se le insertara la novedad
-     */
-    public void guardarNovedadElemento( @Param("novedad") Novedad novedad, @Param("idEquipo") int idEquipo, @Param("idElemento") int idElemento ) throws PersistenceException;
 }

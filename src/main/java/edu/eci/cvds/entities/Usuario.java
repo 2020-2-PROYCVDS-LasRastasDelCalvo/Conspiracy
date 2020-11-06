@@ -1,5 +1,7 @@
 package edu.eci.cvds.entities;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 
 /**
@@ -16,26 +18,26 @@ public class Usuario {
     private String correo;
     private String contraseña;
     private String rol;
-    private ArrayList<Equipo> equipos;
+    private ArrayList<Novedad> novedades;
 
-    public Usuario(int idUsuario, int estado, String nombre, String correo, String contraseña, String rol ){
+    public Usuario(){}
+
+    public Usuario(int idUsuario, int estado, String nombre, String correo, String rol ){
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.correo = correo;
-        this.contraseña = contraseña;
         this.estado = estado;
         this.rol = rol;
-        equipos = new ArrayList<Equipo>();
+        novedades = new ArrayList<Novedad>();
     }
 
-    public Usuario(int idUsuario, int estado, String nombre, String correo, String contraseña, String rol, ArrayList<Equipo> equipos){
+    public Usuario(int idUsuario, int estado, String nombre, String correo, String rol, ArrayList<Novedad> novedades){
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.correo = correo;
-        this.contraseña = contraseña;
         this.estado = estado;
         this.rol = rol;
-        this.equipos = equipos;
+        this.novedades = novedades;
     }
 
     public int getIdUsuario() {
@@ -44,6 +46,14 @@ public class Usuario {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
     }
 
     public String getNombre() {
@@ -78,19 +88,11 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public int getEstado() {
-        return estado;
+    public ArrayList<Novedad> getNovedades() {
+        return novedades;
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
     }
 }

@@ -10,6 +10,7 @@ package edu.eci.cvds.services;
  * Clase que representa las posibles excepciones que pueden encontrarse en el servicio Historial de Equipos
  */
 public class HistorialEquiposException extends Exception{
+    public static final  String NO_CLIENTE = "No existe un cliente con ese id en la base de datos.";
 
     public HistorialEquiposException(String message,Exception exception){
         super(message,exception);

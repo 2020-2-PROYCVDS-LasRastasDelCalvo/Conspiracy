@@ -75,9 +75,6 @@ $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER AD_disponible_Elemento
-  BEFORE INSERT ON public.Elemento
+  BEFORE INSERT OR UPDATE ON public.Elemento
   FOR EACH ROW
 EXECUTE PROCEDURE estadoElemento();
-
-
-

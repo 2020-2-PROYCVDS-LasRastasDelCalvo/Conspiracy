@@ -49,22 +49,13 @@ public class MyBATISNovedadDAO implements NovedadDAO {
     }
 
     @Override
-    public void guardarNovedadEquipo(Novedad novedad, int idEquipo) throws PersistenceException {
+    public void guardarNovedadEquipo(Novedad novedad) throws PersistenceException {
         try{
-            novedadMapper.addNovedadEquipo( novedad, idEquipo );
+            novedadMapper.addNovedad( novedad );
         }
         catch (Exception exception){
-            throw new PersistenceException("Error al insertar la novedad, para el equipo con id: "+idEquipo, exception );
+            throw new PersistenceException("Error al insertar la novedad.", exception );
         }
     }
 
-    @Override
-    public void guardarNovedadElemento(Novedad novedad, int idEquipo, int idElemento) throws PersistenceException {
-        try{
-            novedadMapper.addNovedadElemento( novedad, idEquipo, idElemento );
-        }
-        catch (Exception exception){
-            throw new PersistenceException("Error al insertar la novedad, para el elemento con id: "+idElemento, exception );
-        }
-    }
 }

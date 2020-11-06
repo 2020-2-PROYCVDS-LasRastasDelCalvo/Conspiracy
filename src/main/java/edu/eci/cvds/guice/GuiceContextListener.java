@@ -7,9 +7,11 @@ import javax.servlet.ServletContextListener;
 import edu.eci.cvds.persistence.mybatis.MyBATISElementoDAO;
 import edu.eci.cvds.persistence.mybatis.MyBATISEquipoDAO;
 import edu.eci.cvds.persistence.mybatis.MyBATISNovedadDAO;
+import edu.eci.cvds.persistence.mybatis.MyBATISUsuarioDAO;
 import edu.eci.cvds.persistence.mybatis.dao.ElementoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.EquipoDAO;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
+import edu.eci.cvds.persistence.mybatis.dao.UsuarioDAO;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
 import edu.eci.cvds.services.HistorialServicios;
@@ -46,6 +48,7 @@ public class GuiceContextListener implements ServletContextListener {
                 bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
                 bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
                 bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
+                bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                 bind(HistorialServicios.class).to(HistorialServiciosImpl.class);
             }
         });

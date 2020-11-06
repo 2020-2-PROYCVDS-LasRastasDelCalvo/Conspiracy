@@ -3,12 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.UsuarioMapper">
+    <select id="consultarPorCorreo" resultMap="UsuarioResult">
+        SELECT
+            idusuario,
+            nombre,
+            correo,
+            estado,
+            rol
+        FROM usuario
+        WHERE #{correo} = correo;
+    </select>
     <resultMap id="UsuarioResult" type="Usuario" >
         <id property="idUsuario" column="idUsuario"/>
         <result property="estado" column="estado" />
         <result property="nombre" column="nombre" />
         <result property="correo" column="correo" />
-        <result property="contraseña" column="contraseña" />
         <result property="rol" column="rol" />
     </resultMap>
 </mapper>
