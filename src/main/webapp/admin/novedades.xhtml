@@ -7,10 +7,6 @@
 <h:head>
     <title>Registrar Novedades</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </h:head>
 
 <h:body>
@@ -33,42 +29,47 @@
             </ul>
         </div>
     </nav>
-    <h:form>
-        <p:dataTable class="table table-dark" id="infoNovedades"
-                     value="#{novedad.novedades}"
-                     var="novedad"
-                     rowKey="#{novedad.idNovedad}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Novedades
-            </f:facet>
+    <div align="center">
+        <h:form>
+            <p:dataTable
+                    value="#{novedadBean.novedades}"
+                    var="novedad"
+                    widgetVar="TablaNovedades"
+                    emptyMessage="Aun no se registran novedades."
+                    rowKey="#{novedad.idNovedad}"
+                    rows="10"
+                    paginator="true"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                    rowsPerPageTemplate="1,5,10,15">
 
-            <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}"  sortBy="#{novedad.idNovedad}">
-                <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Titulo"  filterBy="#{novedad.titulo}"  sortBy="#{novedad.titulo}">
-                <p:outputLabel value="#{novedad.titulo}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Fecha"  filterBy="#{novedad.fecha}"  sortBy="#{novedad.fecha}">
-                <p:outputLabel value="#{novedad.fecha}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Detalle" filterBy="#{novedad.detalle}"  sortBy="#{novedad.detalle}">
-                <p:outputLabel value="#{novedad.detalle}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Usuario" filterBy="#{novedad.correo}"  sortBy="#{novedad.correo}">
-                <p:outputLabel value="#{novedad.correo}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}"  sortBy="#{novedad.idEquipo}">
-                <p:outputLabel value="#{novedad.idEquipo}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="idElemento" filterBy="#{novedad.idElemento}"  sortBy="#{novedad.idElemento}">
-                <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-    </h:form>
+                <f:facet name="header">
+                    Novedades
+                </f:facet>
+                <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" sortBy="#{novedad.idNovedad}"  >
+                    <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Titulo"  filterBy="#{novedad.titulo}" sortBy="#{novedad.titulo}">
+                    <p:outputLabel value="#{novedad.titulo}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Fecha"  filterBy="#{novedad.fecha}" sortBy="#{novedad.fecha}">
+                    <p:outputLabel value="#{novedad.fecha}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Detalle" filterBy="#{novedad.detalle}" sortBy="#{novedad.detalle}">
+                    <p:outputLabel value="#{novedad.detalle}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Usuario" filterBy="#{novedad.correo}" sortBy="#{novedad.correo}">
+                    <p:outputLabel value="#{novedad.correo}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}" sortBy="#{novedad.idEquipo}">
+                    <p:outputLabel value="#{novedad.idEquipo}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="idElemento" filterBy="#{novedad.idElemento}" sortBy="#{novedad.idElemento}">
+                    <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+
+        </h:form>
+    </div>
 </h:body>
 </html>

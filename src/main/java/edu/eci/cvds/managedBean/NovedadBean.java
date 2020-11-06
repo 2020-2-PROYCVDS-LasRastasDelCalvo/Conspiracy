@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -20,9 +21,9 @@ import java.util.List;
  */
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name = "novedad")
+@ManagedBean(name = "novedadBean")
 @RequestScoped
-public class NovedadBean  extends BasePageBean {
+public class NovedadBean  extends BasePageBean  implements Serializable {
     @Inject
     private HistorialServicios historialServicios;
     private List<Novedad> novedades;
@@ -30,18 +31,14 @@ public class NovedadBean  extends BasePageBean {
     @PostConstruct
     public void init(){
         super.init();
-        try {
-            novedades = historialServicios.consultarNovedades();
-        } catch (HistorialEquiposException e) {
-            e.printStackTrace();
-        }
+        consultar();
     }
     public void consultar(){
-        novedades = null;
         try{
             novedades = historialServicios.consultarNovedades();
         }
         catch (Exception exception) {
+            exception.printStackTrace();
         }
     }
 

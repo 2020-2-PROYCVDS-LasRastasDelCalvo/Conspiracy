@@ -85,7 +85,7 @@ public class HistorialServiciosImpl implements HistorialServicios{
                 relacionarElementoEquipo(elemento,idEquipo);
                 insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
             }
-            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" se le asignaron los elementos: "+elementos.toString(),idUsuario, idEquipo));
+            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+elementos.toString(),idUsuario, idEquipo));
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );

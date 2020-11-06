@@ -22,8 +22,7 @@
             novedad n
             INNER JOIN
             usuario u
-            ON n.usuario = u.idusuario
-            ORDER BY fecha DESC, n_idEquipo;
+            ON n.usuario = u.idusuario;
     </select>
     <resultMap id="NovedadResult" type="Novedad" >
         <id property="idNovedad" column="n_idNovedad"/>
