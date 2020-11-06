@@ -39,6 +39,7 @@ public class EquipoBean extends BasePageBean {
     private Elemento mouseSeleccionado;
     private Elemento pantallaSeleccionada;
     private Elemento tecladoSeleccionado;
+    private Usuario usuario;
     private List<Elemento> tablaTorre;
     private List<Elemento> tablaMouse;
     private List<Elemento> tablaPantalla;
@@ -51,6 +52,8 @@ public class EquipoBean extends BasePageBean {
     public void init(){
         super.init();
         try{
+            usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
+            subject.getSession().setAttribute("usuario",usuario);
             actualizar();
         }
         catch (Exception exception) {
@@ -74,19 +77,14 @@ public class EquipoBean extends BasePageBean {
 
     public void registrarEquipo(){
         try {
-            if (elementosSel()){
-                sinErrores();
-                int[] elementos = {torreSeleccionada.getIdElemento(),mouseSeleccionado.getIdElemento(),pantallaSeleccionada.getIdElemento(),tecladoSeleccionado.getIdElemento()};
-                historialServicios.insertarEquipo(idEquipo,elementos,laboratorio);
-                Usuario usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
-                historialServicios.insertarNovedad( new Novedad("Registro del Equipo", "Detalle del Equipo con id "+idEquipo+"con elementos "+elementos.toString(),usuario.getIdUsuario() , idEquipo));
-            }
-            else{
+            sinErrores();
+            if (!elementosSel()){
                 throw new Exception("Debe de seleccionar un elemento de cada tipo para poder registrar el equipo");
             }
+            int[] elementos = {torreSeleccionada.getIdElemento(),mouseSeleccionado.getIdElemento(),pantallaSeleccionada.getIdElemento(),tecladoSeleccionado.getIdElemento()};
+            historialServicios.insertarEquipo(idEquipo,elementos,laboratorio,usuario.getIdUsuario());
         }
         catch (Exception exception) {
-            exception.printStackTrace();
             conErrores(exception.getMessage());
         }
     }
@@ -113,7 +111,6 @@ public class EquipoBean extends BasePageBean {
             equipos = historialServicios.consultarEquipos();
         }
         catch (Exception exception) {
-            exception.printStackTrace();
             conErrores( exception.getMessage());
         }
     }

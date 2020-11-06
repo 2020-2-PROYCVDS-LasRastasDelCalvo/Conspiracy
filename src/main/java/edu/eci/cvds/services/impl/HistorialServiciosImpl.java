@@ -78,12 +78,14 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarEquipo(int idEquipo,int[] elementos, int idLab) throws HistorialEquiposException{
+    public void insertarEquipo(int idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
         try {
             equipoDAO.registrarEquipo(idEquipo,idLab);
             for( int elemento : elementos){
                 relacionarElementoEquipo(elemento,idEquipo);
+                insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
             }
+            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" se le asignaron los elementos: "+elementos.toString(),idUsuario, idEquipo));
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
