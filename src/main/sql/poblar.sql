@@ -62,6 +62,17 @@ VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0);
 INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
 VALUES('Torre','Torre B','Descripcion de la torre B',null,1);
 
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Torre','Torre C','Descripcion de la torre C',null,1);
+
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Mouse','Mouse C','Descripcion del Mouse C',null,1);
+
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Pantalla','Pantalla C','Descripcion de la pantalla C',null,1);
+
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
+VALUES('Teclado','Torre C','Descripcion del teclado C',null,1);
 
 -- -----------------------------------------------------
 -- Table `Novedad`
