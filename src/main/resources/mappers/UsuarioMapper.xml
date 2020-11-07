@@ -5,11 +5,11 @@
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.UsuarioMapper">
     <select id="consultarPorCorreo" resultMap="UsuarioResult">
         SELECT
-            idusuario,
-            nombre,
-            correo,
-            estado,
-            rol
+            idusuario AS u_idusuario,
+            nombre AS u_nombre,
+            correo AS u_correo,
+            estado AS u_estado,
+            rol AS u_rol
         FROM usuario
         WHERE #{correo} = correo;
     </select>
