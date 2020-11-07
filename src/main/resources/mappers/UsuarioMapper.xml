@@ -14,10 +14,10 @@
         WHERE #{correo} = correo;
     </select>
     <resultMap id="UsuarioResult" type="Usuario" >
-        <id property="idUsuario" column="idUsuario"/>
-        <result property="estado" column="estado" />
-        <result property="nombre" column="nombre" />
-        <result property="correo" column="correo" />
-        <result property="rol" column="rol" />
+        <id property="idUsuario" column="u_idusuario"/>
+        <result property="estado" column="u_estado" />
+        <result property="nombre" column="u_nombre" />
+        <result property="correo" column="u_correo" />
+        <result property="rol" column="u_rol" />
     </resultMap>
 </mapper>

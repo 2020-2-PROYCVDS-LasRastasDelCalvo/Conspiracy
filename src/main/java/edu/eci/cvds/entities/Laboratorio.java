@@ -1,5 +1,7 @@
 package edu.eci.cvds.entities;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
 
 /**
@@ -14,8 +16,16 @@ public class Laboratorio {
     private String nombre;
     private ArrayList<Equipo> equipos;
 
-    public Laboratorio(int id, String nombre, ArrayList<Equipo> equipos){
-        this.idLaboratorio = id;
+    public Laboratorio(){ }
+
+    public Laboratorio(int idLaboratorio, String nombre ){
+        this.idLaboratorio = idLaboratorio;
+        this.nombre = nombre;
+        this.equipos = new ArrayList<Equipo>();
+    }
+
+    public Laboratorio(int idLaboratorio, String nombre, ArrayList<Equipo> equipos){
+        this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.equipos = equipos;
     }
@@ -42,9 +52,5 @@ public class Laboratorio {
 
     public void setEquipos(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
-    }
-
-    public void agregarEquipo(Equipo equipo){
-        equipos.add(equipo);
     }
 }
