@@ -6,15 +6,13 @@
       xmlns:p="http://primefaces.org/ui" xmlns:P="http://java.sun.com/jsf/html">
 <h:head>
     <title>Registrar Equipo</title>
+    <link rel="icon" href="../rsc/img/logo.png"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </h:head>
 
 <h:body>
     <h1>Estoy en Registrar Equipos</h1>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
@@ -33,135 +31,150 @@
             </ul>
         </div>
     </nav>
-    <h:form id="registrarEquipo">
-        <p:dataTable class="table table-dark" id="selectTorre"
-                     value="#{equipoBean.tablaTorre}"
-                     var="torre"
-                     selection="#{equipoBean.torreSeleccionada}"
-                     rowKey="#{torre.idElemento}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Selecciona una Torre
-            </f:facet>
-            <p:column selectionMode="single" style="width:16px;text-align:center"/>
-            <p:column headerText="elementoTorre" >
-                <p:outputLabel value="#{torre.idElemento}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="nombre">
-                <p:outputLabel value="#{torre.nombre}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-        <p:dataTable class="table table-dark" id="selectPantalla"
-                     value="#{equipoBean.tablaPantalla}"
-                     var="pantalla"
-                     selection="#{equipoBean.pantallaSeleccionada}"
-                     rowKey="#{pantalla.idElemento}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Selecciona una Pantalla
-            </f:facet>
-            <p:column selectionMode="single" style="width:16px;text-align:center"/>
-            <p:column headerText="elementoPantalla" >
-                <p:outputLabel value="#{pantalla.idElemento}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="nombre">
-                <p:outputLabel value="#{pantalla.nombre}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-        <p:dataTable class="table table-dark" id="selectMouse"
-                     value="#{equipoBean.tablaMouse}"
-                     var="mouse"
-                     selection="#{equipoBean.mouseSeleccionado}"
-                     rowKey="#{mouse.idElemento}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Selecciona un Mouse
-            </f:facet>
-            <p:column selectionMode="single" style="width:16px;text-align:center"/>
-            <p:column headerText="elementoMouse" >
-                <p:outputLabel value="#{mouse.idElemento}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="nombre">
-                <p:outputLabel value="#{mouse.nombre}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-        <p:dataTable class="table table-dark" id="selectTeclado"
-                     value="#{equipoBean.tablaTeclado}"
-                     var="teclado"
-                     selection="#{equipoBean.tecladoSeleccionado}"
-                     rowKey="#{teclado.idElemento}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Selecciona un Teclado
-            </f:facet>
-            <p:column selectionMode="single" style="width:16px;text-align:center"/>
-            <p:column headerText="elementoTeclado" >
-                <p:outputLabel value="#{teclado.idElemento}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="nombre">
-                <p:outputLabel value="#{teclado.nombre}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-        <div class="form-group">
-            <label for="lab">Laboratorio</label>
-            <p:inputText id="lab" value="#{equipoBean.laboratorio}"/>
-        </div>
-        <div class="form-group">
-            <label for="idEquipo">Numero del Equipo</label>
-            <p:inputText id="idEquipo" value="#{equipoBean.idEquipo}"/>
-        </div>
-        <div align="center">
-            <p:messages id="mensaje" showDetail="true" autoUpdate="true"
-                        closable="true" globalOnly="true"/>
-            <p:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}">
-            </p:commandButton>
-            <p:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}">
-            </p:commandButton>
-            <p:commandButton class="btn btn-dark" value="¿No encuentras un elemento? Registralo aquí." action="registrarElemento.xhtml">
-            </p:commandButton>
-        </div>
-        <p:dataTable class="table table-dark" id="infoElementos"
-                     value="#{equipoBean.equipos}"
-                     var="equipo"
-                     rowKey="#{equipo.idEquipo}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Equipos
-            </f:facet>
 
-            <p:column headerText="idEquipo" >
-                <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Laboratorio" >
-                <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Fecha Registro">
-                <p:outputLabel value="#{equipo.fechaRegistro}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Disponible">
-                <p:outputLabel value="#{equipo.disponible}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
+    <h:form id="registrarEquipo">
+        <div  align="center" style="width: 70%;margin: auto;border: 2px solid black;border-radius: 2%;margin-top: 10px">
+            <h2>Informacion Laboratorio</h2>
+            <div class="form-group">
+                <label for="lab">Numero Laboratorio:</label>
+                <p:inputText id="lab" value="#{equipoBean.laboratorio}"/>
+            </div>
+            <div class="form-group">
+                <label for="idEquipo">Numero del Equipo :</label>
+                <p:inputText id="idEquipo" value="#{equipoBean.idEquipo}"/>
+            </div>
+            <h2>Seleccionar Elementos </h2>
+            <p:dataTable class="table display table-striped table-bordered"
+                         id="selectTorre"
+                         value="#{equipoBean.tablaTorre}"
+                         var="torre"
+                         style="width: 50%;"
+                         selection="#{equipoBean.torreSeleccionada}"
+                         rowKey="#{torre.idElemento}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="1,5,10,15">
+                <f:facet name="header">
+                    Selecciona una Torre
+                </f:facet>
+                <p:column  headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+                <p:column headerText="elementoTorre" filterBy="#{torre.idElemento}" >
+                    <p:outputLabel value="#{torre.idElemento}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="nombre" filterBy="#{torre.nombre}" filterMatchMode="contains">
+                    <p:outputLabel value="#{torre.nombre}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+            <p:separator/>
+            <p:dataTable class="table" id="selectPantalla"
+                         value="#{equipoBean.tablaPantalla}"
+                         var="pantalla"
+                         style="width: 50%;"
+                         selection="#{equipoBean.pantallaSeleccionada}"
+                         rowKey="#{pantalla.idElemento}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="1,5,10,15">
+                <f:facet name="header">
+                    Selecciona una Pantalla
+                </f:facet>
+                <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+                <p:column headerText="elementoPantalla" filterBy="#{pantalla.idElemento}">
+                    <p:outputLabel value="#{pantalla.idElemento}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="nombre" filterBy="#{pantalla.nombre}" filterMatchMode="contains">
+                    <p:outputLabel value="#{pantalla.nombre}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+            <p:separator/>
+            <p:dataTable class="table table-dark" id="selectMouse"
+                         value="#{equipoBean.tablaMouse}"
+                         var="mouse"
+                         style="width: 50%;"
+                         selection="#{equipoBean.mouseSeleccionado}"
+                         rowKey="#{mouse.idElemento}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="1,5,10,15">
+                <f:facet name="header">
+                    Selecciona un Mouse
+                </f:facet>
+                <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+                <p:column headerText="elementoMouse" filterBy="#{mouse.idElemento}">
+                    <p:outputLabel value="#{mouse.idElemento}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="nombre" filterBy="#{mouse.nombre}" filterMatchMode="contains">
+                    <p:outputLabel value="#{mouse.nombre}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+            <p:separator/>
+            <p:dataTable class="table table-dark" id="selectTeclado"
+                         style="width: 50%;"
+                         value="#{equipoBean.tablaTeclado}"
+                         var="teclado"
+                         selection="#{equipoBean.tecladoSeleccionado}"
+                         rowKey="#{teclado.idElemento}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="1,5,10,15">
+                <f:facet name="header">
+                    Selecciona un Teclado
+                </f:facet>
+                <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+                <p:column headerText="elementoTeclado" filterBy="#{teclado.idElemento}">
+                    <p:outputLabel value="#{teclado.idElemento}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="nombre" filterBy="#{teclado.nombre}" filterMatchMode="contains">
+                    <p:outputLabel value="#{teclado.nombre}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+            <div align="center">
+                <p:messages id="mensaje" showDetail="true" autoUpdate="true"
+                            closable="true" globalOnly="true"/>
+                <p:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}">
+                </p:commandButton>
+                <p:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}">
+                </p:commandButton>
+                <p:commandButton class="btn btn-dark" value="¿No encuentras un elemento? Registralo aquí." action="registrarElemento.xhtml">
+                </p:commandButton>
+                <p/>
+            </div>
+        </div>
     </h:form>
+    <p:dataTable class="table table-dark" id="infoElementos"
+                 value="#{equipoBean.equipos}"
+                 var="equipo"
+                 rowKey="#{equipo.idEquipo}"
+                 rows="10"
+                 paginator="true"
+                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                 rowsPerPageTemplate="1,5,10,15">
+        <f:facet name="header">
+            Equipos
+        </f:facet>
+
+        <p:column headerText="idEquipo" >
+            <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
+        </p:column>
+        <p:column headerText="Laboratorio" >
+            <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
+        </p:column>
+        <p:column headerText="Fecha Registro">
+            <p:outputLabel value="#{equipo.fechaRegistro}"></p:outputLabel>
+        </p:column>
+        <p:column headerText="Disponible">
+            <p:outputLabel value="#{equipo.disponible}"></p:outputLabel>
+        </p:column>
+    </p:dataTable>
+
 </h:body>
 </html>
