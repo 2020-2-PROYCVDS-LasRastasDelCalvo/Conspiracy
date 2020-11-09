@@ -142,11 +142,12 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void registrarLaboratorio(int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException {
+    public void registrarLaboratorio(int idUsuario,int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException {
         try{
             laboratorioDAO.registrarLaboratorio(idLab, nombreLab);
-            for (Equipo d: aAsociar){
-                asociarEquipo(idLab, d.getIdEquipo());
+            for (Equipo equipo: aAsociar){
+                asociarEquipo(idLab, equipo.getIdEquipo());
+                insertarNovedad(new Novedad("Asociación de equipo a laboratorio","El equipo con id "+idLab+" fue asociado al laboratorio "+nombreLab+" con id "+idLab,idUsuario,null,equipo.getIdEquipo()));
             }
         }
         catch (PersistenceException persistenceException){

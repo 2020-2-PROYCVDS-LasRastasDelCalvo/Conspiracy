@@ -1,9 +1,7 @@
 package edu.eci.cvds.persistence.mybatis.dao;
 
-import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistence.PersistenceException;
-
 import java.util.List;
 
 /**

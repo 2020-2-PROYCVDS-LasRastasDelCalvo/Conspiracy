@@ -4,8 +4,8 @@ import com.google.inject.Inject;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import edu.eci.cvds.services.HistorialServiciosFactory;
-import org.apache.ibatis.session.SqlSession;
-import org.junit.Before;
+//import org.apache.ibatis.session.SqlSession;
+//import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.fail;

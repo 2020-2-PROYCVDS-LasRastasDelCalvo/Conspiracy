@@ -15,6 +15,9 @@ VALUES(98765432, 'Jeisson Otalvaro', 'usuario', '9250e222c4c71f0c58d4c54b50a880a
 -- Table `Laboratorio`
 -- -----------------------------------------------------
 INSERT INTO Laboratorio( nombre )
+VALUES('Disponibles');
+
+INSERT INTO Laboratorio( nombre )
 VALUES('Ingeniería de Software');
 
 INSERT INTO Laboratorio( nombre )

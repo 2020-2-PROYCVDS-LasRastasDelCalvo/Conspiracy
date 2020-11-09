@@ -2,7 +2,11 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
+import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -32,11 +36,14 @@ public class LaboratorioBean extends BasePageBean {
     private List<Laboratorio> laboratorios;
     private FacesMessage.Severity estado;
     private List<Equipo> disponibles;
+    private Usuario usuario;
+    private Subject subject = SecurityUtils.getSubject();
 
     @PostConstruct
     public void init() {
         super.init();
         try {
+            usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
             actualizar();
         } catch (Exception exception) {
             conErrores(exception.getMessage());
@@ -56,7 +63,7 @@ public class LaboratorioBean extends BasePageBean {
     public void registrarLab(){
         try{
             sinErrores();
-            historialServicios.registrarLaboratorio(idLaboratorio, nombreLaboratorio, aAsociar);
+            historialServicios.registrarLaboratorio(usuario.getIdUsuario(),idLaboratorio, nombreLaboratorio, aAsociar);
         }
         catch (Exception exception){
             conErrores(exception.getMessage());
