@@ -2,6 +2,7 @@ package edu.eci.cvds.persistence.mybatis.mappers;
 
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistence.PersistenceException;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface LaboratorioMapper {
      * @throws PersistenceException, en caso que ocurra un error de persistencia
      */
     public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
+
+    public void registrarLaboratorio(@Param ("idLab")int idLab, @Param ("nombreLab") String nombreLab) throws PersistenceException;
 }

@@ -29,13 +29,12 @@
                 <p:password id="contraseña" styleClass="input-text" type="String" value="#{login.contraseña}" />
                 <p:commandButton  styleClass="myButton" actionListener="#{login.doLogIn}" update="loginForm" value="Ingresar" action="#{login.estadoLogin}">
                 </p:commandButton>
+                <div align="center">
+                    <a href="index.html" >Pagina principal</a>
+                </div>
             </h:form>
 
         </div>
     </div>
-    <div id="negro" align="center" style="margin-top: 10px">
-        <a href="index.html">Pagina Principal</a>
-    </div>
-
 </h:body>
 </html>

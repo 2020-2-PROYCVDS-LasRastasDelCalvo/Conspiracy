@@ -29,4 +29,16 @@ public class MYBATISLaboratorioDAO implements LaboratorioDAO {
         }
 
     }
+
+    @Override
+    public void registrarLaboratorio(int idLab, String nombreLab) throws PersistenceException {
+        try{
+            System.out.println("I'm trying to registrarLaboratorio(int idLab, String nombreLab) at MYBATISLaboratorioDAO.");
+            laboratorioMapper.registrarLaboratorio(idLab, nombreLab);
+        }
+        catch (Exception exception){
+            throw new PersistenceException(exception.getMessage(),exception );
+        }
+    }
+
 }

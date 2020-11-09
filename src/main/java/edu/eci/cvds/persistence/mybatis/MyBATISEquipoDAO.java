@@ -7,6 +7,7 @@ import edu.eci.cvds.persistence.mybatis.mappers.EquipoMapper;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ana Gabriela Silva
@@ -46,6 +47,25 @@ public class MyBATISEquipoDAO implements EquipoDAO {
         }
         catch (Exception exception){
             throw new PersistenceException("Surgio un error al Registrar el equipo.",exception);
+        }
+    }
+
+    @Override
+    public void asociar(int idLab, int idEquipo) throws PersistenceException {
+        try{
+            equipoMapper.asociar(idLab, idEquipo);
+        }
+        catch (Exception exception){
+            throw new PersistenceException("Error al asociar equipo con lab.",exception);
+        }
+    }
+    @Override
+    public List<Equipo> consultarEquiposDisponibles() throws PersistenceException{
+        try{
+            return equipoMapper.consultarEquiposDisponibles();
+        }
+        catch (Exception e){
+            throw new PersistenceException("Error al consultar equipos disponibles.",e);
         }
     }
 }

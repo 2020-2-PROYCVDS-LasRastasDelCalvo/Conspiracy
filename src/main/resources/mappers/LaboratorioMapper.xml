@@ -45,6 +45,9 @@
             	ON la.idlaboratorio = eq.laboratorio
             ORDER BY la_idLaboratorio;
     </select>
+    <insert id="registrarLaboratorio">
+        INSERT INTO Laboratorio VALUES (#{idLab}, #{nombreLab})
+    </insert>
     <resultMap id="LaboratorioResult" type="Laboratorio">
         <id property="idLaboratorio" column="la_idLaboratorio"/>
         <result property="nombre" column="la_nombre"/>

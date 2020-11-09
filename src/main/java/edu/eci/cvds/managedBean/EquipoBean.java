@@ -126,9 +126,7 @@ public class EquipoBean extends BasePageBean {
         return historialServicios;
     }
 
-    public void setHistorialServicios(HistorialServicios historialServicios) {
-        this.historialServicios = historialServicios;
-    }
+    public void setHistorialServicios(HistorialServicios historialServicios) { this.historialServicios = historialServicios; }
 
     public int getDisponible() {
         return disponible;
@@ -174,9 +172,7 @@ public class EquipoBean extends BasePageBean {
         return pantallaSeleccionada;
     }
 
-    public void setPantallaSeleccionada(Elemento pantallaSeleccionada) {
-        this.pantallaSeleccionada = pantallaSeleccionada;
-    }
+    public void setPantallaSeleccionada(Elemento pantallaSeleccionada) { this.pantallaSeleccionada = pantallaSeleccionada; }
 
     public Elemento getTecladoSeleccionado() {
         return tecladoSeleccionado;

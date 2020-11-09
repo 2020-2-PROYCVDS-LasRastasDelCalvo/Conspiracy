@@ -1,5 +1,6 @@
 package edu.eci.cvds.managedBean;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.services.HistorialServicios;
 import javax.annotation.PostConstruct;
@@ -27,8 +28,10 @@ public class LaboratorioBean extends BasePageBean {
     private int idLaboratorio;
     private String nombreLaboratorio;
     private String message;
+    private List<Equipo> aAsociar;
     private List<Laboratorio> laboratorios;
     private FacesMessage.Severity estado;
+    private List<Equipo> disponibles;
 
     @PostConstruct
     public void init() {
@@ -43,9 +46,20 @@ public class LaboratorioBean extends BasePageBean {
         try{
             sinErrores();
             laboratorios = historialServicios.consultarLaboratorios();
+            disponibles = historialServicios.consultarEquiposDisponibles();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
+        }
+    }
+
+    public void registrarLab(){
+        try{
+            sinErrores();
+            historialServicios.registrarLaboratorio(idLaboratorio, nombreLaboratorio, aAsociar);
+        }
+        catch (Exception exception){
+            conErrores(exception.getMessage());
         }
     }
 
@@ -102,8 +116,13 @@ public class LaboratorioBean extends BasePageBean {
     /**
      * Metodo que muestra en un mensaje del estado del registrar elemento
      */
-    public void info() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));
-    }
+    public void info() { FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message)); }
 
+    public List<Equipo> getaAsociar() { return aAsociar; }
+
+    public void setaAsociar(List<Equipo> aAsociar) { this.aAsociar = aAsociar; }
+
+    public List<Equipo> getDisponibles() { return disponibles; }
+
+    public void setDisponibles(List<Equipo> disponibles) { this.disponibles = disponibles; }
 }

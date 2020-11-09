@@ -3,6 +3,7 @@ package edu.eci.cvds.persistence.mybatis.dao;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.persistence.PersistenceException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Ana Gabriela Silva
@@ -15,5 +16,6 @@ public interface EquipoDAO {
     public void registrarEquipo(int idEquipo, int idLab) throws PersistenceException;
     public ArrayList<Equipo> consultarEquipos()  throws PersistenceException;
     public void generarNovedades(int idEquipo, int idElemento, String titulo, String detalle, int idUsuario )  throws PersistenceException;
-
+    public void asociar(int idLab, int idEquipo) throws PersistenceException;
+    public List<Equipo> consultarEquiposDisponibles() throws PersistenceException;
 }

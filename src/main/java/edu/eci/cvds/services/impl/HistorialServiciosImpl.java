@@ -141,5 +141,37 @@ public class HistorialServiciosImpl implements HistorialServicios{
         }
     }
 
+    @Override
+    public void registrarLaboratorio(int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException {
+        try{
+            laboratorioDAO.registrarLaboratorio(idLab, nombreLab);
+            for (Equipo d: aAsociar){
+                asociarEquipo(idLab, d.getIdEquipo());
+            }
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public void asociarEquipo(int idLab, int idEquipo) throws HistorialEquiposException {
+        try {
+            equipoDAO.asociar(idLab, idEquipo);
+        } catch (PersistenceException e) {
+            throw new HistorialEquiposException(e.getMessage(),e );
+        }
+    }
+
+    @Override
+    public List<Equipo> consultarEquiposDisponibles() throws HistorialEquiposException{
+        try{
+            return equipoDAO.consultarEquiposDisponibles();
+        }
+        catch(PersistenceException e){
+            throw new HistorialEquiposException(e.getMessage(),e);
+        }
+    }
+
 
 }

@@ -31,4 +31,10 @@ public interface HistorialServicios {
     public Usuario consultarUsuarioPorCorreo(String correo )throws  HistorialEquiposException;
 
     public List<Laboratorio> consultarLaboratorios() throws HistorialEquiposException;
+
+    public void registrarLaboratorio(int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException;
+
+    public void asociarEquipo(int idLab, int idEquipo) throws HistorialEquiposException;
+
+    public List<Equipo> consultarEquiposDisponibles() throws HistorialEquiposException;
 }

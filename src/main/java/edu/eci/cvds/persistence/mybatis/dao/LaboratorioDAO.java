@@ -1,5 +1,6 @@
 package edu.eci.cvds.persistence.mybatis.dao;
 
+import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.persistence.PersistenceException;
 
@@ -18,4 +19,6 @@ public interface LaboratorioDAO {
      * @throws PersistenceException, en caso que ocurra un error de persistencia
      */
     public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
+
+    public void registrarLaboratorio(int idLab, String nombreLab) throws PersistenceException;
 }
