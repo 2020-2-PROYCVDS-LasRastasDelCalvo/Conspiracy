@@ -18,17 +18,21 @@ import static org.junit.Assert.fail;
  * @version 11/5/2020
  */
 public class HistorialServiciosTest {
+    /*
     @Inject
     private SqlSession sqlSession;
+    */
     @Inject
     private HistorialServicios historialServicios;
 
     public HistorialServiciosTest() {
         historialServicios = HistorialServiciosFactory.getInstance().getHistorialServiciosTesting();
     }
+    /*
     @Before
     public void setUp() {
     }
+    */
 
     @Test
     public void consultarElementos() {

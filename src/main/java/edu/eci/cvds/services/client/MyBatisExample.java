@@ -50,20 +50,22 @@ public class MyBatisExample {
         }
         return sqlSessionFactory;
     }
-
     /**
      * Programa principal de ejempo de uso de MyBATIS
      * @param args
      * @throws SQLException
      */
     public static void main(String args[]) throws SQLException {
-        SqlSessionFactory sessionfact = getSqlSessionFactory();
+        try {
+            SqlSessionFactory sessionfact = getSqlSessionFactory();
 
-        SqlSession sqlss = sessionfact.openSession();
+            SqlSession sqlss = sessionfact.openSession();
 
-        sqlss.commit();
-        sqlss.close();
+            sqlss.commit();
+            sqlss.close();
+        }
+        catch (Exception e){
+            throw new SQLException(e.getMessage(),e);
+        }
     }
-
-
 }

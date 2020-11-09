@@ -1,13 +1,11 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Novedad;
-import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.SessionScoped;
 import javax.inject.Inject;
 import java.io.Serializable;
 import java.util.List;

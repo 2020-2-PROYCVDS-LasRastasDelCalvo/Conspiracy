@@ -1,8 +1,6 @@
 package edu.eci.cvds.entities;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 /**
  * @author Ana Gabriela Silva
