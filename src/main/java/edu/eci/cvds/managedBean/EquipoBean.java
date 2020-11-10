@@ -14,6 +14,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -46,7 +48,7 @@ public class EquipoBean extends BasePageBean {
     private List<Elemento> tablaTeclado;
     private FacesMessage.Severity estado;
     private List<Equipo> equipos;
-
+    private List<Equipo> equipSeleccionados;
 
     @PostConstruct
     public void init(){
@@ -113,6 +115,18 @@ public class EquipoBean extends BasePageBean {
         catch (Exception exception) {
             conErrores( exception.getMessage());
         }
+    }
+
+    public void asociarEquipLab(){
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");
+        System.out.println("sfsaasfasfasfas");System.out.println("sfsaasfasfasfas");
+
     }
 
     /**
@@ -236,6 +250,14 @@ public class EquipoBean extends BasePageBean {
 
     public void setIdEquipo(int idEquipo) {
         this.idEquipo = idEquipo;
+    }
+
+    public List<Equipo> getEquipSeleccionados() {
+        return equipSeleccionados;
+    }
+
+    public void setEquipSeleccionados(List<Equipo> equipSeleccionados) {
+        this.equipSeleccionados = equipSeleccionados;
     }
 }
 
