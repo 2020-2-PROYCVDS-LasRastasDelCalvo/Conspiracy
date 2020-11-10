@@ -181,13 +181,13 @@ public class HistorialServiciosImpl implements HistorialServicios{
             optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
 
             for( Equipo equipo: equipos){
-                asociarEquipo(equipo.getIdEquipo(),idLab);
+                asociarEquipo(idLab,equipo.getIdEquipo());
                 insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio con id "+equipo.getIdLab(),idUsuario,null,equipo.getIdEquipo()));
-                insertarNovedad( new Novedad(" Asociacion de equipo a un laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue asociado al laboratorio con id "+idLab,idUsuario,null,idLab));
+                insertarNovedad( new Novedad(" Asociacion de equipo a un laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue asociado al laboratorio con id "+idLab,idUsuario,null,equipo.getIdEquipo() ) );
             }
         }
-        catch(PersistenceException e){
-            throw new HistorialEquiposException(e.getMessage(),e);
+        catch(PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
 

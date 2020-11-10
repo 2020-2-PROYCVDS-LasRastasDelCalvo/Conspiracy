@@ -39,7 +39,7 @@
                     closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="idLab">id Laboratorio:</label>
-            <p:inputText  id="idLab" type="Integer" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{equipoBean.idLab}"/>
+            <p:inputText  id="idLab" type="int" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{equipoBean.idLab}"/>
         </div>
         <p:dataTable class="table table-dark" id="infoElementos"
                      value="#{equipoBean.equipos}"
@@ -74,7 +74,7 @@
             <p:confirm header="Confirmation" message="¿Realizar cambio de laboratorio?" icon="pi pi-exclamation-triangle" />
         </p:commandButton>
 
-        <p:confirmDialog global="true">
+        <p:confirmDialog global="true" >
             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
             <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
         </p:confirmDialog>

@@ -2,20 +2,16 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
-import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -121,6 +117,8 @@ public class EquipoBean extends BasePageBean {
     public void asociarEquipLab(){
         try{
             sinErrores();
+            for(Equipo equipo:equipSeleccionados) {
+            }
             historialServicios.asociarEquipoLabExistente( equipSeleccionados, usuario.getIdUsuario(), idLab);
 
         }
