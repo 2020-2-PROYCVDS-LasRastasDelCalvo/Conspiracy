@@ -174,5 +174,22 @@ public class HistorialServiciosImpl implements HistorialServicios{
         }
     }
 
+    @Override
+    public void asociarEquipoLabExistente(List<Equipo> equipos, int idUsuario, int idLab) throws HistorialEquiposException {
+        try{
+            Optional<Laboratorio> optionalLaboratorio = Optional.ofNullable( laboratorioDAO.consultarLaboratorio( idLab ) );
+            optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
+
+            for( Equipo equipo: equipos){
+                asociarEquipo(equipo.getIdEquipo(),idLab);
+                insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio con id "+equipo.getIdLab(),idUsuario,null,equipo.getIdEquipo()));
+                insertarNovedad( new Novedad(" Asociacion de equipo a un laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue asociado al laboratorio con id "+idLab,idUsuario,null,idLab));
+            }
+        }
+        catch(PersistenceException e){
+            throw new HistorialEquiposException(e.getMessage(),e);
+        }
+    }
+
 
 }

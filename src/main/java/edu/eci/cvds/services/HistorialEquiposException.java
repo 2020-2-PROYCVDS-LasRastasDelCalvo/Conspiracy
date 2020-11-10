@@ -11,6 +11,9 @@ package edu.eci.cvds.services;
  */
 public class HistorialEquiposException extends Exception{
     public static final  String NO_CLIENTE = "No existe un cliente con ese id en la base de datos.";
+    public static final  String NO_LAB = "No existe un laboratorio con ese id en la base de datos.";
+    public static final  String NO_ElEMENTO = "No existe un elemento con ese id en la base de datos.";
+    public static final  String NO_EQUIPO = "No existe un equipo con ese id en la base de datos.";
 
     public HistorialEquiposException(String message,Exception exception){
         super(message,exception);

@@ -46,25 +46,25 @@
                 <f:facet name="header">
                     Novedades
                 </f:facet>
-                <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" sortBy="#{novedad.idNovedad}"  >
+                <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" filterMatchMode="contains" sortBy="#{novedad.idNovedad}" >
                     <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Titulo"  filterBy="#{novedad.titulo}" sortBy="#{novedad.titulo}">
+                <p:column headerText="Titulo"  filterBy="#{novedad.titulo}" filterMatchMode="contains" sortBy="#{novedad.titulo}">
                     <p:outputLabel value="#{novedad.titulo}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Fecha"  filterBy="#{novedad.fecha}" sortBy="#{novedad.fecha}">
+                <p:column headerText="Fecha"  filterBy="#{novedad.fecha}" filterMatchMode="contains" sortBy="#{novedad.fecha}">
                     <p:outputLabel value="#{novedad.fecha}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Detalle" filterBy="#{novedad.detalle}" sortBy="#{novedad.detalle}">
+                <p:column headerText="Detalle" filterBy="#{novedad.detalle}" filterMatchMode="contains" sortBy="#{novedad.detalle}">
                     <p:outputLabel value="#{novedad.detalle}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Usuario" filterBy="#{novedad.correo}" sortBy="#{novedad.correo}">
+                <p:column headerText="Usuario" filterBy="#{novedad.correo}" filterMatchMode="contains" sortBy="#{novedad.correo}">
                     <p:outputLabel value="#{novedad.correo}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}" sortBy="#{novedad.idEquipo}">
+                <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}" filterMatchMode="contains" sortBy="#{novedad.idEquipo}">
                     <p:outputLabel value="#{novedad.idEquipo}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="idElemento" filterBy="#{novedad.idElemento}" sortBy="#{novedad.idElemento}">
+                <p:column headerText="idElemento" filterBy="#{novedad.idElemento}" filterMatchMode="contains" sortBy="#{novedad.idElemento}">
                     <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
                 </p:column>
             </p:dataTable>

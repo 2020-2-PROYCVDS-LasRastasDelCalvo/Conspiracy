@@ -35,17 +35,16 @@
         </div>
     </nav>
     <h:form id="InputLab">
-        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
-                    closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="idLab">id Laboratorio:</label>
-            <p:inputText  id="idLab" type="Integer" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{elemento.nombre}"/>
+            <p:inputText  id="idLab" type="Integer" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{equipoBean.idLab}"/>
         </div>
         <p:dataTable class="table table-dark" id="infoElementos"
                      value="#{equipoBean.equipos}"
                      var="equipo"
                      rowKey="#{equipo.idEquipo}"
                      rows="10"
+                     selection="#{equipoBean.equipSeleccionados}"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
@@ -53,7 +52,7 @@
             <f:facet name="header">
                 Equipos
             </f:facet>
-
+            <p:column  headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
             <p:column headerText="idEquipo" >
                 <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
             </p:column>
@@ -67,10 +66,6 @@
                 <p:outputLabel value="#{equipo.disponible}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-
-    </h:form>
-    <h:form>
         <p:growl id="message" showDetail="true" />
 
         <p:commandButton value="Asociar" action="#{equipoBean.asociarEquipLab}" update="message">
@@ -79,9 +74,12 @@
 
         <p:confirmDialog global="true">
             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-            <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
+            <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" action="#{equipoBean.info}" />
         </p:confirmDialog>
+        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
+                    closable="true" globalOnly="true"/>
     </h:form>
+
 
 
 </h:body>

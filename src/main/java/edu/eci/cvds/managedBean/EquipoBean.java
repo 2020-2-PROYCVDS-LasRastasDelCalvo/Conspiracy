@@ -36,6 +36,7 @@ public class EquipoBean extends BasePageBean {
     private int disponible;
     private int laboratorio;
     private int idEquipo;
+    private int idLab;
     private String message;
     private Elemento torreSeleccionada;
     private Elemento mouseSeleccionado;
@@ -118,15 +119,15 @@ public class EquipoBean extends BasePageBean {
     }
 
     public void asociarEquipLab(){
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");
-        System.out.println("sfsaasfasfasfas");System.out.println("sfsaasfasfasfas");
+        try{
+            sinErrores();
+            System.out.println(equipSeleccionados.size());
+            historialServicios.asociarEquipoLabExistente( equipSeleccionados, usuario.getIdUsuario(), idLab);
 
+        }
+        catch (Exception exception){
+            conErrores( exception.getMessage() );
+        }
     }
 
     /**
@@ -254,6 +255,14 @@ public class EquipoBean extends BasePageBean {
 
     public List<Equipo> getEquipSeleccionados() {
         return equipSeleccionados;
+    }
+
+    public int getIdLab() {
+        return idLab;
+    }
+
+    public void setIdLab(int idLab) {
+        this.idLab = idLab;
     }
 
     public void setEquipSeleccionados(List<Equipo> equipSeleccionados) {
