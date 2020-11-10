@@ -39,14 +39,13 @@ public class Novedad {
         this.idEquipo = idEquipo;
         //setFecha();
     }
-
-    public  Novedad( String titulo, String detalle, int idUsuario, Integer idElemento, int idEquipo){
+    //Contructor para asociar elemento a equipo
+    public  Novedad( String titulo, String detalle, int idUsuario, Integer idElemento, int idEquipo ){
         this.titulo = titulo;
         this.detalle = detalle;
         this.idUsuario = idUsuario;
         this.idElemento = idElemento;
         this.idEquipo = idEquipo;
-        //setFecha();
     }
 
     public  Novedad(int idNovedad, String titulo, String detalle, int idUsuario,  Integer idElemento, int idEquipo, String correo){
@@ -58,6 +57,13 @@ public class Novedad {
         this.idEquipo = idEquipo;
         this.correo = correo;
         setFecha();
+    }
+    //Constructor para retiros de elementos
+    public Novedad(String titulo, String detalle, int idUsuario, Integer idElemento){
+        this.titulo = titulo;
+        this.detalle = detalle;
+        this.idUsuario = idUsuario;
+        this.idElemento = idElemento;
     }
 
     public Date getFecha() { return fecha; }

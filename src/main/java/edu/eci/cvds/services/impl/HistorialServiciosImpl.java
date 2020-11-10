@@ -218,10 +218,12 @@ public class HistorialServiciosImpl implements HistorialServicios{
                 for (Elemento q: evalEquipo.getElementos()){
                     if (e.getTipo().equals(q.getTipo())){
                         elementoDAO.asociarEquipo(q.getIdElemento(),null);
+                        insertarNovedad( new Novedad("Retiro de elemento","El elemento con id " + q.getIdElemento() + " de tipo " + q.getTipo() + " fue retirado del equipo"+ q.getIdEquipo() +".",idUsuario,q.getIdElemento(),idEquipo));
                         break;
                     }
                 }
                 elementoDAO.asociarEquipo(e.getIdElemento(),idEquipo);
+                insertarNovedad(new Novedad("Asociacion elemento-equipo","El elemento con id "+ e.getIdElemento() +" de tipo " + e.getTipo() + " fue asociado al equipo con id " + idEquipo +".",idUsuario,e.getIdElemento(),idEquipo));
             }
 
         }
