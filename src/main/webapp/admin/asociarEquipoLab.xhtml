@@ -35,6 +35,8 @@
         </div>
     </nav>
     <h:form id="InputLab">
+        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
+                    closable="true" globalOnly="true"/>
         <div class="form-group">
             <label for="idLab">id Laboratorio:</label>
             <p:inputText  id="idLab" type="Integer" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{equipoBean.idLab}"/>
@@ -68,16 +70,14 @@
         </p:dataTable>
         <p:growl id="message" showDetail="true" />
 
-        <p:commandButton value="Asociar" action="#{equipoBean.asociarEquipLab}" update="message">
+        <p:commandButton value="Asociar" actionListener="#{equipoBean.asociarEquipLab}" action="#{equipoBean.info}" update="message">
             <p:confirm header="Confirmation" message="¿Realizar cambio de laboratorio?" icon="pi pi-exclamation-triangle" />
         </p:commandButton>
 
         <p:confirmDialog global="true">
             <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-            <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" action="#{equipoBean.info}" />
+            <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
         </p:confirmDialog>
-        <p:messages id="mensaje" showDetail="true" autoUpdate="true"
-                    closable="true" globalOnly="true"/>
     </h:form>
 
 

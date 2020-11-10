@@ -121,7 +121,6 @@ public class EquipoBean extends BasePageBean {
     public void asociarEquipLab(){
         try{
             sinErrores();
-            System.out.println(equipSeleccionados.size());
             historialServicios.asociarEquipoLabExistente( equipSeleccionados, usuario.getIdUsuario(), idLab);
 
         }

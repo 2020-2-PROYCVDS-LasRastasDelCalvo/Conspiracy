@@ -20,19 +20,19 @@ import java.util.List;
  */
 
 @SuppressWarnings("deprecation")
-@ManagedBean(name = "elemento")
+@ManagedBean(name = "elementoBean")
 @SessionScoped
 public class ElementoBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
 
+    private int idEquipo;
     private String message;
     private FacesMessage.Severity estado;
     private String tipo;
     private String nombre;
     private String descripcion;
     private String[] opciones = {"Torre","Pantalla","Mouse","Teclado"};
-    private int cantidad;
     private List<Elemento> elementos;
 
     @PostConstruct
@@ -56,11 +56,15 @@ public class ElementoBean extends BasePageBean {
             conErrores( exception.getMessage());
         }
     }
+
+    public void asociarEquipo(){
+        System.out.println("entre al bean Elemento");
+    }
+
     public void restablecer(){
         tipo = null ;
         nombre =null;
         descripcion = null;
-        cantidad = 1;
     }
 
     public void conErrores( String message){
@@ -113,12 +117,6 @@ public class ElementoBean extends BasePageBean {
         this.elementos = elementos;
     }
 
-    public int getCantidad() { return cantidad; }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
     public void actualizar(){
         try{
             elementos = historialServicios.consultarElementos();
@@ -133,5 +131,13 @@ public class ElementoBean extends BasePageBean {
      */
     public void info() {
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));
+    }
+
+    public int getIdEquipo() {
+        return idEquipo;
+    }
+
+    public void setIdEquipo(int idEquipo) {
+        this.idEquipo = idEquipo;
     }
 }
