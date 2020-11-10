@@ -66,7 +66,7 @@
             WHERE e.tipo = #{tipo} AND e.disponible = 1
             ORDER BY e.idElemento;
     </select>
-    <update id="asociarEquipo" >
+    <update id="asociarEquipo">
         UPDATE elemento
         SET
             idEquipo = #{idEquipo}

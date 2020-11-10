@@ -7,6 +7,8 @@ import edu.eci.cvds.persistence.mybatis.dao.*;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import javax.inject.Inject;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -192,9 +194,49 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void asociarElementoEquipo(int idUsuario, List<Elemento> elementosSeleccionados, int idEquipo) throws HistorialEquiposException {
+    public void asociarElementoEquipo(int idUsuario, List<Elemento> elementosSeleccionados, Integer idEquipo) throws HistorialEquiposException {
+        try{
+            ArrayList<String> evalElemento = new ArrayList<String>();
+            //Testeando esta mondá
+            Equipo evalEquipo = consultarEquipo(idEquipo);
+            if (evalEquipo == null){
+                throw new PersistenceException("Equipo no existente.");
+            }
+            //Garantiza que no se asocien más elementos de lo posible
+            if (elementosSeleccionados.size() > 4){
+                throw new PersistenceException("Cantidad de elementos a asociar a un solo equipo no valida.");
+            }
+            //Garantiza que no se asocien más de un elemento del mismo tipo
+            for (Elemento e: elementosSeleccionados){
+                if (evalElemento.contains(e.getTipo())){
+                    throw new PersistenceException("Cantidad de elementos de un mismo tipo a asociar a un solo equipo no valida.");
+                }
+                evalElemento.add(e.getTipo());
+            }
+            //Aquí ya debe de asociar los elementos SI O SI
+            for (Elemento e: elementosSeleccionados){
+                for (Elemento q: evalEquipo.getElementos()){
+                    if (e.getTipo().equals(q.getTipo())){
+                        elementoDAO.asociarEquipo(q.getIdElemento(),null);
+                        break;
+                    }
+                }
+                elementoDAO.asociarEquipo(e.getIdElemento(),idEquipo);
+            }
 
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
+        }
     }
 
-
+    @Override
+    public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException{
+        try{
+            return equipoDAO.consultarEquipo(idEquipo);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
+        }
+    }
 }

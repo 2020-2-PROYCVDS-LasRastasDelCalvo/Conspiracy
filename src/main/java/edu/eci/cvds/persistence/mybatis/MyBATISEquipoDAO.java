@@ -68,4 +68,14 @@ public class MyBATISEquipoDAO implements EquipoDAO {
             throw new PersistenceException("Error al consultar equipos disponibles.",e);
         }
     }
+
+    @Override
+    public Equipo consultarEquipo(int idEquipo) throws PersistenceException{
+        try{
+            return equipoMapper.consultarEquipo(idEquipo);
+        }
+        catch (Exception e) {
+            throw new PersistenceException("Error al consultar equipos disponibles.", e);
+        }
+    }
 }

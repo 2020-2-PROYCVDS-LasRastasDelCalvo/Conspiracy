@@ -14,4 +14,5 @@ public interface EquipoMapper {
     public void generarNovedades( @Param("idEquipo") int idEquipo, @Param("idElemento") int idElemento, @Param("titulo") String titulo, @Param("detalle") String detalle, @Param("idUsuario") int idUsuario )  throws PersistenceException;
     public void asociar(@Param("idLab") int idLab, @Param("idEquipo") int idEquipo) throws PersistenceException;
     public List<Equipo> consultarEquiposDisponibles() throws PersistenceException;
+    public Equipo consultarEquipo(@Param("idEquipo") int idEquipo) throws PersistenceException;
 }

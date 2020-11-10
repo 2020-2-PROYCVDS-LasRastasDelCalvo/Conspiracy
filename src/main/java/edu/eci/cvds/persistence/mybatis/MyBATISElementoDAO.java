@@ -41,7 +41,7 @@ public class MyBATISElementoDAO implements ElementoDAO {
     }
 
     @Override
-    public void asociarEquipo(int idElemento, int idEquipo)  throws PersistenceException {
+    public void asociarEquipo(int idElemento, Integer idEquipo)  throws PersistenceException {
         try{
             elementoMapper.asociarEquipo(idElemento,idEquipo);
         }
