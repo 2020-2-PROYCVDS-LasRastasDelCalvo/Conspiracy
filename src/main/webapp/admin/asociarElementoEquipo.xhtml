@@ -49,7 +49,7 @@
                      var="elemento"
                      rowKey="#{elemento.idElemento}"
                      rows="10"
-
+                     selection="#{elementoBean.elementosSeleccionados}"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"

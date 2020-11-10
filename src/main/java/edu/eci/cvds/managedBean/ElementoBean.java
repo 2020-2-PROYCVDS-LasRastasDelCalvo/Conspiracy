@@ -1,8 +1,12 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -34,11 +38,15 @@ public class ElementoBean extends BasePageBean {
     private String descripcion;
     private String[] opciones = {"Torre","Pantalla","Mouse","Teclado"};
     private List<Elemento> elementos;
+    private List<Elemento> elementosSeleccionados;
+    private Usuario usuario;
+    private Subject subject = SecurityUtils.getSubject();
 
     @PostConstruct
     public void init(){
         super.init();
         try{
+            usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
             elementos = historialServicios.consultarElementos();
         }
         catch (Exception exception) {
@@ -58,7 +66,13 @@ public class ElementoBean extends BasePageBean {
     }
 
     public void asociarEquipo(){
-        System.out.println("entre al bean Elemento");
+        try {
+            sinErrores();
+            historialServicios.asociarElementoEquipo(usuario.getIdUsuario(), elementosSeleccionados, idEquipo );
+        }
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
+        }
     }
 
     public void restablecer(){
@@ -139,5 +153,13 @@ public class ElementoBean extends BasePageBean {
 
     public void setIdEquipo(int idEquipo) {
         this.idEquipo = idEquipo;
+    }
+
+    public List<Elemento> getElementosSeleccionados() {
+        return elementosSeleccionados;
+    }
+
+    public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) {
+        this.elementosSeleccionados = elementosSeleccionados;
     }
 }

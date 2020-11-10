@@ -191,5 +191,10 @@ public class HistorialServiciosImpl implements HistorialServicios{
         }
     }
 
+    @Override
+    public void asociarElementoEquipo(int idUsuario, List<Elemento> elementosSeleccionados, int idEquipo) throws HistorialEquiposException {
+
+    }
+
 
 }

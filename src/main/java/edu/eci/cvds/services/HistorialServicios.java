@@ -41,4 +41,6 @@ public interface HistorialServicios {
 
 
     public void asociarEquipoLabExistente( List<Equipo> equipos, int idUsuario, int idLab)throws HistorialEquiposException;
+
+    public void asociarElementoEquipo(int idUsuario,List<Elemento> elementosSeleccionados,int idEquipo ) throws HistorialEquiposException;
 }
