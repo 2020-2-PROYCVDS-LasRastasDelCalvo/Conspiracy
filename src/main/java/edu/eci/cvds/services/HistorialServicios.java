@@ -45,5 +45,5 @@ public interface HistorialServicios {
 
     public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException;
 
-    public void darDeBajaElemento( int idUsuario, Elemento elemento )throws HistorialEquiposException;
+    public void cambiarEstadoElemento( int idUsuario, Elemento elemento )throws HistorialEquiposException;
 }

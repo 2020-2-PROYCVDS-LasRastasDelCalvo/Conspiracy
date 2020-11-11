@@ -11,6 +11,7 @@
             e.descripcion AS e_descripcion,
             e.idEquipo AS e_idEquipo,
             e.disponible AS e_disponible,
+            e.estado AS e_estado,
 
             n.idNovedad AS n_idNovedad,
             n.titulo AS n_titulo ,
@@ -48,6 +49,7 @@
             e.descripcion AS e_descripcion,
             e.idEquipo AS e_idEquipo,
             e.disponible AS e_disponible,
+            e.estado AS e_estado,
 
             n.idNovedad AS n_idNovedad,
             n.titulo AS n_titulo ,
@@ -87,6 +89,7 @@
             e.descripcion AS e_descripcion,
             e.idEquipo AS e_idEquipo,
             e.disponible AS e_disponible,
+            e.estado AS e_estado,
 
             n.idNovedad AS n_idNovedad,
             n.titulo AS n_titulo ,

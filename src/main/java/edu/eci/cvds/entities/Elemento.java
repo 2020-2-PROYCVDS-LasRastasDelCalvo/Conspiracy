@@ -11,11 +11,12 @@ import java.util.ArrayList;
  */
 public class Elemento {
     private int idElemento;
-    private int idEquipo;
+    private Integer idEquipo;
     private String tipo;
     private String nombre;
     private String descripcion;
     private int disponible;
+    private String estado;
     private ArrayList<Novedad> novedades;
 
 
@@ -27,15 +28,24 @@ public class Elemento {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.novedades = new ArrayList<Novedad>();
+        this.estado = "ACTIVO";
+    }
+    public Elemento( String tipo, String nombre, String descripcion, String estado){
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.novedades = new ArrayList<Novedad>();
+        this.estado = estado;
     }
 
-    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades,int disponible){
+    public Elemento(int id, String tipo, String nombre, String descripcion, ArrayList<Novedad> novedades,int disponible, String estado){
         this.idElemento = id;
         this.tipo = tipo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.novedades = novedades;
         this.disponible = disponible;
+        this.estado = estado;
     }
 
     public int getIdElemento() {
@@ -78,11 +88,11 @@ public class Elemento {
         this.novedades = novedades;
     }
 
-    public int getIdEquipo() {
+    public Integer getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
+    public void setIdEquipo(Integer idEquipo) {
         this.idEquipo = idEquipo;
     }
 
@@ -93,4 +103,8 @@ public class Elemento {
     public void setDisponible(int disponible) {
         this.disponible = disponible;
     }
+
+    public String getEstado() { return estado; }
+
+    public void setEstado(String estado) { this.estado = estado; }
 }

@@ -25,3 +25,6 @@ ON Equipo;
 
 DROP TRIGGER IF EXISTS  AD_disponible_Elemento
 ON Elemento;
+
+DROP TRIGGER IF EXISTS TR_Elemento_Estado
+ON Elemento;

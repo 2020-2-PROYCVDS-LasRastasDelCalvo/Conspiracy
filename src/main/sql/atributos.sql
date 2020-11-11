@@ -28,6 +28,12 @@ CHECK(
 	disponible  IN (0,1)
 );
 
+ALTER TABLE Elemento
+ADD CONSTRAINT CH_Elemento_estado
+CHECK(
+    estado IN ('ACTIVO','INACTIVO')
+);
+
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------

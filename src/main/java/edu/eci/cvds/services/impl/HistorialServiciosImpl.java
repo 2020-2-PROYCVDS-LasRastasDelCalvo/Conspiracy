@@ -34,6 +34,10 @@ public class HistorialServiciosImpl implements HistorialServicios{
     @Inject
     private LaboratorioDAO laboratorioDAO;
 
+
+    /*
+    Consultar / SELECT / Buscar
+     */
     @Override
     public List<Novedad> consultarNovedades() throws HistorialEquiposException{
         try{
@@ -55,51 +59,23 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarElemento(String tipo, String nombre, String descripcion) throws HistorialEquiposException {
+    public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException{
         try{
-            Elemento elemento = new Elemento(tipo, nombre, descripcion);
-            elementoDAO.registrarElemento( elemento );
+            return equipoDAO.consultarEquipo(idEquipo);
         }
         catch (PersistenceException persistenceException){
-            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
 
     @Override
-    public List<Equipo> consultarEquipos() throws HistorialEquiposException {
+    public List<Equipo> consultarEquiposDisponibles() throws HistorialEquiposException{
         try{
-            return equipoDAO.consultarEquipos();
+            return equipoDAO.consultarEquiposDisponibles();
         }
-        catch (PersistenceException persistenceException){
-            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        catch(PersistenceException e){
+            throw new HistorialEquiposException(e.getMessage(),e);
         }
-    }
-
-    @Override
-    public void insertarEquipo(int idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
-        try {
-            equipoDAO.registrarEquipo(idEquipo,idLab);
-            String cadena ="";
-            for( int elemento : elementos){
-                relacionarElementoEquipo(elemento,idEquipo);
-                cadena+= elemento+", ";
-                insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
-            }
-            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+cadena,idUsuario, idEquipo));
-        }
-        catch (PersistenceException persistenceException){
-            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
-        }
-    }
-
-    @Override
-    public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException {
-            try{
-                elementoDAO.asociarEquipo( idElemento, idEquipo);
-            }
-            catch (PersistenceException persistenceException){
-                throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
-            }
     }
 
     @Override
@@ -113,9 +89,9 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarNovedad(Novedad novedad) throws HistorialEquiposException {
+    public List<Equipo> consultarEquipos() throws HistorialEquiposException {
         try{
-            novedadDAO.guardarNovedadEquipo( novedad );
+            return equipoDAO.consultarEquipos();
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
@@ -144,6 +120,47 @@ public class HistorialServiciosImpl implements HistorialServicios{
         }
     }
 
+    /*
+    Insertar / INSERT / Agregar
+     */
+    @Override
+    public void insertarElemento(String tipo, String nombre, String descripcion) throws HistorialEquiposException {
+        try{
+            Elemento elemento = new Elemento(tipo, nombre, descripcion);
+            elementoDAO.registrarElemento( elemento );
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public void insertarEquipo(int idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
+        try {
+            equipoDAO.registrarEquipo(idEquipo,idLab);
+            String cadena ="";
+            for( int elemento : elementos){
+                relacionarElementoEquipo(elemento,idEquipo);
+                cadena+= elemento+", ";
+                insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
+            }
+            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+cadena,idUsuario, idEquipo));
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public void insertarNovedad(Novedad novedad) throws HistorialEquiposException {
+        try{
+            novedadDAO.guardarNovedadEquipo( novedad );
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
     @Override
     public void registrarLaboratorio(int idUsuario,int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException {
         try{
@@ -158,22 +175,26 @@ public class HistorialServiciosImpl implements HistorialServicios{
         }
     }
 
+    /*
+    Actualizar / UPDATE / Asociar / Dar de baja / Relacionar
+     */
+
+    @Override
+    public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException {
+            try{
+                elementoDAO.asociarEquipo( idElemento, idEquipo);
+            }
+            catch (PersistenceException persistenceException){
+                throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+            }
+    }
+
     @Override
     public void asociarEquipo(int idLab, int idEquipo) throws HistorialEquiposException {
         try {
             equipoDAO.asociar(idLab, idEquipo);
         } catch (PersistenceException e) {
             throw new HistorialEquiposException(e.getMessage(),e );
-        }
-    }
-
-    @Override
-    public List<Equipo> consultarEquiposDisponibles() throws HistorialEquiposException{
-        try{
-            return equipoDAO.consultarEquiposDisponibles();
-        }
-        catch(PersistenceException e){
-            throw new HistorialEquiposException(e.getMessage(),e);
         }
     }
 
@@ -233,26 +254,33 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException{
+    public void cambiarEstadoElemento(int idUsuario, Elemento elemento) throws HistorialEquiposException {
         try{
-            return equipoDAO.consultarEquipo(idEquipo);
+            String change = elemento.getEstado().equals("ACTIVO") ? "ACTIVO" : "INACTIVO";
+            if (elemento.getDisponible() == 0){
+                throw new PersistenceException("Un elemento asociado a un equipo no se puede dar de baja.");
+            }
+            System.out.println("Trying to change Estado at cambiarEstadoElemento at HistorialServiciosImpl.");
+            elementoDAO.cambiarEstadoElemento(elemento.getIdElemento(),change);
+            if (change.equals("INACTIVO")){
+                insertarNovedad(new Novedad("Elemento dado de baja","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue dado de baja.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
+            }
+            else{
+                insertarNovedad(new Novedad("Elemento activo","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue activado otra vez.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
+            }
         }
         catch (PersistenceException persistenceException){
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println("Error en cambiarEstadoElemento en HistorialServiciosImpl.");
+            System.out.println();
+            System.out.println();
+            System.out.println();
+            System.out.println();
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
-
-    @Override
-    public void darDeBajaElemento(int idUsuario, Elemento elemento) throws HistorialEquiposException {
-        try{
-            elementoDAO.darDeBajaElemento(elemento.getIdElemento());
-            insertarNovedad(new Novedad("Elemento dado de baja","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue dado de baja.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
-        }
-        catch (PersistenceException persistenceException){
-            persistenceException.printStackTrace();
-            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
-        }
-    }
-
 
 }

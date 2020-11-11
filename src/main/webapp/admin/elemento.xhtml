@@ -68,12 +68,15 @@
             <p:column headerText="IdEquipo">
                 <p:outputLabel value="#{elemento.idEquipo}"></p:outputLabel>
             </p:column>
+            <p:column headerText="Estado">
+                <p:outputLabel value="#{elemento.estado}"></p:outputLabel>
+            </p:column>
         </p:dataTable>
         <div class="form-group" align="center" >
             <p:commandButton class="btn btn-dark" update="consultarElemento" value="Actualizar" actionListener="#{elementoBean.actualizar}"/>
             <pr></pr>
             <p:growl id="message" showDetail="true" />
-            <p:commandButton class="btn btn-dark" value="Dar de baja" actionListener="#{elementoBean.darDeBajaElemento}" action="#{elementoBean.info}" update="message">
+            <p:commandButton class="btn btn-dark" value="Dar de baja" actionListener="#{elementoBean.cambiarEstadoElemento}" action="#{elementoBean.info}" update="message">
                 <p:confirm header="Confirmation" message="¿Realizar cambio de elemento?" icon="pi pi-exclamation-triangle" />
             </p:commandButton>
 
@@ -83,7 +86,6 @@
             </p:confirmDialog>
         </div>
     </h:form>
-
 
 </h:body>
 </html>

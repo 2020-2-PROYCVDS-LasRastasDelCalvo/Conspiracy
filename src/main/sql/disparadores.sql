@@ -59,6 +59,17 @@ EXECUTE PROCEDURE estadoEquipo();
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
+CREATE OR REPLACE FUNCTION FC_SET_ESTADO()
+    RETURN TRIGGER
+AS
+$$
+BEGIN
+    NEW.estado := 'ACTIVO';
+    RETURN NEW;
+END;
+$$
+LANGUAGE plqsql;
+
 CREATE OR REPLACE FUNCTION estadoElemento()
 	RETURNS TRIGGER
 AS
@@ -78,3 +89,8 @@ CREATE TRIGGER AD_disponible_Elemento
   BEFORE INSERT OR UPDATE ON public.Elemento
   FOR EACH ROW
 EXECUTE PROCEDURE estadoElemento();
+
+CREATE TRIGGER TR_Elemento_Estado
+    BEFORE INSERT ON public.Elemento
+    FOR EACH ROW
+EXECUTE PROCEDURE FC_SET_ESTADO();

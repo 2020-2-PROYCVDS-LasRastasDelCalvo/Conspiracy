@@ -50,32 +50,32 @@ VALUES(5,3,CURRENT_DATE ,1);
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Torre','Torre A','Descripcion de la torre A',1,0);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Torre','Torre A','Descripcion de la torre A',1,0,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1,0);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Pantalla','Pantalla A','Descripcion de la pantalla A',1,0,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Mouse','Mouse A','Descripcion del mouse A',1,0);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Mouse','Mouse A','Descripcion del mouse A',1,0,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Teclado','Teclado A','Descripcion del teclado A',1,0,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Torre','Torre B','Descripcion de la torre B',null,1);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Torre','Torre B','Descripcion de la torre B',null,1,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Torre','Torre C','Descripcion de la torre C',null,1);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Torre','Torre C','Descripcion de la torre C',null,1,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Mouse','Mouse C','Descripcion del Mouse C',null,1);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Mouse','Mouse C','Descripcion del Mouse C',null,1,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Pantalla','Pantalla C','Descripcion de la pantalla C',null,1);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Pantalla','Pantalla C','Descripcion de la pantalla C',null,1,'ACTIVO');
 
-INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible)
-VALUES('Teclado','Torre C','Descripcion del teclado C',null,1);
+INSERT INTO Elemento(tipo,nombre,descripcion,idEquipo,disponible,estado)
+VALUES('Teclado','Torre C','Descripcion del teclado C',null,1,'ACTIVO');
 
 -- -----------------------------------------------------
 -- Table `Novedad`

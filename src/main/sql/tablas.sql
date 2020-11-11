@@ -8,7 +8,8 @@ CREATE TABLE IF NOT EXISTS Usuario(
   correo VARCHAR(50)  NOT NULL,
   contraseña VARCHAR(80)  NOT NULL,
   estado INTEGER  NOT NULL,
-  rol VARCHAR(30) NOT NULL
+  rol VARCHAR(30) NOT NULL,
+  UNIQUE (correo)
 );
 
 -- -----------------------------------------------------
@@ -16,7 +17,9 @@ CREATE TABLE IF NOT EXISTS Usuario(
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS Laboratorio (
   idLaboratorio serial PRIMARY KEY,
-  nombre VARCHAR(40) NOT NULL);
+  nombre VARCHAR(40) NOT NULL,
+  UNIQUE (nombre)
+);
 
 -- -----------------------------------------------------
 -- Table `Equipo`
@@ -38,8 +41,8 @@ CREATE TABLE IF NOT EXISTS Elemento (
   descripcion VARCHAR(500)  NOT NULL,
   idEquipo INT REFERENCES Equipo(idEquipo) DEFERRABLE,
   disponible INT NOT NULL,
+  estado VARCHAR(8) NOT NULL,
   UNIQUE(tipo,idEquipo)
-
 );
 -- -----------------------------------------------------
 -- Table `Novedad`
