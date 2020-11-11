@@ -5,9 +5,8 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui" xmlns:P="http://java.sun.com/jsf/html">
 <h:head>
-    <title>Registrar Elementos</title>
+    <title>Consultar Elementos</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
-    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -15,7 +14,7 @@
 </h:head>
 
 <h:body>
-    <h1>Estoy en asociar Equipos-Lab</h1>
+    <h1>Estoy en Consultar Elementos</h1>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
@@ -34,52 +33,56 @@
             </ul>
         </div>
     </nav>
-    <h:form id="InputLab">
+    <h:form id="consultarElemento">
         <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                     closable="true" globalOnly="true"/>
-        <div class="form-group">
-            <label for="idLab">id Laboratorio:</label>
-            <p:inputText  id="idLab" type="int" class="form-control"  placeholder="Laboratorio a establecer equipos" value="#{equipoBean.idLab}"/>
-        </div>
         <p:dataTable class="table table-dark" id="infoElementos"
-                     value="#{equipoBean.equipos}"
-                     var="equipo"
-                     rowKey="#{equipo.idEquipo}"
+                     value="#{elementoBean.elementos}"
+                     var="elemento"
+                     selection="#{elementoBean.elementoBaja}"
+                     rowKey="#{elemento.idElemento}"
                      rows="10"
-                     selection="#{equipoBean.equipSeleccionados}"
                      paginator="true"
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                      rowsPerPageTemplate="1,5,10,15">
             <f:facet name="header">
-                Equipos
+                Elementos
             </f:facet>
-            <p:column  headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
-            <p:column headerText="idEquipo" >
-                <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
+            <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+            <p:column headerText="idElemento" >
+                <p:outputLabel value="#{elemento.idElemento}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Laboratorio" >
-                <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
+            <p:column headerText="Tipo" >
+                <p:outputLabel value="#{elemento.tipo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Fecha Registro">
-                <p:outputLabel value="#{equipo.fechaRegistro}"></p:outputLabel>
+            <p:column headerText="Nombre">
+                <p:outputLabel value="#{elemento.nombre}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Descripcion" >
+                <p:outputLabel value="#{elemento.descripcion}"></p:outputLabel>
             </p:column>
             <p:column headerText="Disponible">
-                <p:outputLabel value="#{equipo.disponible}"></p:outputLabel>
+                <p:outputLabel value="#{elemento.disponible}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="IdEquipo">
+                <p:outputLabel value="#{elemento.idEquipo}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-        <p:growl id="message" showDetail="true" />
+        <div class="form-group" align="center" >
+            <p:commandButton class="btn btn-dark" update="consultarElemento" value="Actualizar" actionListener="#{elementoBean.actualizar}"/>
+            <pr></pr>
+            <p:growl id="message" showDetail="true" />
+            <p:commandButton class="btn btn-dark" value="Dar de baja" actionListener="#{elementoBean.darDeBajaElemento}" action="#{elementoBean.info}" update="message">
+                <p:confirm header="Confirmation" message="¿Realizar cambio de elemento?" icon="pi pi-exclamation-triangle" />
+            </p:commandButton>
 
-        <p:commandButton value="Asociar" actionListener="#{equipoBean.asociarEquipLab}" action="#{equipoBean.info}" update="message">
-            <p:confirm header="Confirmation" message="¿Realizar cambio de laboratorio?" icon="pi pi-exclamation-triangle" />
-        </p:commandButton>
-
-        <p:confirmDialog global="true" >
-            <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-            <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
-        </p:confirmDialog>
+            <p:confirmDialog global="true">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+            </p:confirmDialog>
+        </div>
     </h:form>
-
 
 
 </h:body>

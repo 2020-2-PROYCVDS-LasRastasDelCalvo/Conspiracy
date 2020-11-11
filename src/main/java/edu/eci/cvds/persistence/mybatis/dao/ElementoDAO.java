@@ -17,4 +17,5 @@ public interface ElementoDAO {
     public ArrayList<Elemento> consultarElementos()  throws PersistenceException;
     public void asociarEquipo(int idElemento,Integer idEquipo)  throws PersistenceException;
     public List<Elemento> buscarElemento(String elemento) throws PersistenceException;
+    public void darDeBajaElemento( int idElemento ) throws PersistenceException;
 }

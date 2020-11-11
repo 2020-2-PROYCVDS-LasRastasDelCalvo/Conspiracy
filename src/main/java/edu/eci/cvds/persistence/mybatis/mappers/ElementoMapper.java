@@ -18,5 +18,5 @@ public interface ElementoMapper {
     public void registrarElemento(@Param("tipo") Elemento elemento);
     public void asociarEquipo(@Param("idElemento") int idElemento,@Param("idEquipo") Integer idEquipo);
     public List<Elemento> buscarElemento(@Param("tipo") String elemento);
-
+    public void darDeBajaElemento( @Param("idElemento") int idElemento );
 }

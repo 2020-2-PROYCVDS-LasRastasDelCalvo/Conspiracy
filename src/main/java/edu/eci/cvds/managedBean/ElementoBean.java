@@ -2,11 +2,9 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Usuario;
-import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -41,6 +39,7 @@ public class ElementoBean extends BasePageBean {
     private List<Elemento> elementosSeleccionados;
     private Usuario usuario;
     private Subject subject = SecurityUtils.getSubject();
+    private Elemento elementoBaja;
 
     @PostConstruct
     public void init(){
@@ -79,6 +78,33 @@ public class ElementoBean extends BasePageBean {
         tipo = null ;
         nombre =null;
         descripcion = null;
+    }
+
+    public void actualizar(){
+        try{
+            sinErrores();
+            elementos = historialServicios.consultarElementos();
+        }
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
+        }
+    }
+
+    public void darDeBajaElemento(){
+        try{
+            sinErrores();
+            historialServicios.darDeBajaElemento( usuario.getIdUsuario(),elementoBaja);
+        }
+        catch (Exception exception) {
+            conErrores( exception.getMessage());
+        }
+    }
+
+    /**
+     * Metodo que muestra en un mensaje del estado del registrar elemento
+     */
+    public void info() {
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));
     }
 
     public void conErrores( String message){
@@ -131,22 +157,6 @@ public class ElementoBean extends BasePageBean {
         this.elementos = elementos;
     }
 
-    public void actualizar(){
-        try{
-            elementos = historialServicios.consultarElementos();
-        }
-        catch (Exception exception) {
-            conErrores( exception.getMessage());
-        }
-    }
-
-    /**
-     * Metodo que muestra en un mensaje del estado del registrar elemento
-     */
-    public void info() {
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(estado, "Registrar", message));
-    }
-
     public int getIdEquipo() {
         return idEquipo;
     }
@@ -161,5 +171,13 @@ public class ElementoBean extends BasePageBean {
 
     public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) {
         this.elementosSeleccionados = elementosSeleccionados;
+    }
+
+    public Elemento getElementoBaja() {
+        return elementoBaja;
+    }
+
+    public void setElementoBaja(Elemento elementoBaja) {
+        this.elementoBaja = elementoBaja;
     }
 }

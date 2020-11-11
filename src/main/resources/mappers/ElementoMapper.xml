@@ -73,6 +73,11 @@
         WHERE
             idElemento = #{idElemento};
     </update>
+
+    <delete id="darDeBajaElemento" parameterType="int">
+        DELETE FROM Elemento
+        WHERE idElemento = #{idElemento}
+    </delete>
     <resultMap id="ElementoResult" type="Elemento">
         <id property="idElemento" column="e_idElemento"/>
         <result property="tipo" column="e_tipo"/>

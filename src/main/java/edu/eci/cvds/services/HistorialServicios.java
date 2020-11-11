@@ -44,4 +44,6 @@ public interface HistorialServicios {
     public void asociarElementoEquipo(int idUsuario,List<Elemento> elementosSeleccionados,Integer idEquipo ) throws HistorialEquiposException;
 
     public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException;
+
+    public void darDeBajaElemento( int idUsuario, Elemento elemento )throws HistorialEquiposException;
 }

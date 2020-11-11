@@ -56,7 +56,17 @@ public class MyBATISElementoDAO implements ElementoDAO {
             return elementoMapper.buscarElemento(elemento);
         }
         catch (Exception e){
-            throw new PersistenceException("Error al asociar el equipo con id: ", e );
+            throw new PersistenceException("Error al buscar el elemento", e );
+        }
+    }
+
+    @Override
+    public void darDeBajaElemento(int idElemento) throws PersistenceException {
+        try{
+            elementoMapper.darDeBajaElemento( idElemento );
+        }
+        catch (Exception e){
+            throw new PersistenceException("Error al dar de baja el elemento con id: "+idElemento, e );
         }
     }
 }

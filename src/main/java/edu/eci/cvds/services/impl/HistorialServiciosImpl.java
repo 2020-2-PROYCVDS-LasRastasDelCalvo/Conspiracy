@@ -8,7 +8,6 @@ import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import javax.inject.Inject;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -80,11 +79,13 @@ public class HistorialServiciosImpl implements HistorialServicios{
     public void insertarEquipo(int idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
         try {
             equipoDAO.registrarEquipo(idEquipo,idLab);
+            String cadena ="";
             for( int elemento : elementos){
                 relacionarElementoEquipo(elemento,idEquipo);
+                cadena+= elemento+", ";
                 insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
             }
-            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+elementos.toString(),idUsuario, idEquipo));
+            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+cadena,idUsuario, idEquipo));
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
@@ -225,7 +226,6 @@ public class HistorialServiciosImpl implements HistorialServicios{
                 elementoDAO.asociarEquipo(e.getIdElemento(),idEquipo);
                 insertarNovedad(new Novedad("Asociacion elemento-equipo","El elemento con id "+ e.getIdElemento() +" de tipo " + e.getTipo() + " fue asociado al equipo con id " + idEquipo +".",idUsuario,e.getIdElemento(),idEquipo));
             }
-
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
@@ -241,4 +241,18 @@ public class HistorialServiciosImpl implements HistorialServicios{
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
+
+    @Override
+    public void darDeBajaElemento(int idUsuario, Elemento elemento) throws HistorialEquiposException {
+        try{
+            elementoDAO.darDeBajaElemento(elemento.getIdElemento());
+            insertarNovedad(new Novedad("Elemento dado de baja","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue dado de baja.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
+        }
+        catch (PersistenceException persistenceException){
+            persistenceException.printStackTrace();
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
+        }
+    }
+
+
 }
