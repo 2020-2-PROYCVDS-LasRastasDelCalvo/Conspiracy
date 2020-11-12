@@ -93,28 +93,10 @@ public class ElementoBean extends BasePageBean {
     public void cambiarEstadoElemento(){
         try{
             sinErrores();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println("Error en cambiarEstadoElemento en ElementoBean.");
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            historialServicios.cambiarEstadoElemento( usuario.getIdUsuario(),elementoBaja);
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println("Pasé el metodo de cambiar estado PELOTUDO.");
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
+            historialServicios.cambiarEstadoElemento(usuario.getIdUsuario(),elementoBaja);
         }
         catch (Exception exception) {
-            conErrores( "Hubo un error al cambiar el estado del elemento HIJUEPUTA.");
+            conErrores(exception.getMessage());
         }
     }
 
@@ -187,9 +169,7 @@ public class ElementoBean extends BasePageBean {
         return elementosSeleccionados;
     }
 
-    public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) {
-        this.elementosSeleccionados = elementosSeleccionados;
-    }
+    public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) { this.elementosSeleccionados = elementosSeleccionados; }
 
     public Elemento getElementoBaja() {
         return elementoBaja;

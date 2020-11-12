@@ -135,7 +135,7 @@ public class HistorialServiciosImpl implements HistorialServicios{
     }
 
     @Override
-    public void insertarEquipo(int idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
+    public void insertarEquipo(Integer idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
         try {
             equipoDAO.registrarEquipo(idEquipo,idLab);
             String cadena ="";
@@ -144,7 +144,7 @@ public class HistorialServiciosImpl implements HistorialServicios{
                 cadena+= elemento+", ";
                 insertarNovedad(new Novedad("Asociación de elemento a equipo ","El elemento con id "+elemento+" fue asociado al equipo "+idEquipo,idUsuario,elemento,idEquipo));
             }
-            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+cadena,idUsuario, idEquipo));
+            insertarNovedad( new Novedad("Registro del Equipo", "El equipo con id "+idEquipo+" fue registrado y se le asignaron los elementos: "+cadena,idEquipo, idUsuario));
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
@@ -256,31 +256,20 @@ public class HistorialServiciosImpl implements HistorialServicios{
     @Override
     public void cambiarEstadoElemento(int idUsuario, Elemento elemento) throws HistorialEquiposException {
         try{
-            String change = elemento.getEstado().equals("ACTIVO") ? "ACTIVO" : "INACTIVO";
+            String change = elemento.getEstado().equals("ACTIVO") ? "INACTIVO" : "ACTIVO";
             if (elemento.getDisponible() == 0){
                 throw new PersistenceException("Un elemento asociado a un equipo no se puede dar de baja.");
             }
-            System.out.println("Trying to change Estado at cambiarEstadoElemento at HistorialServiciosImpl.");
             elementoDAO.cambiarEstadoElemento(elemento.getIdElemento(),change);
             if (change.equals("INACTIVO")){
-                insertarNovedad(new Novedad("Elemento dado de baja","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue dado de baja.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
+                insertarNovedad(new Novedad("Elemento dado de baja","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue dado de baja.",idUsuario,elemento.getIdElemento(), null) );
             }
             else{
-                insertarNovedad(new Novedad("Elemento activo","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue activado otra vez.",idUsuario,elemento.getIdElemento(),elemento.getIdEquipo()) );
+                insertarNovedad(new Novedad("Elemento activo","El elemento con id "+ elemento.getIdElemento() +" de tipo " + elemento.getTipo() + " fue activado otra vez.",idUsuario,elemento.getIdElemento(), null) );
             }
         }
         catch (PersistenceException persistenceException){
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println("Error en cambiarEstadoElemento en HistorialServiciosImpl.");
-            System.out.println();
-            System.out.println();
-            System.out.println();
-            System.out.println();
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
-
 }

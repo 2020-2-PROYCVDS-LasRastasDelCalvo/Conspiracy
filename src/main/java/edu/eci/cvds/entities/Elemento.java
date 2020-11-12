@@ -20,9 +20,8 @@ public class Elemento {
     private ArrayList<Novedad> novedades;
 
 
-    public Elemento(){
+    public Elemento(){}
 
-    }
     public Elemento( String tipo, String nombre, String descripcion){
         this.tipo = tipo;
         this.nombre = nombre;

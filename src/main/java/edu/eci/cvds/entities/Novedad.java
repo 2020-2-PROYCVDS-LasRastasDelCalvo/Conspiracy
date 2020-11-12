@@ -12,7 +12,7 @@ import java.sql.Date;
 public class Novedad {
     private int idNovedad;
     private int idUsuario;
-    private int idEquipo;
+    private Integer idEquipo;
     private Integer idElemento;
     private  String titulo;
     private String detalle;
@@ -21,7 +21,7 @@ public class Novedad {
 
     public Novedad(){}
 
-    public  Novedad(int idNovedad, String titulo, String detalle, Date fecha, int idUsuario, Integer idElemento, int idEquipo, String correo){
+    public  Novedad(int idNovedad, String titulo, String detalle, Date fecha, int idUsuario, Integer idElemento, Integer idEquipo, String correo){
         this.idNovedad = idNovedad;
         this.titulo = titulo;
         this.detalle = detalle;
@@ -32,7 +32,7 @@ public class Novedad {
         this.correo = correo;
     }
 
-    public  Novedad( String titulo, String detalle, int idUsuario, int idEquipo){
+    public  Novedad( String titulo, String detalle, Integer idEquipo, int idUsuario){
         this.titulo = titulo;
         this.detalle = detalle;
         this.idUsuario = idUsuario;
@@ -40,7 +40,7 @@ public class Novedad {
         //setFecha();
     }
     //Contructor para asociar elemento a equipo
-    public  Novedad( String titulo, String detalle, int idUsuario, Integer idElemento, int idEquipo ){
+    public  Novedad( String titulo, String detalle, int idUsuario, Integer idElemento, Integer idEquipo ){
         this.titulo = titulo;
         this.detalle = detalle;
         this.idUsuario = idUsuario;
@@ -48,7 +48,7 @@ public class Novedad {
         this.idEquipo = idEquipo;
     }
 
-    public  Novedad(int idNovedad, String titulo, String detalle, int idUsuario,  Integer idElemento, int idEquipo, String correo){
+    public  Novedad(int idNovedad, String titulo, String detalle, int idUsuario,  Integer idElemento, Integer idEquipo, String correo){
         this.idNovedad = idNovedad;
         this.titulo = titulo;
         this.detalle = detalle;
@@ -89,11 +89,11 @@ public class Novedad {
         this.idUsuario = idUsuario;
     }
 
-    public int getIdEquipo() {
+    public Integer getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
+    public void setIdEquipo(Integer idEquipo) {
         this.idEquipo = idEquipo;
     }
 

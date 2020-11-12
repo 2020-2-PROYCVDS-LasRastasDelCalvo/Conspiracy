@@ -79,12 +79,12 @@
             idElemento = #{idElemento};
     </update>
 
-    <update id="cambiarEstado" parameterType="map">
+    <update id="cambiarEstadoElemento">
         UPDATE elemento
         SET
             estado = #{change}
         WHERE
-            idElemento = #{idElemento}
+            idElemento = #{idElemento};
     </update>
     <resultMap id="ElementoResult" type="Elemento">
         <id property="idElemento" column="e_idElemento"/>

@@ -63,10 +63,10 @@ public class MyBATISElementoDAO implements ElementoDAO {
     @Override
     public void cambiarEstadoElemento(int idElemento, String change) throws PersistenceException {
         try{
-            System.out.println("Trying cambiarEstadoElemento at MyBATISElementoDAO");
-            elementoMapper.cambiarEstado( idElemento, change );
+            elementoMapper.cambiarEstadoElemento( idElemento, change );
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new PersistenceException("Error al dar de baja el elemento con id: "+idElemento, e );
         }
     }

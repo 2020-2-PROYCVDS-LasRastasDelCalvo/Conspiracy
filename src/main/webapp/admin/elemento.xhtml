@@ -76,7 +76,7 @@
             <p:commandButton class="btn btn-dark" update="consultarElemento" value="Actualizar" actionListener="#{elementoBean.actualizar}"/>
             <pr></pr>
             <p:growl id="message" showDetail="true" />
-            <p:commandButton class="btn btn-dark" value="Dar de baja" actionListener="#{elementoBean.cambiarEstadoElemento}" action="#{elementoBean.info}" update="message">
+            <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{elementoBean.cambiarEstadoElemento}" action="#{elementoBean.info}" update="message">
                 <p:confirm header="Confirmation" message="¿Realizar cambio de elemento?" icon="pi pi-exclamation-triangle" />
             </p:commandButton>
 
