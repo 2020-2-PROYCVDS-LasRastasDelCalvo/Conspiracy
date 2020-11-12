@@ -4,15 +4,20 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
-import edu.eci.cvds.persistence.mybatis.dao.*;
+import edu.eci.cvds.persistence.mybatis.dao.LaboratorioDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.ServiciosEquipo;
 import edu.eci.cvds.services.ServiciosLaboratorio;
 import edu.eci.cvds.services.ServiciosNovedad;
-
 import javax.inject.Inject;
 import java.util.List;
-
+/**
+ * @author Ana Gabriela Silva
+ * @author Juan Andrés Pico
+ * @author Leonardo Galeano
+ * @author Iván Camilo Rincón Saavedra
+ * @version 11/12/2020
+ */
 public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
     @Inject
     private LaboratorioDAO laboratorioDAO;

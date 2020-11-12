@@ -1,9 +1,7 @@
 package edu.eci.cvds.services;
 
-import edu.eci.cvds.entities.*;
-
+import edu.eci.cvds.entities.Elemento;
 import java.util.List;
-
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -11,7 +9,6 @@ import java.util.List;
  * @author Iván Camilo Rincón Saavedra
  * @version 11/12/2020
  */
-
 public interface ServiciosElemento {
     /*
     SELECT / Consultar /

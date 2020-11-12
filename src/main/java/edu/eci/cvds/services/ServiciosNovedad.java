@@ -1,9 +1,7 @@
 package edu.eci.cvds.services;
 
-import edu.eci.cvds.entities.*;
-
+import edu.eci.cvds.entities.Novedad;
 import java.util.List;
-
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico

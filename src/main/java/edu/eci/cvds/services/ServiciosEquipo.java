@@ -1,7 +1,6 @@
 package edu.eci.cvds.services;
 
-import edu.eci.cvds.entities.*;
-
+import edu.eci.cvds.entities.Equipo;
 import java.util.List;
 
 /**

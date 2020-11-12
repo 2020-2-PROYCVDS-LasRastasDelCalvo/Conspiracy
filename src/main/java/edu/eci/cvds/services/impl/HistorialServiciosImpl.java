@@ -3,12 +3,10 @@ package edu.eci.cvds.services.impl;
 
 import edu.eci.cvds.entities.*;
 import edu.eci.cvds.persistence.PersistenceException;
-import edu.eci.cvds.persistence.mybatis.dao.*;
+import edu.eci.cvds.persistence.mybatis.dao.UsuarioDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import javax.inject.Inject;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 /**

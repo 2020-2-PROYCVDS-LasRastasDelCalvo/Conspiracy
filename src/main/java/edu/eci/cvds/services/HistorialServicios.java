@@ -1,9 +1,6 @@
 package edu.eci.cvds.services;
 
-import edu.eci.cvds.entities.*;
-
-import java.util.List;
-
+import edu.eci.cvds.entities.Usuario;
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico

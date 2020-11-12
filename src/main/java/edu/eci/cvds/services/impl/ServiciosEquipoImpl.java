@@ -4,9 +4,8 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
-import edu.eci.cvds.persistence.mybatis.dao.*;
+import edu.eci.cvds.persistence.mybatis.dao.EquipoDAO;
 import edu.eci.cvds.services.*;
-
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;

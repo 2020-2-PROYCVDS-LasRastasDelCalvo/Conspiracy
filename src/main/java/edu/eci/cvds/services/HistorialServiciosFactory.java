@@ -52,7 +52,6 @@ public class HistorialServiciosFactory {
         return optInjector.get().getInstance(HistorialServicios.class);
     }
 
-
     public HistorialServicios getHistorialServiciosTesting(){
         if (!optInjector.isPresent()) {
             optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
@@ -62,8 +61,40 @@ public class HistorialServiciosFactory {
     }
 
 
+    public ServiciosElemento getServiciosElementoTesting(){
+        if (!optInjector.isPresent()) {
+            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
+        }
+
+        return optInjector.get().getInstance(ServiciosElemento.class);
+    }
+
+    public ServiciosEquipo getServiciosEquipoTesting(){
+        if (!optInjector.isPresent()) {
+            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
+        }
+
+        return optInjector.get().getInstance(ServiciosEquipo.class);
+    }
+
+    public ServiciosLaboratorio getServiciosLaboratorioTesting(){
+        if (!optInjector.isPresent()) {
+            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
+        }
+
+        return optInjector.get().getInstance(ServiciosLaboratorio.class);
+    }
+
+    public ServiciosNovedad getSErviciosNovedadTesting(){
+        if (!optInjector.isPresent()) {
+            optInjector = Optional.of(myBatisInjector("test","mybatis-config-h2.xml"));
+        }
+
+        return optInjector.get().getInstance(ServiciosNovedad.class);
+    }
+
+
     public static HistorialServiciosFactory getInstance(){
         return instance;
     }
-
 }
