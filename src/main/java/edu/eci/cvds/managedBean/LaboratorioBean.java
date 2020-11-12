@@ -4,6 +4,8 @@ import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
+import edu.eci.cvds.services.ServiciosEquipo;
+import edu.eci.cvds.services.ServiciosLaboratorio;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -29,6 +31,12 @@ public class LaboratorioBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
 
+    @Inject
+    private ServiciosLaboratorio serviciosLaboratorio;
+
+    @Inject
+    private ServiciosEquipo serviciosEquipo;
+
     private int idLaboratorio;
     private String nombreLaboratorio;
     private String message;
@@ -52,8 +60,8 @@ public class LaboratorioBean extends BasePageBean {
     public void actualizar(){
         try{
             sinErrores();
-            laboratorios = historialServicios.consultarLaboratorios();
-            disponibles = historialServicios.consultarEquiposDisponibles();
+            laboratorios = serviciosLaboratorio.consultarLaboratorios();
+            disponibles = serviciosEquipo.consultarEquiposDisponibles();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -63,7 +71,7 @@ public class LaboratorioBean extends BasePageBean {
     public void registrarLab(){
         try{
             sinErrores();
-            historialServicios.registrarLaboratorio(usuario.getIdUsuario(),idLaboratorio, nombreLaboratorio, aAsociar);
+            serviciosLaboratorio.registrarLaboratorio(usuario.getIdUsuario(),idLaboratorio, nombreLaboratorio, aAsociar);
         }
         catch (Exception exception){
             conErrores(exception.getMessage());

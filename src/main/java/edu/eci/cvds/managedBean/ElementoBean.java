@@ -3,6 +3,7 @@ package edu.eci.cvds.managedBean;
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
+import edu.eci.cvds.services.ServiciosElemento;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import javax.annotation.PostConstruct;
@@ -26,7 +27,9 @@ import java.util.List;
 @SessionScoped
 public class ElementoBean extends BasePageBean {
     @Inject
-    private HistorialServicios historialServicios;
+    private ServiciosElemento serviciosElemento;
+
+    @Inject HistorialServicios historialServicios;
 
     private int idEquipo;
     private String message;
@@ -46,7 +49,7 @@ public class ElementoBean extends BasePageBean {
         super.init();
         try{
             usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
-            elementos = historialServicios.consultarElementos();
+            elementos = serviciosElemento.consultarElementos();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -56,7 +59,7 @@ public class ElementoBean extends BasePageBean {
     public void registrarElemento(){
         try {
             sinErrores();
-            historialServicios.insertarElemento( tipo, nombre, descripcion);
+            serviciosElemento.insertarElemento( tipo, nombre, descripcion);
             restablecer();
         }
         catch (Exception exception) {
@@ -67,7 +70,7 @@ public class ElementoBean extends BasePageBean {
     public void asociarEquipo(){
         try {
             sinErrores();
-            historialServicios.asociarElementoEquipo(usuario.getIdUsuario(), elementosSeleccionados, idEquipo );
+            serviciosElemento.asociarElementoEquipo(usuario.getIdUsuario(), elementosSeleccionados, idEquipo );
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -83,7 +86,7 @@ public class ElementoBean extends BasePageBean {
     public void actualizar(){
         try{
             sinErrores();
-            elementos = historialServicios.consultarElementos();
+            elementos = serviciosElemento.consultarElementos();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -93,7 +96,7 @@ public class ElementoBean extends BasePageBean {
     public void cambiarEstadoElemento(){
         try{
             sinErrores();
-            historialServicios.cambiarEstadoElemento(usuario.getIdUsuario(),elementoBaja);
+            serviciosElemento.cambiarEstadoElemento(usuario.getIdUsuario(),elementoBaja);
         }
         catch (Exception exception) {
             conErrores(exception.getMessage());

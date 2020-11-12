@@ -2,6 +2,7 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.services.HistorialServicios;
+import edu.eci.cvds.services.ServiciosNovedad;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -22,8 +23,10 @@ import java.util.List;
 @ManagedBean(name = "novedadBean")
 @RequestScoped
 public class NovedadBean  extends BasePageBean  implements Serializable {
+
     @Inject
-    private HistorialServicios historialServicios;
+    private ServiciosNovedad serviciosNovedad;
+
     private List<Novedad> novedades;
 
     @PostConstruct
@@ -33,7 +36,7 @@ public class NovedadBean  extends BasePageBean  implements Serializable {
     }
     public void consultar(){
         try{
-            novedades = historialServicios.consultarNovedades();
+            novedades = serviciosNovedad.consultarNovedades();
         }
         catch (Exception exception) {
             exception.printStackTrace();

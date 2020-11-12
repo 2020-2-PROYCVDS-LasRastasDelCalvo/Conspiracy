@@ -8,8 +8,8 @@ import edu.eci.cvds.persistence.mybatis.*;
 import edu.eci.cvds.persistence.mybatis.dao.*;
 import edu.eci.cvds.security.Log;
 import edu.eci.cvds.security.ShiroLogger;
-import edu.eci.cvds.services.HistorialServicios;
-import edu.eci.cvds.services.impl.HistorialServiciosImpl;
+import edu.eci.cvds.services.*;
+import edu.eci.cvds.services.impl.*;
 import org.mybatis.guice.XMLMyBatisModule;
 import org.mybatis.guice.datasource.helper.JdbcHelper;
 import com.google.inject.Guice;
@@ -39,12 +39,18 @@ public class GuiceContextListener implements ServletContextListener {
 
                 // TODO Add service class associated to Stub implementation
                 bind(Log.class).to(ShiroLogger.class);
+                //DAO
                 bind(NovedadDAO.class).to(MyBATISNovedadDAO.class);
                 bind(ElementoDAO.class).to(MyBATISElementoDAO.class);
                 bind(EquipoDAO.class).to(MyBATISEquipoDAO.class);
                 bind(UsuarioDAO.class).to(MyBATISUsuarioDAO.class);
                 bind(LaboratorioDAO.class).to(MYBATISLaboratorioDAO.class);
+                //Servicios
                 bind(HistorialServicios.class).to(HistorialServiciosImpl.class);
+                bind(ServiciosEquipo.class).to(ServiciosEquipoImpl.class);
+                bind(ServiciosElemento.class).to(ServiciosElementoImpl.class);
+                bind(ServiciosLaboratorio.class).to(ServiciosLaboratorioImpl.class);
+                bind(ServiciosNovedad.class).to(ServiciosNovedadImpl.class);
             }
         });
 

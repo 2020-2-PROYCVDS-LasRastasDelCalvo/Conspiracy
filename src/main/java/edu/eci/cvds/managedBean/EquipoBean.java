@@ -4,6 +4,8 @@ import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
+import edu.eci.cvds.services.ServiciosElemento;
+import edu.eci.cvds.services.ServiciosEquipo;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import javax.annotation.PostConstruct;
@@ -27,6 +29,12 @@ import java.util.List;
 public class EquipoBean extends BasePageBean {
     @Inject
     private HistorialServicios historialServicios;
+
+    @Inject
+    private ServiciosEquipo serviciosEquipo;
+
+    @Inject
+    private ServiciosElemento serviciosElemento;
 
     private Subject subject = SecurityUtils.getSubject();
     private int disponible;
@@ -81,7 +89,7 @@ public class EquipoBean extends BasePageBean {
                 throw new Exception("Debe de seleccionar un elemento de cada tipo para poder registrar el equipo");
             }
             int[] elementos = {torreSeleccionada.getIdElemento(),mouseSeleccionado.getIdElemento(),pantallaSeleccionada.getIdElemento(),tecladoSeleccionado.getIdElemento()};
-            historialServicios.insertarEquipo(idEquipo,elementos,laboratorio,usuario.getIdUsuario());
+            serviciosEquipo.insertarEquipo(idEquipo,elementos,laboratorio,usuario.getIdUsuario());
         }
         catch (Exception exception) {
             conErrores(exception.getMessage());
@@ -102,12 +110,12 @@ public class EquipoBean extends BasePageBean {
     public void actualizar(){
         try{
             sinErrores();
-            equipos = historialServicios.consultarEquipos();
-            tablaTorre = historialServicios.buscarElemento("Torre");
-            tablaMouse = historialServicios.buscarElemento("Mouse");
-            tablaPantalla = historialServicios.buscarElemento("Pantalla");
-            tablaTeclado = historialServicios.buscarElemento("Teclado");
-            equipos = historialServicios.consultarEquipos();
+            equipos = serviciosEquipo.consultarEquipos();
+            tablaTorre = serviciosElemento.buscarElemento("Torre");
+            tablaMouse = serviciosElemento.buscarElemento("Mouse");
+            tablaPantalla = serviciosElemento.buscarElemento("Pantalla");
+            tablaTeclado = serviciosElemento.buscarElemento("Teclado");
+            equipos = serviciosEquipo.consultarEquipos();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -117,7 +125,7 @@ public class EquipoBean extends BasePageBean {
     public void asociarEquipLab(){
         try{
             sinErrores();
-            historialServicios.asociarEquipoLabExistente( equipSeleccionados, usuario.getIdUsuario(), idLab);
+            serviciosEquipo.asociarEquipoLabExistente( equipSeleccionados, usuario.getIdUsuario(), idLab);
         }
         catch (Exception exception){
             conErrores( exception.getMessage() );
