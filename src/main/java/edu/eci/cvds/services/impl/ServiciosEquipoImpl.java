@@ -109,14 +109,21 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
                 asociarEquipo(1,equipo.getIdEquipo());
             }
             equipoDAO.cambiarEstadoEquipo(equipo.getIdEquipo(), change);
-            ArrayList<Elemento> el = equipo.getElementos();
-            serviciosElemento.asociarElementoEquipo(idUsuario,el,null);
-            for (Elemento e: el){
-                serviciosElemento.cambiarEstadoElemento(idUsuario,e);
+            if (change.equals("ACTIVO")){
+                serviciosNovedad.insertarNovedad(new Novedad("Equipo activo","El equipo con id "+ equipo.getIdEquipo() +" fue activado otra vez.",idUsuario,null, equipo.getIdEquipo()));
+            }
+            else if( change.equals("INACTIVO")){
+                ArrayList<Elemento> elementos = equipo.getElementos();
+                serviciosNovedad.insertarNovedad(new Novedad("Equipo dado de baja","El equipo con id "+ equipo.getIdEquipo() +" fue dado de baja.",idUsuario,null, equipo.getIdEquipo()));
+                for (Elemento e: elementos){
+                    serviciosElemento.relacionarElementoEquipo(e.getIdElemento(),null);
+                    serviciosNovedad.insertarNovedad( new Novedad("Retiro de elemento","El elemento con id " + e.getIdElemento() + " de tipo " + e.getTipo() + " fue retirado del equipo"+ e.getIdEquipo() +".",idUsuario,e.getIdElemento(),null));
+                    e.setDisponible(1);
+                    serviciosElemento.cambiarEstadoElemento(idUsuario,e);
+                }
             }
         }
         catch (PersistenceException e) {
-            e.printStackTrace();
             throw new HistorialEquiposException(e.getMessage(),e );
         }
     }

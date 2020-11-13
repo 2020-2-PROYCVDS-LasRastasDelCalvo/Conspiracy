@@ -40,7 +40,7 @@ EXECUTE PROCEDURE fechaNovedad();
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-CREATE OR REPLACE FUNCTION estadoEquipo()
+CREATE OR REPLACE FUNCTION disponibilidadEquipo()
 	RETURNS TRIGGER
 AS
 $$
@@ -52,6 +52,23 @@ $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER AD_disponible_Equipo
+  BEFORE INSERT ON public.Equipo
+  FOR EACH ROW
+EXECUTE PROCEDURE disponibilidadEquipo();
+
+
+CREATE OR REPLACE FUNCTION estadoEquipo()
+	RETURNS TRIGGER
+AS
+$$
+BEGIN
+	NEW.estado := 'ACTIVO';
+	RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER AD_estado_Equipo
   BEFORE INSERT ON public.Equipo
   FOR EACH ROW
 EXECUTE PROCEDURE estadoEquipo();
@@ -69,6 +86,11 @@ BEGIN
 END;
 $$
 LANGUAGE plpgsql;
+
+CREATE TRIGGER TR_Elemento_Estado
+    BEFORE INSERT ON public.Elemento
+    FOR EACH ROW
+EXECUTE PROCEDURE FC_SET_ESTADO();
 
 CREATE OR REPLACE FUNCTION estadoElemento()
 	RETURNS TRIGGER
@@ -89,8 +111,3 @@ CREATE TRIGGER AD_disponible_Elemento
   BEFORE INSERT OR UPDATE ON public.Elemento
   FOR EACH ROW
 EXECUTE PROCEDURE estadoElemento();
-
-CREATE TRIGGER TR_Elemento_Estado
-    BEFORE INSERT ON public.Elemento
-    FOR EACH ROW
-EXECUTE PROCEDURE FC_SET_ESTADO();

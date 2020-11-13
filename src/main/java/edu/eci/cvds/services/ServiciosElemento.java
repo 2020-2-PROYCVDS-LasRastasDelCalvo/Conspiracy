@@ -22,7 +22,7 @@ public interface ServiciosElemento {
      */
     public void cambiarEstadoElemento( int idUsuario, Elemento elemento )throws HistorialEquiposException;
 
-    public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException;
+    public void relacionarElementoEquipo(int idElemento, Integer idEquipo) throws HistorialEquiposException;
 
     public void asociarElementoEquipo(int idUsuario,List<Elemento> elementosSeleccionados,Integer idEquipo ) throws HistorialEquiposException;
 

@@ -19,6 +19,8 @@ ON Novedad;
 DROP TRIGGER IF EXISTS  AD_disponible_Equipo
 ON Equipo;
 
+DROP TRIGGER IF EXISTS  AD_estado_Equipo
+ON Equipo;
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------

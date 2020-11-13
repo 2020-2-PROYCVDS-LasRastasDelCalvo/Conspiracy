@@ -66,7 +66,6 @@ public class MyBATISElementoDAO implements ElementoDAO {
             elementoMapper.cambiarEstadoElemento( idElemento, change );
         }
         catch (Exception e){
-            e.printStackTrace();
             throw new PersistenceException("Error al dar de baja el elemento con id: "+idElemento, e );
         }
     }

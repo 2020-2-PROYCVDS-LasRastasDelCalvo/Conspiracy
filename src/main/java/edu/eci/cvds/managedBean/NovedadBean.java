@@ -39,7 +39,6 @@ public class NovedadBean  extends BasePageBean  implements Serializable {
             novedades = serviciosNovedad.consultarNovedades();
         }
         catch (Exception exception) {
-            exception.printStackTrace();
         }
     }
 

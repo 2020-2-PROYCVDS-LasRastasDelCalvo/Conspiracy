@@ -9,7 +9,6 @@ import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.ServiciosElemento;
 import edu.eci.cvds.services.ServiciosEquipo;
 import edu.eci.cvds.services.ServiciosNovedad;
-
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
@@ -75,15 +74,14 @@ public class ServiciosElementoImpl implements ServiciosElemento {
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException);
         }
     }
+
     @Override
-    public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException {
+    public void relacionarElementoEquipo(int idElemento, Integer idEquipo) throws HistorialEquiposException {
         try{
-            if (serviciosEquipo.consultarEquipo(idEquipo).getEstado().equals("ACTIVO")) {
-                elementoDAO.asociarEquipo(idElemento, idEquipo);
+            if (idEquipo != null ) {
+                if( serviciosEquipo.consultarEquipo(idEquipo).getEstado().equals("INACTIVO") ){throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");}
             }
-            else{
-                throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
-            }
+            elementoDAO.asociarEquipo(idElemento, idEquipo);
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
@@ -94,38 +92,31 @@ public class ServiciosElementoImpl implements ServiciosElemento {
     public void asociarElementoEquipo(int idUsuario, List<Elemento> elementosSeleccionados, Integer idEquipo) throws HistorialEquiposException {
         try{
             ArrayList<String> evalElemento = new ArrayList<String>();
-            Equipo evalEquipo = null;
-            //Testeando esta mondá
-            if (idEquipo != null){
-                evalEquipo = serviciosEquipo.consultarEquipo(idEquipo);
-            }
-            if (evalEquipo == null & idEquipo != null){
+            Equipo evalEquipo = serviciosEquipo.consultarEquipo(idEquipo);
+            if ( evalEquipo == null){
                 throw new PersistenceException("Equipo no existente.");
             }
-            else if(evalEquipo.getEstado().equals("INACTIVO")){
-                throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
-            }
-            //Garantiza que no se asocien más elementos de lo posible
             if (elementosSeleccionados.size() > 4){
                 throw new PersistenceException("Cantidad de elementos a asociar a un solo equipo no valida.");
             }
-            //Garantiza que no se asocien más de un elemento del mismo tipo
+            if(idEquipo!=null && evalEquipo.getEstado().equals("INACTIVO")){
+                throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
+            }
             for (Elemento e: elementosSeleccionados){
                 if (evalElemento.contains(e.getTipo())){
                     throw new PersistenceException("Cantidad de elementos de un mismo tipo a asociar a un solo equipo no valida.");
                 }
                 evalElemento.add(e.getTipo());
             }
-            //Aquí ya debe de asociar los elementos SI O SI
             for (Elemento e: elementosSeleccionados){
                 for (Elemento q: evalEquipo.getElementos()){
                     if (e.getTipo().equals(q.getTipo())){
-                        elementoDAO.asociarEquipo(q.getIdElemento(),null);
+                        relacionarElementoEquipo(q.getIdElemento(),null);
                         serviciosNovedad.insertarNovedad( new Novedad("Retiro de elemento","El elemento con id " + q.getIdElemento() + " de tipo " + q.getTipo() + " fue retirado del equipo"+ q.getIdEquipo() +".",idUsuario,q.getIdElemento(),idEquipo));
                         break;
                     }
                 }
-                elementoDAO.asociarEquipo(e.getIdElemento(),idEquipo);
+                relacionarElementoEquipo(e.getIdElemento(),idEquipo);
                 serviciosNovedad.insertarNovedad(new Novedad("Asociacion elemento-equipo","El elemento con id "+ e.getIdElemento() +" de tipo " + e.getTipo() + " fue asociado al equipo con id " + idEquipo +".",idUsuario,e.getIdElemento(),idEquipo));
             }
         }

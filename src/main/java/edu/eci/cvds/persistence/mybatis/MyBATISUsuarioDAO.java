@@ -20,6 +20,12 @@ public class MyBATISUsuarioDAO implements UsuarioDAO {
 
     @Override
     public Usuario consultarPorCorreo(String correo) throws PersistenceException {
-        return usuarioMapper.consultarPorCorreo( correo );
+        try{
+            return usuarioMapper.consultarPorCorreo( correo );
+        }
+        catch (Exception exception){
+            throw new PersistenceException("Error al consultar al usuario con correo "+ correo);
+        }
+
     }
 }
