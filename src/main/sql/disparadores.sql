@@ -60,7 +60,7 @@ EXECUTE PROCEDURE estadoEquipo();
 -- Table `Elemento`
 -- -----------------------------------------------------
 CREATE OR REPLACE FUNCTION FC_SET_ESTADO()
-    RETURNS TRIGGER
+    RETURN TRIGGER
 AS
 $$
 BEGIN
@@ -68,12 +68,7 @@ BEGIN
     RETURN NEW;
 END;
 $$
-LANGUAGE plpgsql;
-
-CREATE TRIGGER TR_Elemento_Estado
-    BEFORE INSERT ON public.Elemento
-    FOR EACH ROW
-EXECUTE PROCEDURE FC_SET_ESTADO();
+LANGUAGE plqsql;
 
 CREATE OR REPLACE FUNCTION estadoElemento()
 	RETURNS TRIGGER
@@ -95,3 +90,7 @@ CREATE TRIGGER AD_disponible_Elemento
   FOR EACH ROW
 EXECUTE PROCEDURE estadoElemento();
 
+CREATE TRIGGER TR_Elemento_Estado
+    BEFORE INSERT ON public.Elemento
+    FOR EACH ROW
+EXECUTE PROCEDURE FC_SET_ESTADO();

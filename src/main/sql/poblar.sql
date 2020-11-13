@@ -32,20 +32,20 @@ VALUES('Multimedia y Móviles');
 -- -----------------------------------------------------
 -- Table `Equipo`
 -- -----------------------------------------------------
-INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
-VALUES(1,1,CURRENT_DATE ,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible,estado)
+VALUES(1,1,CURRENT_DATE ,1,'ACTIVO');
 
-INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
-VALUES(2,2,CURRENT_DATE ,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible,estado)
+VALUES(2,2,CURRENT_DATE ,1,'ACTIVO');
 
-INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
-VALUES(3,2,CURRENT_DATE ,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible,estado)
+VALUES(3,2,CURRENT_DATE ,1,'ACTIVO');
 
-INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
-VALUES(4,1,CURRENT_DATE ,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible,estado)
+VALUES(4,1,CURRENT_DATE ,1,'ACTIVO');
 
-INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible)
-VALUES(5,3,CURRENT_DATE ,1);
+INSERT INTO Equipo(idEquipo,laboratorio,fechaRegistro,disponible,estado)
+VALUES(5,3,CURRENT_DATE ,1,'ACTIVO');
 
 -- -----------------------------------------------------
 -- Table `Elemento`

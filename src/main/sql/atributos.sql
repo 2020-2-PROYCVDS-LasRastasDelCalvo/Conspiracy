@@ -19,6 +19,7 @@ CHECK(
 	estado  IN (0,1) 
 );
 
+
 -- -----------------------------------------------------
 -- Table `Elemento`
 -- -----------------------------------------------------
@@ -42,3 +43,10 @@ ADD CONSTRAINT CK_disponible_Equipo
 CHECK(
 	disponible  IN (0,1)
 );
+
+ALTER TABLE Equipo
+ADD CONSTRAINT CK_estado_Equipo
+CHECK(
+	estado  IN ('ACTIVO','INACTIVO')
+);
+

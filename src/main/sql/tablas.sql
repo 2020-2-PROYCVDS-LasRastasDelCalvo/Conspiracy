@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Usuario(
   contraseña VARCHAR(80)  NOT NULL,
   estado INTEGER  NOT NULL,
   rol VARCHAR(30) NOT NULL,
-  UNIQUE (correo)
+  UNIQUE(correo )
 );
 
 -- -----------------------------------------------------
@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS Equipo (
   idEquipo serial PRIMARY KEY,
   laboratorio INT REFERENCES Laboratorio(idLaboratorio) DEFERRABLE,
   fechaRegistro DATE NOT NULL,
-  disponible INT  NOT NULL
+  disponible INT  NOT NULL,
+  estado VARCHAR(8) NOT NULL
 );
 
 -- -----------------------------------------------------
