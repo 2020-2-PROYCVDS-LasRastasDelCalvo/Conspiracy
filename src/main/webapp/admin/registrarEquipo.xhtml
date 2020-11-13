@@ -149,32 +149,6 @@
             </div>
         </div>
     </h:form>
-    <p:dataTable class="table table-dark" id="infoElementos"
-                 value="#{equipoBean.equipos}"
-                 var="equipo"
-                 rowKey="#{equipo.idEquipo}"
-                 rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                 rowsPerPageTemplate="1,5,10,15">
-        <f:facet name="header">
-            Equipos
-        </f:facet>
-
-        <p:column headerText="idEquipo" >
-            <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
-        </p:column>
-        <p:column headerText="Laboratorio" >
-            <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
-        </p:column>
-        <p:column headerText="Fecha Registro">
-            <p:outputLabel value="#{equipo.fechaRegistro}"></p:outputLabel>
-        </p:column>
-        <p:column headerText="Disponible">
-            <p:outputLabel value="#{equipo.disponible}"></p:outputLabel>
-        </p:column>
-    </p:dataTable>
 
 </h:body>
 </html>

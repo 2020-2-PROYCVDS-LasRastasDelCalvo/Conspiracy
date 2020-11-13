@@ -29,7 +29,8 @@
             eq.idEquipo AS eq_idEquipo,
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
-            eq.disponible AS eq_disponible
+            eq.disponible AS eq_disponible,
+            eq.estado AS eq_estado
         FROM
             novedad n
             INNER JOIN
@@ -74,7 +75,8 @@
             eq.idEquipo AS eq_idEquipo,
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
-            eq.disponible AS eq_disponible
+            eq.disponible AS eq_disponible,
+            eq.estado AS eq_estado
         FROM
             novedad n
             INNER JOIN

@@ -1,5 +1,6 @@
 package edu.eci.cvds.services.impl;
 
+import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.entities.Novedad;
@@ -7,6 +8,7 @@ import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.EquipoDAO;
 import edu.eci.cvds.services.*;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -96,6 +98,26 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
             asociarEquipo(idLab,equipo.getIdEquipo());
             serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio con id "+equipo.getIdLab(),idUsuario,null,equipo.getIdEquipo()));
             serviciosNovedad.insertarNovedad( new Novedad(" Asociacion de equipo a un laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue asociado al laboratorio con id "+idLab,idUsuario,null,equipo.getIdEquipo() ) );
+        }
+    }
+
+    @Override
+    public void cambiarEstadoEquipo(int idUsuario, Equipo equipo) throws HistorialEquiposException{
+        try{
+            String change = equipo.getEstado().equals("ACTIVO") ? "INACTIVO" : "ACTIVO";
+            if (equipo.getIdLab() != 1){
+                asociarEquipo(1,equipo.getIdEquipo());
+            }
+            equipoDAO.cambiarEstadoEquipo(equipo.getIdEquipo(), change);
+            ArrayList<Elemento> el = equipo.getElementos();
+            serviciosElemento.asociarElementoEquipo(idUsuario,el,null);
+            for (Elemento e: el){
+                serviciosElemento.cambiarEstadoElemento(idUsuario,e);
+            }
+        }
+        catch (PersistenceException e) {
+            e.printStackTrace();
+            throw new HistorialEquiposException(e.getMessage(),e );
         }
     }
 }

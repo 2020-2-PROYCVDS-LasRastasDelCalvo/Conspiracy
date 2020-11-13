@@ -26,7 +26,8 @@
             eq.idEquipo AS eq_idEquipo,
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
-            eq.disponible AS eq_disponible
+            eq.disponible AS eq_disponible,
+            eq.estado AS eq_estado
         FROM
             novedad n
             INNER JOIN
@@ -64,7 +65,8 @@
             eq.idEquipo AS eq_idEquipo,
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
-            eq.disponible AS eq_disponible
+            eq.disponible AS eq_disponible,
+            eq.estado AS eq_estado
         FROM
             novedad n
             INNER JOIN
@@ -104,7 +106,8 @@
             eq.idEquipo AS eq_idEquipo,
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
-            eq.disponible AS eq_disponible
+            eq.disponible AS eq_disponible,
+            eq.estado AS eq_estado
         FROM
             novedad n
             INNER JOIN
@@ -128,7 +131,13 @@
     <update id="asociar">
         UPDATE Equipo
         SET Laboratorio = #{idLab}
-        WHERE idEquipo = #{idEquipo}
+        WHERE idEquipo = #{idEquipo};
+    </update>
+
+    <update id="cambiarEstado">
+        UPDATE Equipo
+        SET estado = #{change}
+        WHERE idEquipo = #{idEquipo};
     </update>
 
 
@@ -138,6 +147,7 @@
         <result property="idLab" column="eq_laboratorio"/>
         <result property="fechaRegistro" column="eq_fecharegistro"/>
         <result property="disponible" column="eq_disponible"/>
+        <result property="estado" column="eq_estado"/>
         <collection property="elementos" ofType="Elemento" resultMap="edu.eci.cvds.persistence.mybatis.mappers.ElementoMapper.ElementoResult"/>
         <collection property="novedades" ofType="Novedad" resultMap="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper.NovedadResult"/>
     </resultMap>

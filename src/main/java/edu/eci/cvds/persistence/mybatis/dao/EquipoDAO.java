@@ -19,4 +19,5 @@ public interface EquipoDAO {
     public void asociar(int idLab, int idEquipo) throws PersistenceException;
     public List<Equipo> consultarEquiposDisponibles() throws PersistenceException;
     public Equipo consultarEquipo(int idEquipo) throws PersistenceException;
+    public void cambiarEstadoEquipo(int idEquipo, String change) throws PersistenceException;
 }

@@ -16,6 +16,7 @@ public class Equipo {
     private int disponible;
     private int idLab;
     private Date fechaRegistro;
+    private String estado;
     private ArrayList<Elemento> elementos;
     private ArrayList<Novedad> novedades;
 
@@ -86,4 +87,8 @@ public class Equipo {
     public void setIdLab(int idLab) {
         this.idLab = idLab;
     }
+
+    public String getEstado() { return estado; }
+
+    public void setEstado(String estado) { this.estado = estado; }
 }

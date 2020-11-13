@@ -78,7 +78,12 @@ public class ServiciosElementoImpl implements ServiciosElemento {
     @Override
     public void relacionarElementoEquipo(int idElemento, int idEquipo) throws HistorialEquiposException {
         try{
-            elementoDAO.asociarEquipo( idElemento, idEquipo);
+            if (serviciosEquipo.consultarEquipo(idEquipo).getEstado().equals("ACTIVO")) {
+                elementoDAO.asociarEquipo(idElemento, idEquipo);
+            }
+            else{
+                throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
+            }
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
@@ -89,10 +94,16 @@ public class ServiciosElementoImpl implements ServiciosElemento {
     public void asociarElementoEquipo(int idUsuario, List<Elemento> elementosSeleccionados, Integer idEquipo) throws HistorialEquiposException {
         try{
             ArrayList<String> evalElemento = new ArrayList<String>();
+            Equipo evalEquipo = null;
             //Testeando esta mondá
-            Equipo evalEquipo = serviciosEquipo.consultarEquipo(idEquipo);
-            if (evalEquipo == null){
+            if (idEquipo != null){
+                evalEquipo = serviciosEquipo.consultarEquipo(idEquipo);
+            }
+            if (evalEquipo == null & idEquipo != null){
                 throw new PersistenceException("Equipo no existente.");
+            }
+            else if(evalEquipo.getEstado().equals("INACTIVO")){
+                throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
             }
             //Garantiza que no se asocien más elementos de lo posible
             if (elementosSeleccionados.size() > 4){
