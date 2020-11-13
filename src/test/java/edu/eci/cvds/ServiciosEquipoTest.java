@@ -4,8 +4,9 @@ import com.google.inject.Inject;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServiciosFactory;
 import edu.eci.cvds.services.ServiciosEquipo;
+import org.junit.Assert;
 import org.junit.Test;
-
+import edu.eci.cvds.entities.Equipo;
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -43,4 +44,42 @@ public class ServiciosEquipoTest {
         int[] elementos = {1,3,2,4};
         serviciosEquipo.insertarEquipo( 14,elementos, 1,10048240 );
     }
+    @Test
+    public void deberiaConsultarEquipos() throws HistorialEquiposException{
+        serviciosEquipo.consultarEquipos();
+    }
+
+    public void noDeberiaConsultarEquipo() throws HistorialEquiposException{
+        Assert.assertEquals(serviciosEquipo.consultarEquipo(-1),null);
+    }
+
+    @Test
+    public void deberiaConsultarEquiposDisponibles() throws HistorialEquiposException{
+        serviciosEquipo.consultarEquiposDisponibles();
+    }
+
+    @Test
+    public void deberiaConsultarEquipo() throws HistorialEquiposException{
+        Equipo equipo = serviciosEquipo.consultarEquipo(1);
+        Assert.assertFalse(null == equipo);
+    }
+
+    /**@Test
+    public void insertarEquipo() throws HistorialEquiposException{
+        int[] ele = {1,2,3,4};
+        serviciosEquipo.insertarEquipo(new Integer(99),ele,99,2159581);
+        Assert.assertTrue(serviciosEquipo.consultarEquipo(99) !=null);
+    }**/
+
+    /**
+    @Test
+    public void cambiarEstadoEquipo()throws HistorialEquiposException{
+        Equipo equipo = serviciosEquipo.consultarEquipo(1);
+        serviciosEquipo.cambiarEstadoEquipo(1,equipo);
+        Assert.assertEquals("INACTIVO",serviciosEquipo.consultarEquipo(1).getEstado());
+    }
+    **/
+
+
+
 }
