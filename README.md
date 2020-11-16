@@ -64,6 +64,10 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
 ## __Release-Burndown Chart:__
 
 ### __Sprint1:__
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINT1.png)
+
+* Backlog
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/Backlog%20Sprint1.png)
 
 ### __Sprint2:__
 
