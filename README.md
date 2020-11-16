@@ -15,7 +15,7 @@
 ## __Descripción del producto__
 
 ### __Descripción General__
-La Plataforma Historial de Equipos, es una herramienta donde el personal del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería Julio Garavito, pueden registrar los laboratorio, equipos y elementos de cada equipo, junto con las novedades que se realizan a cada uno de estos. El sistema, más allá de facilitar el registro de los equipos y novedades, es una valiosa base de conocimiento donde el personal del laboratorio, puede revisar el histórico de novedades que se le han realizado a cada elemento a través del tiempo durante todo su ciclo de vida útil. El personal administrativo del laboratorio puede crear laboratorios, equipos y elementos, asociar unos a otros y registrar novedades para cada uno; además de tener una variedad de reportes que les permitirá tener el control administrativo de estos implementos.
+La **Plataforma Historial de Equipos**, es una herramienta donde el personal del laboratorio de informática (LabInfo) pertenecientes a la decanatura de Ingeniería de Sistemas de la Escuela Colombiana de Ingeniería Julio Garavito, pueden registrar los laboratorio, equipos y elementos de cada equipo, junto con las novedades que se realizan a cada uno de estos. El sistema, más allá de facilitar el registro de los equipos y novedades, es una valiosa base de conocimiento donde el personal del laboratorio, puede revisar el histórico de novedades que se le han realizado a cada elemento a través del tiempo durante todo su ciclo de vida útil. El personal administrativo del laboratorio puede crear laboratorios, equipos y elementos, asociar unos a otros y registrar novedades para cada uno; además de tener una variedad de reportes que les permitirá tener el control administrativo de estos implementos.
 
 ### __Manual De usuario__
 
@@ -56,10 +56,10 @@ La Plataforma Historial de Equipos, es una herramienta donde el personal del lab
 |Galeano Garzón |[Ersocaut](https://github.com/Ersocaut)   |
 |Andrés Pico|[Jandres1420](https://github.com/Jandres1420) |
 
-### __Metodología:__
+### __Metodología Utilizada:__
 
 ## __Taiga__
-[Taiga CVDS-2020-02](https://tree.taiga.io/project/gabrielaasilva-historial-de-equipos-labinfo/timeline)
+Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equipos-labinfo/timeline) para ver el seguimiento y manejo que dimos al proyecto. 
 
 ## __Release-Burndown Chart:__
 
