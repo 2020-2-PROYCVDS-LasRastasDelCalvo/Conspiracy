@@ -30,6 +30,7 @@ public class ServiciosEquipoTest {
         int[] elementos = {5,6,7,8};
         try {
             serviciosEquipo.insertarEquipo(new Integer(99),elementos,1,10048240);
+
         }
         catch (HistorialEquiposException historialEquiposException){
         }

@@ -61,7 +61,7 @@
             RIGHT JOIN
             elemento e
             	ON e.idElemento = n.idElemento
-            WHERE e.nombre = #{tipo} AND e.disponible = 1
+            WHERE e.tipo = #{tipo} AND e.disponible = 1
             ORDER BY e.idElemento;
     </select>
 

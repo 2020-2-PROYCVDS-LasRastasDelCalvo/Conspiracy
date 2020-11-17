@@ -68,7 +68,9 @@
                     <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
                 </p:column>
             </p:dataTable>
-
+            <div align="center">
+                <h:commandButton value="Actualizar" class="btn btn-dark" actionListener="#{novedadBean.consultar}"/>
+            </div>
         </h:form>
     </div>
 </h:body>
