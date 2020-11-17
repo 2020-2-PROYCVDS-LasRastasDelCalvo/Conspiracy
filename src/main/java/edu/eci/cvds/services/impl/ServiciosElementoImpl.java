@@ -94,7 +94,7 @@ public class ServiciosElementoImpl implements ServiciosElemento {
             ArrayList<String> evalElemento = new ArrayList<String>();
             Equipo evalEquipo = serviciosEquipo.consultarEquipo(idEquipo);
             if ( evalEquipo == null){
-                throw new PersistenceException("Equipo no existente.");
+                throw new PersistenceException(HistorialEquiposException.NO_EQUIPO);
             }
             if (elementosSeleccionados.size() > 4){
                 throw new PersistenceException("Cantidad de elementos a asociar a un solo equipo no valida.");

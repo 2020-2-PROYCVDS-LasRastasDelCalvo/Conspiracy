@@ -139,12 +139,11 @@
             <div align="center">
                 <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                             closable="true" globalOnly="true"/>
-                <p:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}">
-                </p:commandButton>
-                <p:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}">
-                </p:commandButton>
-                <p:commandButton class="btn btn-dark" value="¿No encuentras un elemento? Registralo aquí." action="registrarElemento.xhtml">
-                </p:commandButton>
+                <h:commandButton class="btn btn-dark"  update="registrarEquipo" value="Registrar" action="#{equipoBean.info}" actionListener="#{equipoBean.registrarEquipo}"/>
+                <pr/>
+                <h:commandButton class="btn btn-dark" update="registrarEquipo" value="Actualizar" actionListener="#{equipoBean.actualizar}"/>
+                <pr/>
+                <h:commandButton class="btn btn-dark" value="¿No encuentras un elemento? Registralo aquí." action="registrarElemento.xhtml"/>
                 <p/>
             </div>
         </div>

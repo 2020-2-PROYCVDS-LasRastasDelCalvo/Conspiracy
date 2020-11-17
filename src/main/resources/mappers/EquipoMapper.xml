@@ -124,8 +124,8 @@
             ORDER BY n_idEquipo;
     </select>
     <insert id="registrarEquipo">
-        INSERT INTO equipo(idEquipo, laboratorio)
-        VALUES(#{idEquipo},#{lab});
+        INSERT INTO equipo(idEquipo, laboratorio,fechaRegistro, disponible, estado)
+        VALUES(#{idEquipo},#{lab},CURRENT_DATE, 1,'ACTIVO');
     </insert>
 
     <update id="asociar">
@@ -139,8 +139,6 @@
         SET estado = #{change}
         WHERE idEquipo = #{idEquipo};
     </update>
-
-
 
     <resultMap id="EquipoResult" type="Equipo">
         <id property="idEquipo" column="eq_idEquipo"/>

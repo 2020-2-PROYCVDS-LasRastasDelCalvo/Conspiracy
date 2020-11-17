@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-    <h1>Estoy en Registrar Elementos</h1>
+    <h1>Estoy en Registrar Laboratorio</h1>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
@@ -42,31 +42,35 @@
             <label for="nombreLab">Nombre del laboratorio</label>
             <p:inputText  id="nombreLab" type="String" class="form-control" placeholder="Nombre del laboratorio" value="#{laboratorioBean.nombreLaboratorio}"/>
         </div>
-        <p:commandButton class="btn btn-dark"  update="DatosLaboratorio" value="Registrar" action="#{laboratorioBean.info}" actionListener="#{laboratorioBean.registrarLab}">
-        </p:commandButton>
-        <p:dataTable class="table display table-striped table-bordered"
-                     id="selectTorre"
-                     value="#{laboratorioBean.disponibles}"
-                     var="equipo"
-                     style="width: 50%;"
-                     selection="#{laboratorioBean.aAsociar}"
-                     rowKey="#{equipo.idEquipo}"
-                     rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Selecciona equipos para asociar al Laboratorio a crear
-            </f:facet>
-            <p:column  headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
-            <p:column headerText="id Equipo" filterBy="#{equipo.idEquipo}" filterMatchMode="contains">
-                <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
-            </p:column>
-        </p:dataTable>
-        <p:commandButton class="btn btn-dark"  update="DatosLaboratorio" value="Actualizar" action="#{laboratorioBean.actualizar}" actionListener="#{laboratorioBean.actualizar}">
-        </p:commandButton>
+        <div align="center">
+            <h:commandButton class="btn btn-dark"  update="DatosLaboratorio" value="Registrar" action="#{laboratorioBean.info}" actionListener="#{laboratorioBean.registrarLab}"/>
+        </div>
+        <br/>
 
+        <div align="center">
+            <p:dataTable class="table display table-striped table-bordered"
+                         id="selectTorre"
+                         value="#{laboratorioBean.disponibles}"
+                         var="equipo"
+                         style="width: 50%;"
+                         selection="#{laboratorioBean.aAsociar}"
+                         rowKey="#{equipo.idEquipo}"
+                         rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                         rowsPerPageTemplate="1,5,10,15">
+                <f:facet name="header">
+                    Selecciona equipos para asociar al Laboratorio a crear
+                </f:facet>
+                <p:column  headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
+                <p:column headerText="id Equipo" filterBy="#{equipo.idEquipo}" filterMatchMode="contains">
+                    <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+            <h:commandButton class="btn btn-dark"  update="DatosLaboratorio" value="Actualizar" action="#{laboratorioBean.actualizar}" actionListener="#{laboratorioBean.actualizar}">
+            </h:commandButton>
+        </div>
     </h:form>
 </h:body>
 </html>

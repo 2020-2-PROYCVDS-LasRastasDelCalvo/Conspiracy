@@ -4,8 +4,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper">
     <insert id="addNovedad" parameterType="map">
-        INSERT INTO Novedad(titulo,detalle,usuario,idEquipo,idElemento)
-        VALUES(#{novedad.titulo},#{novedad.detalle},#{novedad.idUsuario} ,#{novedad.idEquipo},#{novedad.idElemento});
+        INSERT INTO Novedad(titulo,detalle,fecha,usuario,idEquipo,idElemento)
+        VALUES(#{novedad.titulo},#{novedad.detalle},CURRENT_DATE ,#{novedad.idUsuario} ,#{novedad.idEquipo},#{novedad.idElemento});
     </insert>
     <select id="consultarNovedades" parameterType="map" resultMap="NovedadResult">
         SELECT

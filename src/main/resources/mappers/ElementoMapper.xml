@@ -61,13 +61,13 @@
             RIGHT JOIN
             elemento e
             	ON e.idElemento = n.idElemento
-            WHERE e.tipo = #{tipo} AND e.disponible = 1
+            WHERE e.nombre = #{tipo} AND e.disponible = 1
             ORDER BY e.idElemento;
     </select>
 
 
     <insert id="registrarElemento" parameterType="map">
-        INSERT INTO Elemento(tipo,nombre,descripcion) VALUES(#{tipo.tipo}, #{tipo.nombre} , #{tipo.descripcion});
+        INSERT INTO Elemento(tipo,nombre,descripcion,disponible,estado) VALUES(#{tipo.tipo}, #{tipo.nombre} , #{tipo.descripcion},1,'ACTIVO');
     </insert>
 
 
