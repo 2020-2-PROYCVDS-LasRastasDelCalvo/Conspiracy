@@ -29,9 +29,9 @@ public class ShiroLogger implements Log {
             throw new HistorialEquiposException("Demasiados intentos.",lockedAccountException);
         }
         catch (UnknownAccountException unknownAccountException){
-            throw new HistorialEquiposException("Usuario desconocido.",unknownAccountException);
+            throw new HistorialEquiposException("Credenciales incorrectas.",unknownAccountException);
         }
-        catch (IncorrectCredentialsException incorrectCredentialsException){
+        catch (IncorrectCredentialsException incorrectCredentialsException ){
             throw new HistorialEquiposException("Credenciales incorrectas.",incorrectCredentialsException);
         }
         catch (AuthenticationException authenticationException){
