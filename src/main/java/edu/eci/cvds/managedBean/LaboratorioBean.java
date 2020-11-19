@@ -40,11 +40,12 @@ public class LaboratorioBean extends BasePageBean {
     private int idLaboratorio;
     private String nombreLaboratorio;
     private String message;
+    private Laboratorio labSelec;
+    private Usuario usuario;
     private List<Equipo> aAsociar;
     private List<Laboratorio> laboratorios;
-    private FacesMessage.Severity estado;
     private List<Equipo> disponibles;
-    private Usuario usuario;
+    private FacesMessage.Severity estado;
     private Subject subject = SecurityUtils.getSubject();
 
     @PostConstruct
@@ -74,6 +75,21 @@ public class LaboratorioBean extends BasePageBean {
             serviciosLaboratorio.registrarLaboratorio(usuario.getIdUsuario(),idLaboratorio, nombreLaboratorio, aAsociar);
         }
         catch (Exception exception){
+            conErrores(exception.getMessage());
+        }
+    }
+
+    public void cambiarEstado(){
+        try{
+            sinErrores();
+            System.out.println(labSelec);
+            System.out.println(labSelec);
+            System.out.println(labSelec);
+            System.out.println(labSelec);
+            System.out.println(labSelec);
+            serviciosLaboratorio.cambiarEstado(usuario.getIdUsuario(),labSelec);
+        }
+        catch( Exception exception){
             conErrores(exception.getMessage());
         }
     }
@@ -140,4 +156,17 @@ public class LaboratorioBean extends BasePageBean {
     public List<Equipo> getDisponibles() { return disponibles; }
 
     public void setDisponibles(List<Equipo> disponibles) { this.disponibles = disponibles; }
+
+    public Laboratorio getLabSelec() {
+        return labSelec;
+    }
+
+    public void setLabSelec(Laboratorio labSelec) {
+        System.out.println("Set LabSel");
+        System.out.println("Set LabSel");
+        System.out.println("Set LabSel");
+        System.out.println("Set LabSel");
+        System.out.println("Set LabSel");
+        this.labSelec = labSelec;
+    }
 }

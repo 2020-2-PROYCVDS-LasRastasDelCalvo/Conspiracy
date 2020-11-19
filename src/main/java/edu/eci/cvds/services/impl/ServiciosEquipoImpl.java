@@ -63,6 +63,11 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
     @Override
     public void insertarEquipo(Integer idEquipo,int[] elementos, int idLab, int idUsuario ) throws HistorialEquiposException{
         try {
+            Optional<Laboratorio> optionalLaboratorio = Optional.ofNullable( serviciosLaboratorio.consultarLaboratorio( idLab ) );
+            optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
+            if( optionalLaboratorio.get().getEstado().equals("CERRADO")){
+                throw new HistorialEquiposException("No se puede asociar un equipo a un laboratorio cerrado.");
+            }
             equipoDAO.registrarEquipo(idEquipo,idLab);
             String cadena ="";
             for( int elemento : elementos){
@@ -83,6 +88,11 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
     @Override
     public void asociarEquipo(int idLab, int idEquipo) throws HistorialEquiposException {
         try {
+            Optional<Laboratorio> optionalLaboratorio = Optional.ofNullable( serviciosLaboratorio.consultarLaboratorio( idLab ) );
+            optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
+            if( optionalLaboratorio.get().getEstado().equals("CERRADO") ){
+                throw new HistorialEquiposException("No se puede asociar un equipo a un laboratorio cerrado.");
+            }
             equipoDAO.asociar(idLab, idEquipo);
         } catch (PersistenceException e) {
             throw new HistorialEquiposException(e.getMessage(),e );
@@ -93,7 +103,9 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
     public void asociarEquipoLabExistente(List<Equipo> equipos, int idUsuario, int idLab) throws HistorialEquiposException {
         Optional<Laboratorio> optionalLaboratorio = Optional.ofNullable( serviciosLaboratorio.consultarLaboratorio( idLab ) );
         optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
-
+        if( optionalLaboratorio.get().getEstado().equals("CERRADO") ){
+            throw new HistorialEquiposException("No se puede asociar un equipo a un laboratorio cerrado.");
+        }
         for( Equipo equipo: equipos){
             asociarEquipo(idLab,equipo.getIdEquipo());
             serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio con id "+equipo.getIdLab(),idUsuario,null,equipo.getIdEquipo()));

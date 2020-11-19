@@ -23,4 +23,6 @@ public interface ServiciosLaboratorio {
     INSERT
      */
     public void registrarLaboratorio(int idUsuario,int idLab, String nombreLab, List<Equipo> aAsociar) throws HistorialEquiposException;
+
+    public void cambiarEstado(int idUsuario, Laboratorio laboratorioSeleccionado )throws HistorialEquiposException;
 }

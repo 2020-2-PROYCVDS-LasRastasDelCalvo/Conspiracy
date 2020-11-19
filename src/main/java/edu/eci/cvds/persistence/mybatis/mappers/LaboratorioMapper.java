@@ -24,5 +24,5 @@ public interface LaboratorioMapper {
 
     public void registrarLaboratorio(@Param ("idLab")int idLab, @Param ("nombreLab") String nombreLab) throws PersistenceException;
 
-
+    public void cambiarEstado(@Param("laboratorio") Laboratorio laboratorio,@Param("estado") String estado ) throws PersistenceException;
 }

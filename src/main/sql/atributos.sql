@@ -57,4 +57,4 @@ ALTER TABLE Laboratorio
     ADD CONSTRAINT CK_estado_Laboratorio
         CHECK (
             estado IN ('ABIERTO', 'CERRADO')
-            );
+);

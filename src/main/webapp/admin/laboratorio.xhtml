@@ -29,33 +29,49 @@
             </ul>
         </div>
     </nav>
-    <div align="center">
-        <h:form>
-            <p:dataTable
-                    value="#{laboratorioBean.laboratorios}"
-                    var="laboratorio"
-                    widgetVar="TablaNovedades"
-                    emptyMessage="Aun no se encontro un laboratorio con esas especificaciones"
-                    rowKey="#{laboratorio.idLaboratorio}"
-                    rows="10"
-                    paginator="true"
-                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                    currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                    rowsPerPageTemplate="1,5,10,15">
 
-                <f:facet name="header">
-                    Laboratorios
-                </f:facet>
-                <p:column headerText="idLaboratorio" filterBy="#{laboratorio.idLaboratorio}"  >
-                    <p:outputLabel value="#{laboratorio.idLaboratorio}"></p:outputLabel>
-                </p:column>
-                <p:column headerText="Nombre Laboratorio" filterBy="#{laboratorio.nombre}"  >
-                    <p:outputLabel value="#{laboratorio.nombre}"></p:outputLabel>
-                </p:column>
+    <h:form id="consultarLab">
+        <p:dataTable
+                class="table table-dark"
+                id="laboratorios"
+                value="#{laboratorioBean.laboratorios}"
+                var="laboratorio"
+                selection="#{laboratorioBean.labSelec}"
+                emptyMessage="Aun no se encontro un laboratorio con esas especificaciones"
+                rowKey="#{laboratorio.idLaboratorio}"
+                rows="10"
+                paginator="true"
+                paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                rowsPerPageTemplate="1,5,10,15">
 
-            </p:dataTable>
+            <f:facet name="header">
+                Laboratorios
+            </f:facet>
+            <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+            <p:column headerText="idLaboratorio" filterBy="#{laboratorio.idLaboratorio}"  >
+                <p:outputLabel value="#{laboratorio.idLaboratorio}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Nombre Laboratorio" filterBy="#{laboratorio.nombre}"  >
+                <p:outputLabel value="#{laboratorio.nombre}"></p:outputLabel>
+            </p:column>
+            <p:column headerText="Estado" filterBy="#{laboratorio.estado}"  >
+                <p:outputLabel value="#{laboratorio.estado}"></p:outputLabel>
+            </p:column>
+        </p:dataTable>
+        <div class="form-group" align="center" >
+            <p:commandButton class="btn btn-dark" update="consultarLab" value="Actualizar" actionListener="#{laboratorioBean.actualizar}"/>
+            <pr></pr>
+            <p:growl id="message" showDetail="true" />
+            <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{laboratorioBean.cambiarEstado}" action="#{laboratorioBean.info}" update="message">
+                <p:confirm header="Confirmation" message="¿Realizar cambio de estado?" icon="pi pi-exclamation-triangle" />
+            </p:commandButton>
 
-        </h:form>
-    </div>
+            <p:confirmDialog global="true">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+            </p:confirmDialog>
+        </div>
+    </h:form>
 </h:body>
 </html>

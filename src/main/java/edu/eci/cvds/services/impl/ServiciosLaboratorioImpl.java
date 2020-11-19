@@ -68,4 +68,14 @@ public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
         }
     }
 
+    @Override
+    public void cambiarEstado(int idUsuario, Laboratorio laboratorioSeleccionado) throws HistorialEquiposException {
+        try{
+            laboratorioDAO.cambiarEstado(laboratorioSeleccionado);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
 }

@@ -22,5 +22,6 @@ public interface LaboratorioDAO {
 
     public void registrarLaboratorio(int idLab, String nombreLab) throws PersistenceException;
 
+    public void cambiarEstado(Laboratorio laboratorio ) throws PersistenceException;
 
 }

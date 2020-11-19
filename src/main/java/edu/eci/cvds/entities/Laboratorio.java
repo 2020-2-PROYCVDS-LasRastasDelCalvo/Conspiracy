@@ -12,17 +12,18 @@ import java.util.ArrayList;
 public class Laboratorio {
     private int idLaboratorio;
     private String nombre;
+    private String estado;
     private ArrayList<Equipo> equipos;
 
     public Laboratorio(){ }
 
-    public Laboratorio(int idLaboratorio, String nombre ){
+    public Laboratorio(int idLaboratorio, String nombre,String estado ){
         this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.equipos = new ArrayList<Equipo>();
     }
 
-    public Laboratorio(int idLaboratorio, String nombre, ArrayList<Equipo> equipos){
+    public Laboratorio(int idLaboratorio, String nombre, ArrayList<Equipo> equipos,String estado){
         this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.equipos = equipos;
@@ -50,5 +51,13 @@ public class Laboratorio {
 
     public void setEquipos(ArrayList<Equipo> equipos) {
         this.equipos = equipos;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

@@ -50,4 +50,16 @@ public class MYBATISLaboratorioDAO implements LaboratorioDAO {
         }
     }
 
+    @Override
+    public void cambiarEstado(Laboratorio laboratorio) throws PersistenceException {
+        try{
+            String estado = ( laboratorio.getEstado().equals("ABIERTO")) ? "CERRADO":"ABIERTO";
+            laboratorioMapper.cambiarEstado(laboratorio, estado);
+        }
+        catch (Exception exception){
+            exception.printStackTrace();
+            throw new PersistenceException("Error al tratar de cambiar el estado del laboratorio: "+ laboratorio.getNombre(),exception );
+        }
+    }
+
 }
