@@ -14,20 +14,20 @@ VALUES(98765432, 'Jeisson Otalvaro', 'usuario', '9250e222c4c71f0c58d4c54b50a880a
 -- -----------------------------------------------------
 -- Table `Laboratorio`
 -- -----------------------------------------------------
-INSERT INTO Laboratorio( nombre )
-VALUES('Disponibles');
+INSERT INTO Laboratorio( nombre, estado)
+VALUES('Disponibles','ABIERTO');
 
-INSERT INTO Laboratorio( nombre )
-VALUES('Ingeniería de Software');
+INSERT INTO Laboratorio( nombre, estado)
+VALUES('Ingeniería de Software','ABIERTO');
 
-INSERT INTO Laboratorio( nombre )
-VALUES('Plataformas Computacionales');
+INSERT INTO Laboratorio( nombre, estado)
+VALUES('Plataformas Computacionales','ABIERTO');
 
-INSERT INTO Laboratorio( nombre )
-VALUES('Redes de Computadores');
+INSERT INTO Laboratorio( nombre, estado)
+VALUES('Redes de Computadores','ABIERTO');
 
-INSERT INTO Laboratorio( nombre )
-VALUES('Multimedia y Móviles');
+INSERT INTO Laboratorio( nombre, estado)
+VALUES('Multimedia y Móviles','ABIERTO');
 
 -- -----------------------------------------------------
 -- Table `Equipo`
