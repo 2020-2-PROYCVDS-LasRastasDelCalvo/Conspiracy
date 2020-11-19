@@ -111,3 +111,22 @@ CREATE TRIGGER AD_disponible_Elemento
   BEFORE INSERT OR UPDATE ON public.Elemento
   FOR EACH ROW
 EXECUTE PROCEDURE estadoElemento();
+
+-- -----------------------------------------------------
+-- Table `Laboratorio`
+-- -----------------------------------------------------
+CREATE OR REPLACE FUNCTION FC_SET_ESTADO_LABORATORIO()
+              RETURNS TRIGGER
+              AS
+              $$
+BEGIN
+    NEW.estado := 'ABIERTO';
+RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER TR_Laboratorio_Estado
+    BEFORE INSERT ON public.Laboratorio
+    FOR EACH ROW
+    EXECUTE PROCEDURE FC_SET_ESTADO_LABORATORIO();

@@ -30,3 +30,10 @@ ON Elemento;
 
 DROP TRIGGER IF EXISTS TR_Elemento_Estado
 ON Elemento;
+
+-- -----------------------------------------------------
+-- Table `Laboratorio`
+-- -----------------------------------------------------
+
+DROP TRIGGER IF EXISTS  TR_Laboratorio_Estado
+    ON Laboratorio;

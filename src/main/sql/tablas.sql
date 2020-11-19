@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS Usuario(
 CREATE TABLE IF NOT EXISTS Laboratorio (
   idLaboratorio serial PRIMARY KEY,
   nombre VARCHAR(40) NOT NULL,
+  estado VARCHAR(8) NOT NULL,
   UNIQUE (nombre)
 );
 
