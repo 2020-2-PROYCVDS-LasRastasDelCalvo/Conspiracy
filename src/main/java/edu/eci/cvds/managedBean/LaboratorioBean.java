@@ -82,12 +82,8 @@ public class LaboratorioBean extends BasePageBean {
     public void cambiarEstado(){
         try{
             sinErrores();
-            System.out.println(labSelec);
-            System.out.println(labSelec);
-            System.out.println(labSelec);
-            System.out.println(labSelec);
-            System.out.println(labSelec);
             serviciosLaboratorio.cambiarEstado(usuario.getIdUsuario(),labSelec);
+            actualizar();
         }
         catch( Exception exception){
             conErrores(exception.getMessage());
@@ -162,11 +158,6 @@ public class LaboratorioBean extends BasePageBean {
     }
 
     public void setLabSelec(Laboratorio labSelec) {
-        System.out.println("Set LabSel");
-        System.out.println("Set LabSel");
-        System.out.println("Set LabSel");
-        System.out.println("Set LabSel");
-        System.out.println("Set LabSel");
         this.labSelec = labSelec;
     }
 }

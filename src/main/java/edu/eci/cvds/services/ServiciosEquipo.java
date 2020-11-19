@@ -29,9 +29,9 @@ public interface ServiciosEquipo {
     /*
     UPDATE
      */
-    public void asociarEquipo(int idLab, int idEquipo) throws HistorialEquiposException;
+    public void asociarEquipo(Integer idLab, int idEquipo) throws HistorialEquiposException;
 
-    public void asociarEquipoLabExistente( List<Equipo> equipos, int idUsuario, int idLab)throws HistorialEquiposException;
+    public void asociarEquipoLabExistente( List<Equipo> equipos, int idUsuario, Integer idLab)throws HistorialEquiposException;
 
     public void cambiarEstadoEquipo(int idUsuario, Equipo equipo) throws HistorialEquiposException;
 }

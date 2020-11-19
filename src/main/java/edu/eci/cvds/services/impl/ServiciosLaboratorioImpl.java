@@ -71,7 +71,14 @@ public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
     @Override
     public void cambiarEstado(int idUsuario, Laboratorio laboratorioSeleccionado) throws HistorialEquiposException {
         try{
-            laboratorioDAO.cambiarEstado(laboratorioSeleccionado);
+            String estado = ( laboratorioSeleccionado.getEstado().equals("ABIERTO")) ? "CERRADO":"ABIERTO";
+            if( estado.equals("CERRADO") && laboratorioSeleccionado.getIdLaboratorio() != 1){
+                laboratorioDAO.cambiarEstado(laboratorioSeleccionado, estado);
+                for( Equipo equipo: laboratorioSeleccionado.getEquipos()){
+                    serviciosEquipo.asociarEquipo(1, equipo.getIdEquipo());
+                    serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio "+laboratorioSeleccionado.getNombre(),idUsuario,null,equipo.getIdEquipo()));
+                }
+            }
         }
         catch (PersistenceException persistenceException){
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );

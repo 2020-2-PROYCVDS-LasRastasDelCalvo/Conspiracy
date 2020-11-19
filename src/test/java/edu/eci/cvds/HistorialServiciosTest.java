@@ -5,7 +5,6 @@ import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import edu.eci.cvds.services.HistorialServiciosFactory;
-import org.checkerframework.dataflow.qual.TerminatesExecution;
 import org.junit.Assert;
 import org.junit.Test;
 

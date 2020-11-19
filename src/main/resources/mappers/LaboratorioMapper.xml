@@ -101,12 +101,12 @@
     <update id="cambiarEstado">
         UPDATE Laboratorio
          SET estado = #{estado}
-        WHERE  idLaboratorio = #{laboratorio.idLaboratorio};
+        WHERE  idLaboratorio = #{laboratorio.idLaboratorio} AND idLaboratorio!=1;
     </update>
     <resultMap id="LaboratorioResult" type="Laboratorio">
         <id property="idLaboratorio" column="la_idLaboratorio"/>
         <result property="nombre" column="la_nombre"/>
         <result property="estado" column="la_estado"/>
-        <collection property="equipos" ofType="Equipo" resultMap="edu.eci.cvds.persistence.mybatis.mappers.LaboratorioMapper.LaboratorioResult"/>
+        <collection property="equipos" ofType="Equipo" resultMap="edu.eci.cvds.persistence.mybatis.mappers.EquipoMapper.EquipoResult"/>
     </resultMap>
 </mapper>

@@ -1,7 +1,8 @@
 package edu.eci.cvds.services.impl;
 
 
-import edu.eci.cvds.entities.*;
+
+import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.UsuarioDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
@@ -42,6 +43,6 @@ public class HistorialServiciosImpl implements HistorialServicios{
      */
 
     /*
-    Actualizar / UPDATE / Asociar / Dar de baja / Relacionar
+    Actualizar / UPDATE
      */
 }

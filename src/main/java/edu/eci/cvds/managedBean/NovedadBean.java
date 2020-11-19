@@ -1,9 +1,7 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Novedad;
-import edu.eci.cvds.services.HistorialServicios;
 import edu.eci.cvds.services.ServiciosNovedad;
-
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

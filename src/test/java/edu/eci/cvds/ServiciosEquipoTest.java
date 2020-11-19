@@ -91,22 +91,22 @@ public class ServiciosEquipoTest {
 
     @Test
     public void deberiaAsociarEquipoLab()throws HistorialEquiposException{
-        int idLab = 2;
+        int idLab = new Integer(2);
         int idEquipo = 1;
 
         serviciosEquipo.asociarEquipo(idLab,idEquipo);
         Equipo equipo = serviciosEquipo.consultarEquipo(idEquipo);
-        Assert.assertEquals(idLab,equipo.getIdLab());
+        Assert.assertTrue(idLab == equipo.getIdLab());
     }
 
     @Test( expected = HistorialEquiposException.class )
     public void deberiaFallarAlAsociarEquipoLabNoExistente()throws HistorialEquiposException{
-        int idLab = -1;
+        int idLab = new Integer(-1);
         int idEquipo = 1;
 
         serviciosEquipo.asociarEquipo(idLab,idEquipo);
         Equipo equipo = serviciosEquipo.consultarEquipo(idEquipo);
-        Assert.assertEquals(idLab,equipo.getIdLab());
+        Assert.assertTrue(idLab == equipo.getIdLab());
     }
 
 }

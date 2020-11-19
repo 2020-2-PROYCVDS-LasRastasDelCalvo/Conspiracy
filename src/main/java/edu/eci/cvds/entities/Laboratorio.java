@@ -10,30 +10,32 @@ import java.util.ArrayList;
  * @version 28/10/2020
  */
 public class Laboratorio {
-    private int idLaboratorio;
+    private Integer idLaboratorio;
     private String nombre;
     private String estado;
     private ArrayList<Equipo> equipos;
 
     public Laboratorio(){ }
 
-    public Laboratorio(int idLaboratorio, String nombre,String estado ){
+    public Laboratorio(Integer idLaboratorio, String nombre,String estado ){
         this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.equipos = new ArrayList<Equipo>();
+        this.estado = estado;
     }
 
-    public Laboratorio(int idLaboratorio, String nombre, ArrayList<Equipo> equipos,String estado){
+    public Laboratorio(Integer idLaboratorio, String nombre, ArrayList<Equipo> equipos,String estado){
         this.idLaboratorio = idLaboratorio;
         this.nombre = nombre;
         this.equipos = equipos;
+        this.estado = estado;
     }
 
-    public int getIdLaboratorio() {
+    public Integer getIdLaboratorio() {
         return idLaboratorio;
     }
 
-    public void setIdLaboratorio(int idLaboratorio) {
+    public void setIdLaboratorio(Integer idLaboratorio) {
         this.idLaboratorio = idLaboratorio;
     }
 
@@ -45,19 +47,19 @@ public class Laboratorio {
         this.nombre = nombre;
     }
 
-    public ArrayList<Equipo> getEquipos() {
-        return equipos;
-    }
-
-    public void setEquipos(ArrayList<Equipo> equipos) {
-        this.equipos = equipos;
-    }
-
     public String getEstado() {
         return estado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public ArrayList<Equipo> getEquipos() {
+        return equipos;
+    }
+
+    public void setEquipos(ArrayList<Equipo> equipos) {
+        this.equipos = equipos;
     }
 }

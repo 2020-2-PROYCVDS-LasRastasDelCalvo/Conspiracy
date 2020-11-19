@@ -3,7 +3,6 @@ package edu.eci.cvds.guice;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-
 import edu.eci.cvds.persistence.mybatis.*;
 import edu.eci.cvds.persistence.mybatis.dao.*;
 import edu.eci.cvds.security.Log;

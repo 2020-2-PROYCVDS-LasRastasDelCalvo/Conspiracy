@@ -14,7 +14,7 @@ public class Equipo {
 
     private int idEquipo;
     private int disponible;
-    private int idLab;
+    private Integer idLab;
     private Date fechaRegistro;
     private String estado;
     private ArrayList<Elemento> elementos;
@@ -22,7 +22,7 @@ public class Equipo {
 
     public Equipo(){
     }
-    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Novedad>novedades){
+    public Equipo(int idEquipo, Integer idLab, Date fechaRegistro, int disponible, ArrayList<Novedad>novedades){
         this.idEquipo = idEquipo;
         this.fechaRegistro = fechaRegistro;
         this.disponible = disponible;
@@ -31,7 +31,7 @@ public class Equipo {
         this.novedades = novedades;
     }
 
-    public Equipo(int idEquipo, int idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
+    public Equipo(int idEquipo, Integer idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
        this.idEquipo = idEquipo;
        this.fechaRegistro = fechaRegistro;
        this.disponible = disponible;
@@ -48,6 +48,22 @@ public class Equipo {
         this.idEquipo = idEquipo;
     }
 
+    public int getDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(int disponible) {
+        this.disponible = disponible;
+    }
+
+    public Integer getIdLab() {
+        return idLab;
+    }
+
+    public void setIdLab(Integer idLab) {
+        this.idLab = idLab;
+    }
+
     public Date getFechaRegistro() {
         return fechaRegistro;
     }
@@ -56,12 +72,12 @@ public class Equipo {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public int getDisponible() {
-        return disponible;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setDisponible(int disponible) {
-        this.disponible = disponible;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public ArrayList<Elemento> getElementos() {
@@ -72,23 +88,11 @@ public class Equipo {
         this.elementos = elementos;
     }
 
-    public void setNovedades(ArrayList<Novedad> novedades) {
-        this.novedades = novedades;
-    }
-
     public ArrayList<Novedad> getNovedades() {
         return novedades;
     }
 
-    public int getIdLab() {
-        return idLab;
+    public void setNovedades(ArrayList<Novedad> novedades) {
+        this.novedades = novedades;
     }
-
-    public void setIdLab(int idLab) {
-        this.idLab = idLab;
-    }
-
-    public String getEstado() { return estado; }
-
-    public void setEstado(String estado) { this.estado = estado; }
 }
