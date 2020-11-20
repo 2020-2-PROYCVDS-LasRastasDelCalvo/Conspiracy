@@ -42,7 +42,7 @@ public interface NovedadDAO  {
      */
     public void guardarNovedadEquipo( Novedad novedad  ) throws PersistenceException;
 
-    public List<Novedad> consultarPorElementos(List<Integer> search) throws PersistenceException;
+    public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws PersistenceException;
 
     public List<Novedad> consultarPorEquipos(String search) throws PersistenceException;
 

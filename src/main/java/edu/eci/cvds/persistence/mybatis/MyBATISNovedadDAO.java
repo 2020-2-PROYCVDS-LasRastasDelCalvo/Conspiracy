@@ -4,7 +4,6 @@ import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper;
-import edu.eci.cvds.services.HistorialEquiposException;
 
 import javax.inject.Inject;
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
     }
 
     @Override
-    public List<Novedad> consultarPorElementos(List<Integer> search) throws PersistenceException {
+    public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws PersistenceException {
         try{
             return novedadMapper.consultarPorElementos(search);
         }

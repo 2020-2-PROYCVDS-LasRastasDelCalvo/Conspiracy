@@ -1,6 +1,7 @@
 package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
+import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
@@ -8,13 +9,17 @@ import edu.eci.cvds.services.ServiciosElemento;
 import edu.eci.cvds.services.ServiciosNovedad;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import org.checkerframework.checker.units.qual.A;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -48,6 +53,7 @@ public class ElementoBean extends BasePageBean {
     private List<Elemento> elementosSeleccionados;
     private Usuario usuario;
     private Subject subject = SecurityUtils.getSubject();
+    private List<Novedad> novedades;
 
     @PostConstruct
     public void init(){
@@ -100,7 +106,6 @@ public class ElementoBean extends BasePageBean {
 
     public void cambiarEstadoElemento(){
         try {
-            System.out.println(elementosSeleccionados.size());
             sinErrores();
             for (Elemento e: elementosSeleccionados){
                 serviciosElemento.cambiarEstadoElemento(usuario.getIdUsuario(),e);
@@ -117,9 +122,8 @@ public class ElementoBean extends BasePageBean {
             search.add(e.getIdElemento());
         }
         try {
-            serviciosNovedad.consultarPorElementos(search);
+            novedades = serviciosNovedad.consultarPorElementos(search);
         } catch (HistorialEquiposException e) {
-            e.printStackTrace();
         }
     }
 
@@ -168,4 +172,11 @@ public class ElementoBean extends BasePageBean {
 
     public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) { this.elementosSeleccionados = elementosSeleccionados; }
 
+    public List<Novedad> getNovedades() {
+        return novedades;
+    }
+
+    public void setNovedades(List<Novedad> novedades) {
+        this.novedades = novedades;
+    }
 }

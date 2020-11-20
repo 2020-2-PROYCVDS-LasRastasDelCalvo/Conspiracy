@@ -82,7 +82,6 @@ public class ServiciosLaboratorioTest {
             serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
         }
         catch (Exception exception){
-            exception.printStackTrace();
         }
         finally {
             Assert.assertTrue( serviciosLaboratorio.consultarLaboratorio(idLab) != null );

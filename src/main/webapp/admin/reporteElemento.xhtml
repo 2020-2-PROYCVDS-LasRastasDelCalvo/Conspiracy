@@ -83,7 +83,7 @@
         </div>
 
         <p:dataTable class="table table-dark" id="TablaNovedadElemento"
-                     value="#{novedadBean.novedades}"
+                     value="#{elementoBean.novedades}"
                      var="novedad"
                      rowKey="#{novedad.idNovedad}"
                      rows="10"
@@ -113,14 +113,6 @@
                 <p:outputLabel value="#{novedad.idUsuario}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-
-
-
-
-
-
-
     </h:form>
 </h:body>
 </html>

@@ -26,7 +26,7 @@
             ORDER BY n.fecha DESC;
     </select>
 
-    <select id="consultarPorElementos" resultMap="NovedadResult">
+    <select id="consultarPorElementos" parameterType="java.util.ArrayList" resultMap="NovedadResult">
         SELECT
             n.idNovedad AS n_idNovedad,
             n.titulo AS n_titulo ,
@@ -43,11 +43,11 @@
             usuario u
             ON n.usuario = u.idusuario
             WHERE
-                n_idElemento IN
-                <foreach item="item" index="index" collection="list"
-                                         separator=",">
-        #{search}
-    </foreach>
+                n.idElemento IN
+                <foreach collection="search" item="item" index="index"
+                         open= "(" separator= "," close= ")">
+                    #{item}
+                </foreach>
             ORDER BY n.fecha DESC;
     </select>
 

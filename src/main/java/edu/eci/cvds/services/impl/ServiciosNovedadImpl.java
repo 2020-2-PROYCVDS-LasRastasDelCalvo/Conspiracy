@@ -53,7 +53,7 @@ public class ServiciosNovedadImpl implements ServiciosNovedad {
     }
 
     @Override
-    public List<Novedad> consultarPorElementos(List<Integer> search) throws HistorialEquiposException {
+    public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws HistorialEquiposException {
         try{
             return novedadDAO.consultarPorElementos(search);
         }

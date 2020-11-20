@@ -22,7 +22,7 @@ public interface ServiciosNovedad {
 
     public List<Novedad> consultarPorEquipo(int idEquipo) throws HistorialEquiposException;
 
-    public List<Novedad> consultarPorElementos(List<Integer> search) throws HistorialEquiposException;
+    public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws HistorialEquiposException;
 
     public List<Novedad> consultarPorEquipos(String search) throws HistorialEquiposException;
 
