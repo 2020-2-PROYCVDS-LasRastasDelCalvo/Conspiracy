@@ -96,7 +96,7 @@
             ORDER BY la_idLaboratorio;
     </select>
     <insert id="registrarLaboratorio">
-        INSERT INTO Laboratorio VALUES (#{idLab}, #{nombreLab},'ACTIVO')
+        INSERT INTO Laboratorio VALUES (#{idLab}, #{nombreLab},'ABIERTO')
     </insert>
     <update id="cambiarEstado">
         UPDATE Laboratorio

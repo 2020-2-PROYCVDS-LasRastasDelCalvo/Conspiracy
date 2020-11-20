@@ -3,6 +3,8 @@ package edu.eci.cvds.persistence.mybatis.mappers;
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,5 +42,9 @@ public interface NovedadMapper {
      * @param novedad, Novedad novedad a insertar en la base de datos
      */
     public void addNovedad( @Param("novedad") Novedad novedad ) throws PersistenceException;
+
+    public List<Novedad> consultarPorElementos(@Param("search") List<Integer> search) throws PersistenceException;
+
+    public List<Novedad> consultarPorEquipos(@Param("search") String search) throws PersistenceException;
 
 }

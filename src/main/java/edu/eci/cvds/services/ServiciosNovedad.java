@@ -1,6 +1,8 @@
 package edu.eci.cvds.services;
 
 import edu.eci.cvds.entities.Novedad;
+
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @author Ana Gabriela Silva
@@ -15,6 +17,14 @@ public interface ServiciosNovedad {
     SELECT
      */
     public List<Novedad> consultarNovedades() throws HistorialEquiposException;
+
+    public List<Novedad> consultarPorElemento(int idElemento) throws HistorialEquiposException;
+
+    public List<Novedad> consultarPorEquipo(int idEquipo) throws HistorialEquiposException;
+
+    public List<Novedad> consultarPorElementos(List<Integer> search) throws HistorialEquiposException;
+
+    public List<Novedad> consultarPorEquipos(String search) throws HistorialEquiposException;
 
     /*
     INSERT

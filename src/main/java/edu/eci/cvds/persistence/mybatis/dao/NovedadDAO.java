@@ -2,6 +2,8 @@ package edu.eci.cvds.persistence.mybatis.dao;
 
 import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,5 +41,9 @@ public interface NovedadDAO  {
      * @param novedad, Novedad novedad a insertar en la base de datos
      */
     public void guardarNovedadEquipo( Novedad novedad  ) throws PersistenceException;
+
+    public List<Novedad> consultarPorElementos(List<Integer> search) throws PersistenceException;
+
+    public List<Novedad> consultarPorEquipos(String search) throws PersistenceException;
 
 }

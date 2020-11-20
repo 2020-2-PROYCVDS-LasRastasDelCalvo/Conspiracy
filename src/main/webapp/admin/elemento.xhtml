@@ -40,7 +40,7 @@
         <p:dataTable class="table table-dark" id="infoElementos"
                      value="#{elementoBean.elementos}"
                      var="elemento"
-                     selection="#{elementoBean.elementoBaja}"
+                     selection="#{elementoBean.elementosSeleccionados}"
                      rowKey="#{elemento.idElemento}"
                      rows="10"
                      paginator="true"
@@ -50,7 +50,7 @@
             <f:facet name="header">
                 Elementos
             </f:facet>
-            <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+            <p:column headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
             <p:column headerText="idElemento" >
                 <p:outputLabel value="#{elemento.idElemento}"></p:outputLabel>
             </p:column>
@@ -75,18 +75,8 @@
         </p:dataTable>
         <div class="form-group" align="center" >
             <p:commandButton class="btn btn-dark" update="consultarElemento" value="Actualizar" actionListener="#{elementoBean.actualizar}"/>
-            <pr></pr>
-            <p:growl id="message" showDetail="true" />
-            <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{elementoBean.cambiarEstadoElemento}" action="#{elementoBean.info}" update="message">
-                <p:confirm header="Confirmation" message="¿Realizar cambio de elemento?" icon="pi pi-exclamation-triangle" />
-            </p:commandButton>
-
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
-            </p:confirmDialog>
+            <p:commandButton class="btn btn-dark" actionListener="#{elementoBean.actualizarNovedades}" action="reporteElemento.xhtml" value="Ver reporte" />
         </div>
     </h:form>
-
 </h:body>
 </html>
