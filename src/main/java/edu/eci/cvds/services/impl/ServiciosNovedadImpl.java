@@ -6,6 +6,7 @@ import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.ServiciosNovedad;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 /**
  * @author Ana Gabriela Silva
@@ -30,6 +31,47 @@ public class ServiciosNovedadImpl implements ServiciosNovedad {
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
         }
     }
+
+    @Override
+    public List<Novedad> consultarPorElemento(int idElemento) throws HistorialEquiposException {
+        try{
+            return novedadDAO.cargarNovedadesElemento(idElemento);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public List<Novedad> consultarPorEquipo(int idEquipo) throws HistorialEquiposException {
+        try{
+            return novedadDAO.cargarNovedadesEquipo(idEquipo);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public List<Novedad> consultarPorElementos(List<Integer> search) throws HistorialEquiposException {
+        try{
+            return novedadDAO.consultarPorElementos(search);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
+    @Override
+    public List<Novedad> consultarPorEquipos(String search) throws HistorialEquiposException {
+        try{
+            return novedadDAO.consultarPorEquipos(search);
+        }
+        catch (PersistenceException persistenceException){
+            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        }
+    }
+
     /*
     INSERT
      */

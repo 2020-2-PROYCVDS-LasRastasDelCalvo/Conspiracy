@@ -4,7 +4,10 @@ import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.persistence.PersistenceException;
 import edu.eci.cvds.persistence.mybatis.dao.NovedadDAO;
 import edu.eci.cvds.persistence.mybatis.mappers.NovedadMapper;
+import edu.eci.cvds.services.HistorialEquiposException;
+
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -52,6 +55,26 @@ public class MyBATISNovedadDAO implements NovedadDAO {
     public void guardarNovedadEquipo(Novedad novedad) throws PersistenceException {
         try{
             novedadMapper.addNovedad( novedad );
+        }
+        catch (Exception exception){
+            throw new PersistenceException("Error al insertar la novedad.", exception );
+        }
+    }
+
+    @Override
+    public List<Novedad> consultarPorElementos(List<Integer> search) throws PersistenceException {
+        try{
+            return novedadMapper.consultarPorElementos(search);
+        }
+        catch (Exception exception){
+            throw new PersistenceException("Error al insertar la novedad.", exception );
+        }
+    }
+
+    @Override
+    public List<Novedad> consultarPorEquipos(String search) throws PersistenceException {
+        try{
+            return novedadMapper.consultarPorEquipos(search);
         }
         catch (Exception exception){
             throw new PersistenceException("Error al insertar la novedad.", exception );

@@ -2,8 +2,10 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Usuario;
+import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServicios;
 import edu.eci.cvds.services.ServiciosElemento;
+import edu.eci.cvds.services.ServiciosNovedad;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import javax.annotation.PostConstruct;
@@ -12,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +32,9 @@ public class ElementoBean extends BasePageBean {
     @Inject
     private ServiciosElemento serviciosElemento;
 
+    @Inject
+    private ServiciosNovedad serviciosNovedad;
+
     @Inject HistorialServicios historialServicios;
 
     private int idEquipo;
@@ -42,7 +48,6 @@ public class ElementoBean extends BasePageBean {
     private List<Elemento> elementosSeleccionados;
     private Usuario usuario;
     private Subject subject = SecurityUtils.getSubject();
-    private Elemento elementoBaja;
 
     @PostConstruct
     public void init(){
@@ -94,12 +99,27 @@ public class ElementoBean extends BasePageBean {
     }
 
     public void cambiarEstadoElemento(){
-        try{
+        try {
+            System.out.println(elementosSeleccionados.size());
             sinErrores();
-            serviciosElemento.cambiarEstadoElemento(usuario.getIdUsuario(),elementoBaja);
+            for (Elemento e: elementosSeleccionados){
+                serviciosElemento.cambiarEstadoElemento(usuario.getIdUsuario(),e);
+            }
         }
         catch (Exception exception) {
             conErrores(exception.getMessage());
+        }
+    }
+
+    public void actualizarNovedades(){
+        ArrayList<Integer> search = new ArrayList<Integer>();
+        for (Elemento e: elementosSeleccionados){
+            search.add(e.getIdElemento());
+        }
+        try {
+            serviciosNovedad.consultarPorElementos(search);
+        } catch (HistorialEquiposException e) {
+            e.printStackTrace();
         }
     }
 
@@ -120,65 +140,32 @@ public class ElementoBean extends BasePageBean {
         estado = FacesMessage.SEVERITY_INFO;
     }
 
-    public String[] getOpciones() {
-        return opciones;
-    }
+    public String[] getOpciones() { return opciones; }
 
-    public void setOpciones(String[] opciones) {
-        this.opciones = opciones;
-    }
+    public void setOpciones(String[] opciones) { this.opciones = opciones; }
 
-    public String getTipo() {
-        return tipo;
-    }
+    public String getTipo() { return tipo; }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getNombre() { return nombre; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getDescripcion() {
-        return descripcion;
-    }
+    public String getDescripcion() { return descripcion; }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
 
-    public List<Elemento> getElementos() {
-        return elementos;
-    }
+    public List<Elemento> getElementos() { return elementos; }
 
-    public void setElementos(List<Elemento> elementos) {
-        this.elementos = elementos;
-    }
+    public void setElementos(List<Elemento> elementos) { this.elementos = elementos; }
 
-    public int getIdEquipo() {
-        return idEquipo;
-    }
+    public int getIdEquipo() { return idEquipo; }
 
-    public void setIdEquipo(int idEquipo) {
-        this.idEquipo = idEquipo;
-    }
+    public void setIdEquipo(int idEquipo) { this.idEquipo = idEquipo; }
 
-    public List<Elemento> getElementosSeleccionados() {
-        return elementosSeleccionados;
-    }
+    public List<Elemento> getElementosSeleccionados() { return elementosSeleccionados; }
 
     public void setElementosSeleccionados(List<Elemento> elementosSeleccionados) { this.elementosSeleccionados = elementosSeleccionados; }
 
-    public Elemento getElementoBaja() {
-        return elementoBaja;
-    }
-
-    public void setElementoBaja(Elemento elementoBaja) {
-        this.elementoBaja = elementoBaja;
-    }
 }
