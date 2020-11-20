@@ -70,18 +70,22 @@
             </p:column>
         </p:dataTable>
         <div class="form-group" align="center" >
-            <p:commandButton class="btn btn-dark" value="Actualizar" actionListener="#{equipoBean.actualizar}" update="infoElementos"/>
-
             <p:growl id="message" showDetail="true" />
             <p:commandButton class="btn btn-dark" value="Asociar" actionListener="#{equipoBean.asociarEquipLab}" action="#{equipoBean.info}" update="message">
                 <p:confirm header="Confirmation" message="¿Realizar cambio de laboratorio?" icon="pi pi-exclamation-triangle" />
             </p:commandButton>
-            
+
+            <p:commandButton class="btn btn-dark" value="Actualizar" actionListener="#{equipoBean.actualizar}" update="infoElementos">
+            </p:commandButton>
+
             <p:confirmDialog global="true" >
                 <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
                 <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
             </p:confirmDialog>
         </div>
     </h:form>
+
+
+
 </h:body>
 </html>
