@@ -45,6 +45,6 @@ public interface NovedadMapper {
 
     public List<Novedad> consultarPorElementos(@Param("search") ArrayList<Integer> search) throws PersistenceException;
 
-    public List<Novedad> consultarPorEquipos(@Param("search") String search) throws PersistenceException;
+    public List<Novedad> consultarPorEquipos(@Param("search") ArrayList<Integer> search) throws PersistenceException;
 
 }

@@ -44,6 +44,6 @@ public interface NovedadDAO  {
 
     public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws PersistenceException;
 
-    public List<Novedad> consultarPorEquipos(String search) throws PersistenceException;
+    public List<Novedad> consultarPorEquipos(ArrayList<Integer> search) throws PersistenceException;
 
 }

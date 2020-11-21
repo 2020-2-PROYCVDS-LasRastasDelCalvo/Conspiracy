@@ -48,13 +48,13 @@
             <f:facet name="header">
                 Equipos
             </f:facet>
-            <p:column headerText="idEquipo" filterBy="#{equipo.idEquipo}>">
+            <p:column headerText="idEquipo" filterBy="#{equipo.idEquipo}" sortBy="#{equipo.idEquipo}">
                 <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Estado" filterBy="#{equipo.estado}" filterMatchMode="contains">
+            <p:column headerText="Estado" filterBy="#{equipo.estado}" filterMatchMode="contains" sortBy="#{equipo.estado}">
                 <p:outputLabel value="#{equipo.estado}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Laboratorio" filterBy="#{equipo.idLab}" filterMatchMode="contains">
+            <p:column headerText="Laboratorio" filterBy="#{equipo.idLab}" filterMatchMode="contains" sortBy="#{equipo.idLab}">
                 <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
             </p:column>
 
@@ -65,8 +65,9 @@
             </p:commandButton>
         </div>
 
-        <p:dataTable class="table table-dark" id="TablaNovedadElemento"
-                     value="#{elementoBean.novedades}"
+        <p:dataTable class="table table-dark"
+                     id="TablaNovedadEquipo"
+                     value="#{equipoBean.novedades}"
                      var="novedad"
                      rowKey="#{novedad.idNovedad}"
                      rows="10"
@@ -74,32 +75,29 @@
                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                      rowsPerPageTemplate="1,5,10,15">
-            <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}">
+            <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Titulo" filterBy="#{novedad.titulo}">
+            <p:column headerText="Titulo" filterBy="#{novedad.titulo}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.titulo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Detalle" filterBy="#{novedad.detalle}">
+            <p:column headerText="Detalle" filterBy="#{novedad.detalle}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.detalle}"></p:outputLabel>
             </p:column>
-            <p:column headerText="Fecha" filterBy="#{novedad.fecha}">
+            <p:column headerText="Fecha" filterBy="#{novedad.fecha}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.fecha}"></p:outputLabel>
             </p:column>
-            <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}">
+            <p:column headerText="idEquipo" filterBy="#{novedad.idEquipo}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.idEquipo}"></p:outputLabel>
             </p:column>
-            <p:column headerText="idElemento" filterBy="#{novedad.idElemento}">
-                <p:outputLabel value="#{novedad.idElemento}"></p:outputLabel>
-            </p:column>
-            <p:column headerText="Responsable" filterBy="#{novedad.idUsuario}">
+            <p:column headerText="Responsable" filterBy="#{novedad.idUsuario}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.idUsuario}"></p:outputLabel>
             </p:column>
         </p:dataTable>
 
         <div align="center">
             <p:commandButton class="btn btn-dark" value="Exp.a Excel" ajax="false" >
-                <p:dataExporter type="xls" target="TablaNovedadElemento" fileName="novedadesElementos"/>
+                <p:dataExporter type="xls" target="TablaNovedadEquipo" fileName="novedadesEquipos"/>
             </p:commandButton>
         </div>
     </h:form>

@@ -24,7 +24,7 @@ public interface ServiciosNovedad {
 
     public List<Novedad> consultarPorElementos(ArrayList<Integer> search) throws HistorialEquiposException;
 
-    public List<Novedad> consultarPorEquipos(String search) throws HistorialEquiposException;
+    public List<Novedad> consultarPorEquipos(ArrayList<Integer> search) throws HistorialEquiposException;
 
     /*
     INSERT

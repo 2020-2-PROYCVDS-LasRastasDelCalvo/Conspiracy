@@ -71,7 +71,7 @@ public class MyBATISNovedadDAO implements NovedadDAO {
     }
 
     @Override
-    public List<Novedad> consultarPorEquipos(String search) throws PersistenceException {
+    public List<Novedad> consultarPorEquipos(ArrayList<Integer> search) throws PersistenceException {
         try{
             return novedadMapper.consultarPorEquipos(search);
         }

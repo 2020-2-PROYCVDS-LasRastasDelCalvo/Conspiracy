@@ -22,6 +22,7 @@ public interface ServiciosEquipo {
     public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException;
 
     public List<Equipo> consultarEquiposActivos() throws HistorialEquiposException;
+
     /*
     INSERT
      */

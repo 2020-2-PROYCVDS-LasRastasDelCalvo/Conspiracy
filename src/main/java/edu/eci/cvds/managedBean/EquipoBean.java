@@ -2,10 +2,12 @@ package edu.eci.cvds.managedBean;
 
 import edu.eci.cvds.entities.Elemento;
 import edu.eci.cvds.entities.Equipo;
+import edu.eci.cvds.entities.Novedad;
 import edu.eci.cvds.entities.Usuario;
 import edu.eci.cvds.services.HistorialServicios;
 import edu.eci.cvds.services.ServiciosElemento;
 import edu.eci.cvds.services.ServiciosEquipo;
+import edu.eci.cvds.services.ServiciosNovedad;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import javax.annotation.PostConstruct;
@@ -14,6 +16,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,6 +39,9 @@ public class EquipoBean extends BasePageBean {
     @Inject
     private ServiciosElemento serviciosElemento;
 
+    @Inject
+    private ServiciosNovedad serviciosNovedad;
+
     private Subject subject = SecurityUtils.getSubject();
     private int disponible;
     private int laboratorio;
@@ -56,6 +62,7 @@ public class EquipoBean extends BasePageBean {
     private List<Equipo> equiposSeleccionados;
     private List<Equipo> equipos;
     private List<Equipo> equipSeleccionados;
+    private List<Novedad> novedades;
 
     @PostConstruct
     public void init(){
@@ -151,10 +158,19 @@ public class EquipoBean extends BasePageBean {
         try{
             sinErrores();
             equipos = serviciosEquipo.consultarEquiposActivos();
+            actualizarNovedades();
         }
         catch (Exception exception){
             conErrores( exception.getMessage() );
         }
+    }
+
+    public void actualizarNovedades() throws Exception{
+        ArrayList<Integer> search = new ArrayList<Integer>();
+        for (Equipo equipo: equipos){
+            search.add(new Integer(equipo.getIdEquipo()));
+        }
+        novedades = serviciosNovedad.consultarPorEquipos( search );
     }
 
     /**
@@ -304,6 +320,14 @@ public class EquipoBean extends BasePageBean {
 
     public void setEquiposSeleccionados(List<Equipo> equiposSeleccionados) {
         this.equiposSeleccionados = equiposSeleccionados;
+    }
+
+    public List<Novedad> getNovedades() {
+        return novedades;
+    }
+
+    public void setNovedades(List<Novedad> novedades) {
+        this.novedades = novedades;
     }
 
     public void setEquipoSeleccionado(Equipo equipoSeleccionado) { this.equipoSeleccionado = equipoSeleccionado; }
