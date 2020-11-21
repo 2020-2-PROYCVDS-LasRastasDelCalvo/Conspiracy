@@ -144,4 +144,14 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
             throw new HistorialEquiposException(e.getMessage(),e );
         }
     }
+
+    @Override
+    public List<Equipo> consultarEquiposActivos() throws HistorialEquiposException {
+        try {
+            return equipoDAO.consultarEquiposActivos();
+        }
+        catch (PersistenceException e) {
+            throw new HistorialEquiposException(e.getMessage(),e );
+        }
+    }
 }

@@ -53,6 +53,7 @@ public class EquipoBean extends BasePageBean {
     private List<Elemento> tablaTeclado;
     private FacesMessage.Severity estado;
     private Equipo equipoSeleccionado;
+    private List<Equipo> equiposSeleccionados;
     private List<Equipo> equipos;
     private List<Equipo> equipSeleccionados;
 
@@ -136,7 +137,20 @@ public class EquipoBean extends BasePageBean {
     public void cambiarEstadoEquipo(){
         try{
             sinErrores();
-            serviciosEquipo.cambiarEstadoEquipo(usuario.getIdUsuario(),equipoSeleccionado);
+            for( Equipo equipo: equiposSeleccionados){
+                serviciosEquipo.cambiarEstadoEquipo(usuario.getIdUsuario(),equipo);
+            }
+
+        }
+        catch (Exception exception){
+            conErrores( exception.getMessage() );
+        }
+    }
+
+    public void actualizarEquiposDispo(){
+        try{
+            sinErrores();
+            equipos = serviciosEquipo.consultarEquiposActivos();
         }
         catch (Exception exception){
             conErrores( exception.getMessage() );
@@ -283,6 +297,14 @@ public class EquipoBean extends BasePageBean {
     }
 
     public Equipo getEquipoSeleccionado() { return equipoSeleccionado; }
+
+    public List<Equipo> getEquiposSeleccionados() {
+        return equiposSeleccionados;
+    }
+
+    public void setEquiposSeleccionados(List<Equipo> equiposSeleccionados) {
+        this.equiposSeleccionados = equiposSeleccionados;
+    }
 
     public void setEquipoSeleccionado(Equipo equipoSeleccionado) { this.equipoSeleccionado = equipoSeleccionado; }
 }

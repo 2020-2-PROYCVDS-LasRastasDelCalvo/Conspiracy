@@ -80,6 +80,16 @@ public class MyBATISEquipoDAO implements EquipoDAO {
     }
 
     @Override
+    public List<Equipo> consultarEquiposActivos() throws PersistenceException {
+        try{
+            return equipoMapper.consultarEquiposActivos();
+        }
+        catch (Exception e) {
+            throw new PersistenceException("Error al consultar equipos disponibles.", e);
+        }
+    }
+
+    @Override
     public void cambiarEstadoEquipo(int idEquipo, String change) throws PersistenceException{
         try{
             equipoMapper.cambiarEstado(idEquipo, change);

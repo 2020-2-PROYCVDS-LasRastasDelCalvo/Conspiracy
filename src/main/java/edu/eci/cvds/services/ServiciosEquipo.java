@@ -21,6 +21,7 @@ public interface ServiciosEquipo {
 
     public Equipo consultarEquipo(int idEquipo) throws HistorialEquiposException;
 
+    public List<Equipo> consultarEquiposActivos() throws HistorialEquiposException;
     /*
     INSERT
      */
@@ -34,4 +35,5 @@ public interface ServiciosEquipo {
     public void asociarEquipoLabExistente( List<Equipo> equipos, int idUsuario, Integer idLab)throws HistorialEquiposException;
 
     public void cambiarEstadoEquipo(int idUsuario, Equipo equipo) throws HistorialEquiposException;
+
 }
