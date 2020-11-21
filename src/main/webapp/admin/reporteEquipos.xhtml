@@ -33,6 +33,7 @@
         </div>
     </nav>
     <h:form id="ReporteEquipos">
+        <h1 align="center">Equipos Activos</h1>
         <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                     closable="true" globalOnly="true"/>
         <p:dataTable class="table table-dark"
@@ -41,12 +42,17 @@
                      var="equipo"
                      rowKey="#{equipo.idEquipo}"
                      rows="10"
-                     paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                     rowsPerPageTemplate="1,5,10,15">
-            <f:facet name="header">
-                Equipos
+                     paginator="true"
+                     rowsPerPageTemplate="1,5,10,15"
+                     style="margin-bottom:20px">
+            <f:facet name="Equipos"/>
+            <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <p:graphicImage url="../rsc/img/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="TablaReporteEquipos" fileName="equipos"/>
+                    </h:commandLink>
             </f:facet>
             <p:column headerText="idEquipo" filterBy="#{equipo.idEquipo}" sortBy="#{equipo.idEquipo}">
                 <p:outputLabel value="#{equipo.idEquipo}"></p:outputLabel>
@@ -59,10 +65,8 @@
             </p:column>
 
         </p:dataTable>
-        <div class="form-group" align="center" >
-            <p:commandButton class="btn btn-dark" value="Exp.a Excel" ajax="false" >
-                <p:dataExporter type="xls" target="TablaReporteEquipos" fileName="equipos"/>
-            </p:commandButton>
+        <div align="center" >
+            <h1> Novedades </h1>
         </div>
 
         <p:dataTable class="table table-dark"
@@ -72,9 +76,15 @@
                      rowKey="#{novedad.idNovedad}"
                      rows="10"
                      paginator="true"
-                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                      currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                      rowsPerPageTemplate="1,5,10,15">
+            <f:facet name="{Exporters}">
+                <h:commandLink>
+                    <p:graphicImage url="../rsc/img/excel.png" width="24"/>
+                    <p:dataExporter type="xls" target="TablaNovedadEquipo" fileName="novedadesEquipos"/>
+                </h:commandLink>
+            </f:facet>
             <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" sortBy="#{novedad.idNovedad}">
                 <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
             </p:column>
@@ -94,12 +104,6 @@
                 <p:outputLabel value="#{novedad.idUsuario}"></p:outputLabel>
             </p:column>
         </p:dataTable>
-
-        <div align="center">
-            <p:commandButton class="btn btn-dark" value="Exp.a Excel" ajax="false" >
-                <p:dataExporter type="xls" target="TablaNovedadEquipo" fileName="novedadesEquipos"/>
-            </p:commandButton>
-        </div>
     </h:form>
 </h:body>
 </html>
