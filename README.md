@@ -98,11 +98,13 @@ Al entrar a la consulta de novedades, se encuentran todas las novedades generada
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/serviciosAscociaciones.png)
 
 * _Asociación Elemento – Equipo_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/ASO_elementoEquipo.png)
 
 Esta página funciona para asociar elementos previamente registrados a un equipo, se debe escribir el identificador del equipo al que se le quieren asociar los elementos seleccionados de la tabla, para que se haga efectiva la asociación, se debe presionar el botón “Asociar”.
 
 * _Asociación Equipo – Laboratorio_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/ASO_EquipoLab.png)
 
 Esta página funciona para asociar equipos previamente registrados a un laboratorio, se debe escribir el identificador del laboratorio al que se le quieren asociar los equipos seleccionados de la tabla, para que se haga efectiva la asociación, se debe presionar el botón “Asociar”.
