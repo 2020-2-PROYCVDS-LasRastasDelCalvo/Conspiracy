@@ -36,6 +36,7 @@ Los servicios con los que cuenta el administrador son:
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/serviciosRegistro.png)
 
 * _Registro Equipo._
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Registro_equipo.png)
 
 El registro de un equipo consta con que el administrador dé el número del laboratorio al cuál el equipo va a estar asociado y así mismo el identificador con el cuál va a quedar registrado. 
@@ -45,11 +46,13 @@ Para que se haga válido el registro de un equipo, se deben seleccionar los cuat
 Esta página también ofrece al administrador la opción de poder registrar un elemento nuevo que necesite.
 
 * _Registro Elemento._
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_elemento.png)
 
 Para el registro de un elemento, se debe ingresar el nombre que se le va a asignar, su tipo y una descripción para conocer mejor la características de este.
 
 * _Registro Laboratorio._
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Registro_Lab.png)
 
 Para el registro de un laboratorio, se debe ingresar su identificador y el nombre. También, tiene la opción de asociar los equipos que desee para ese laboratorio.
@@ -59,6 +62,7 @@ Para el registro de un laboratorio, se debe ingresar su identificador y el nombr
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/serviciosConsulta.png)
 
 * _Consultar Equipo._
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Consulta_Equipo.png)
 
 Al entrar a la consulta de equipos, encontraremos la tabla de todos lo equipos registrados, cada equipo con su información. Para el cambio de estado de los equipos, se seleccionan los equipos que se quieren cambiar y luego se oprime el botón “Cambiar estado”. También, tenemos la posibilidad de tener un reposte completo de los equipo activos, se obtiene presionando el botón “Reporte”.
@@ -68,6 +72,7 @@ Al entrar a la consulta de equipos, encontraremos la tabla de todos lo equipos r
 En el reporte se encuentran los equipos con estado activo y sus respectivas novedades. Estos reportes se pueden exportar a formato Excel presionando la imagen con el logotipo de Excel.
 
 * _Consultar Elemento._
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Consulta_elementos.png)
 
 Al entrar a la consulta de elementos, se encuentra cada uno de los elementos registrados con su información. En esta página también está la opción de generar un reporte de los elementos que el administrador seleccione, para obtener el reporte se oprime el botón “Ver reporte”.
@@ -77,16 +82,19 @@ Al entrar a la consulta de elementos, se encuentra cada uno de los elementos reg
 En esta página se encontrará el reporte de los elementos seleccionados anteriormente, de igual forma se podrá cambiar el estado de los elementos (Botón “Cambiar estado”) y ver las novedades correspondientes a estos. Los reportes se pueden exportar a formato Excel presionando la imagen con el logotipo de Excel.
  
  * _Consultar laboratorios. **(FALTA PARTE DE REPORTES PARA COMPLETAR)**_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/consulta_lab.png)
 
 Al entrar a la consulta de laboratorios, se encuentran los laboratorios registrados con su información. En este mismo espacio se podrá cambiar el estado de los laboratorios seleccionados. (ABIERTO – CERRADO)
 
 * _Consultar Novedades. **(FALTA PARTE DE REPORTES PARA COMPLETAR)**_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/consulta_nov.png)
 
 Al entrar a la consulta de novedades, se encuentran todas las novedades generadas para los objetos que maneja la aplicación. (Registros, cambios de estado, Asociaciones).
 
 > **ASOCIACIONES**
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/serviciosAscociaciones.png)
 
 * _Asociación Elemento – Equipo_
