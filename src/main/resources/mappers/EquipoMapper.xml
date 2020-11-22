@@ -27,7 +27,9 @@
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
             eq.disponible AS eq_disponible,
-            eq.estado AS eq_estado
+            eq.estado AS eq_estado,
+
+            la.nombre AS la_nombre
         FROM
             novedad n
             INNER JOIN
@@ -39,6 +41,9 @@
             RIGHT JOIN
             equipo eq
                 ON eq.idEquipo = e.idEquipo
+            INNER JOIN
+            laboratorio la
+                ON la.idlaboratorio = eq.laboratorio
             ORDER BY n_idEquipo;
     </select>
 
@@ -66,7 +71,9 @@
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
             eq.disponible AS eq_disponible,
-            eq.estado AS eq_estado
+            eq.estado AS eq_estado,
+
+            la.nombre AS la_nombre
         FROM
             novedad n
             INNER JOIN
@@ -78,6 +85,9 @@
             RIGHT JOIN
             equipo eq
                 ON eq.idEquipo = e.idEquipo
+            INNER JOIN
+            laboratorio la
+                ON la.idlaboratorio = eq.laboratorio
             WHERE
                 eq.laboratorio = 1
             ORDER BY n_idEquipo;
@@ -107,7 +117,9 @@
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
             eq.disponible AS eq_disponible,
-            eq.estado AS eq_estado
+            eq.estado AS eq_estado,
+
+            la.nombre AS la_nombre
         FROM
             novedad n
             INNER JOIN
@@ -119,6 +131,9 @@
             RIGHT JOIN
             equipo eq
                 ON eq.idEquipo = e.idEquipo
+            INNER JOIN
+            laboratorio la
+                ON la.idlaboratorio = eq.laboratorio
             WHERE
                 eq.estado = 'ACTIVO'
             ORDER BY n_idEquipo;
@@ -148,7 +163,9 @@
             eq.laboratorio AS eq_laboratorio,
             eq.fechaRegistro AS eq_fecharegistro,
             eq.disponible AS eq_disponible,
-            eq.estado AS eq_estado
+            eq.estado AS eq_estado,
+
+            la.nombre AS la_nombre
         FROM
             novedad n
             INNER JOIN
@@ -160,6 +177,9 @@
             RIGHT JOIN
             equipo eq
                 ON eq.idEquipo = e.idEquipo
+            INNER JOIN
+            laboratorio la
+                ON la.idlaboratorio = eq.laboratorio
             WHERE
                 eq.idEquipo = #{idEquipo}
             ORDER BY n_idEquipo;
@@ -184,6 +204,7 @@
     <resultMap id="EquipoResult" type="Equipo">
         <id property="idEquipo" column="eq_idEquipo"/>
         <result property="idLab" column="eq_laboratorio"/>
+        <result property="lab" column="la_nombre"/>
         <result property="fechaRegistro" column="eq_fecharegistro"/>
         <result property="disponible" column="eq_disponible"/>
         <result property="estado" column="eq_estado"/>

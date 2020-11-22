@@ -18,7 +18,7 @@
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="elemento.xhtml">Volver</a>
+                    <a class="nav-link active" href="equipo.xhtml">Volver</a>
                 </li>
             </ul>
         </div>
@@ -61,7 +61,7 @@
                 <p:outputLabel value="#{equipo.estado}"></p:outputLabel>
             </p:column>
             <p:column headerText="Laboratorio" filterBy="#{equipo.idLab}" filterMatchMode="contains" sortBy="#{equipo.idLab}">
-                <p:outputLabel value="#{equipo.idLab}"></p:outputLabel>
+                <p:outputLabel value="#{equipo.lab}"></p:outputLabel>
             </p:column>
 
         </p:dataTable>

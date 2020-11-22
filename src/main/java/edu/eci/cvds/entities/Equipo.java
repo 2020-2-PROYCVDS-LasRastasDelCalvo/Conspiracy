@@ -15,6 +15,7 @@ public class Equipo {
     private int idEquipo;
     private int disponible;
     private Integer idLab;
+    private String lab;
     private Date fechaRegistro;
     private String estado;
     private ArrayList<Elemento> elementos;
@@ -94,5 +95,13 @@ public class Equipo {
 
     public void setNovedades(ArrayList<Novedad> novedades) {
         this.novedades = novedades;
+    }
+
+    public String getLab() {
+        return lab;
+    }
+
+    public void setLab(String lab) {
+        this.lab = lab;
     }
 }
