@@ -68,7 +68,7 @@
         </p:dataTable>
         <div class="form-group" align="center">
             <p:commandButton class="btn btn-dark" update="infoElementos" value="Actualizar" actionListener="#{equipoBean.actualizar}"/>
-            <p:commandButton class="btn btn-dark" value="Reporte" actionListener="#{equipoBean.actualizarEquiposDispo}" action="reporteEquipos.xhtml"/>
+            <p:commandButton class="btn btn-dark" value="Ver Reporte" actionListener="#{equipoBean.actualizarEquiposDispo}" action="reporteEquipos.xhtml"/>
             <p:growl id="message" showDetail="true" />
             <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{equipoBean.cambiarEstadoEquipo}" action="#{equipoBean.info}" update="message">
                 <p:confirm header="Confirmation" message="¿Realizar cambio de elemento?" icon="pi pi-exclamation-triangle" />
