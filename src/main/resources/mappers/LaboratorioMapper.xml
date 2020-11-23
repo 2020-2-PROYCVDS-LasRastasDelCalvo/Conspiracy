@@ -37,7 +37,7 @@
             INNER JOIN
             usuario u
             	ON n.usuario = u.idusuario
-            RIGHT JOIN
+            INNER JOIN
             elemento e
             	ON e.idElemento = n.idElemento
             RIGHT JOIN
@@ -47,7 +47,7 @@
             laboratorio la
             	ON la.idlaboratorio = eq.laboratorio
             WHERE #{id} = la.idLaboratorio
-            ORDER BY la_idLaboratorio;
+            ORDER BY la.idLaboratorio;
 
     </select>
     <select id="consultarLaboratorios" parameterType="map" resultMap="LaboratorioResult">
@@ -84,7 +84,7 @@
             INNER JOIN
             usuario u
             	ON n.usuario = u.idusuario
-            RIGHT JOIN
+            INNER JOIN
             elemento e
             	ON e.idElemento = n.idElemento
             RIGHT JOIN
@@ -93,7 +93,7 @@
             RIGHT JOIN
             laboratorio la
             	ON la.idlaboratorio = eq.laboratorio
-            ORDER BY la_idLaboratorio;
+           	ORDER BY la.idlaboratorio ;
     </select>
     <insert id="registrarLaboratorio">
         INSERT INTO Laboratorio VALUES (#{idLab}, #{nombreLab},'ABIERTO')
@@ -107,6 +107,6 @@
         <id property="idLaboratorio" column="la_idLaboratorio"/>
         <result property="nombre" column="la_nombre"/>
         <result property="estado" column="la_estado"/>
-        <collection property="equipos" ofType="Equipo" resultMap="edu.eci.cvds.persistence.mybatis.mappers.EquipoMapper.EquipoResult"/>
+        <collection notNullColumn="eq_idEquipo" property="equipos" ofType="Equipo" resultMap="edu.eci.cvds.persistence.mybatis.mappers.EquipoMapper.EquipoResult"/>
     </resultMap>
 </mapper>

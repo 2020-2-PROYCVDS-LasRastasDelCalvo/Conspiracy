@@ -11,6 +11,8 @@ import edu.eci.cvds.services.ServiciosLaboratorio;
 import edu.eci.cvds.services.ServiciosNovedad;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
+
 /**
  * @author Ana Gabriela Silva
  * @author Juan Andrés Pico
@@ -71,16 +73,33 @@ public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
     @Override
     public void cambiarEstado(int idUsuario, Laboratorio laboratorioSeleccionado) throws HistorialEquiposException {
         try{
+            Optional<Laboratorio> laboratorioOptional = Optional.ofNullable(laboratorioSeleccionado);
+            laboratorioOptional.orElseThrow( () -> new HistorialEquiposException(HistorialEquiposException.NO_SELECCION_CERRAR));
+            System.out.println(laboratorioSeleccionado.getEquipos());
+            System.out.println(laboratorioSeleccionado.getEquipos());
+            System.out.println(laboratorioSeleccionado.getEquipos());
+            System.out.println(laboratorioSeleccionado.getEquipos().size());
+            System.out.println(laboratorioSeleccionado.getEquipos().size());
+            System.out.println(laboratorioSeleccionado.getEquipos().size());
+            for(Equipo equipo : laboratorioSeleccionado.getEquipos()){
+                System.out.println(equipo.getIdEquipo());
+                System.out.println(equipo.getIdLab());
+            }
+            System.out.println("Terrminafafdnfaf");
+
             String estado = ( laboratorioSeleccionado.getEstado().equals("ABIERTO")) ? "CERRADO":"ABIERTO";
             laboratorioDAO.cambiarEstado(laboratorioSeleccionado, estado);
+
             if( estado.equals("CERRADO") && laboratorioSeleccionado.getIdLaboratorio() != 1){
                 for( Equipo equipo: laboratorioSeleccionado.getEquipos()){
                     serviciosEquipo.asociarEquipo(1, equipo.getIdEquipo());
-                    serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio "+laboratorioSeleccionado.getNombre(),idUsuario,null,equipo.getIdEquipo()));
+                    serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio "+laboratorioSeleccionado.getNombre()+" ya que fue cerrado.",idUsuario,null,equipo.getIdEquipo()));
+                    serviciosNovedad.insertarNovedad( new Novedad(" Asociacion de equipo a un laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue asociado al laboratorio Disponibles",idUsuario,null,equipo.getIdEquipo() ) );
                 }
             }
         }
         catch (PersistenceException persistenceException){
+            persistenceException.printStackTrace();
             throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
         }
     }

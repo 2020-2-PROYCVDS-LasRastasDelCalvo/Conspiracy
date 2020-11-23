@@ -12,8 +12,8 @@ import java.util.ArrayList;
  */
 public class Equipo {
 
-    private int idEquipo;
-    private int disponible;
+    private Integer idEquipo;
+    private Integer disponible;
     private Integer idLab;
     private String lab;
     private Date fechaRegistro;
@@ -23,7 +23,7 @@ public class Equipo {
 
     public Equipo(){
     }
-    public Equipo(int idEquipo, Integer idLab, Date fechaRegistro, int disponible, ArrayList<Novedad>novedades){
+    public Equipo(Integer idEquipo, Integer idLab, Date fechaRegistro, Integer disponible, ArrayList<Novedad>novedades){
         this.idEquipo = idEquipo;
         this.fechaRegistro = fechaRegistro;
         this.disponible = disponible;
@@ -32,7 +32,7 @@ public class Equipo {
         this.novedades = novedades;
     }
 
-    public Equipo(int idEquipo, Integer idLab, Date fechaRegistro, int disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
+    public Equipo(Integer idEquipo, Integer idLab, Date fechaRegistro, Integer disponible, ArrayList<Elemento>elementos, ArrayList<Novedad> novedades ){
        this.idEquipo = idEquipo;
        this.fechaRegistro = fechaRegistro;
        this.disponible = disponible;
@@ -41,11 +41,11 @@ public class Equipo {
        this.novedades = novedades;
     }
 
-    public int getIdEquipo() {
+    public Integer getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(int idEquipo) {
+    public void setIdEquipo(Integer idEquipo) {
         this.idEquipo = idEquipo;
     }
 
