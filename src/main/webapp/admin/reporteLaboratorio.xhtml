@@ -33,12 +33,12 @@
         </div>
     </nav>
     <h:form id="ReporteLaboratorio">
-        <h1 align="center">Equipos Activos</h1>
+        <h1 align="center">Laboratorios</h1>
         <p:messages id="mensaje" showDetail="true" autoUpdate="true"
                     closable="true" globalOnly="true"/>
         <p:dataTable class="table table-dark"
                      id="TablaReporteLaboratorios"
-                     value="#{laboratorioBean.laboratorios}"
+                     value="#{laboratorioBean.laboratoriosSeleccionados}"
                      var="laboratorio"
                      rowKey="#{laboratorio.idLaboratorio}"
                      rows="10"
@@ -54,7 +54,6 @@
                     <p:dataExporter type="xls" target="TablaReporteLaboratorios" fileName="laboratorios"/>
                 </h:commandLink>
             </f:facet>
-            <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
             <p:column headerText="idLaboratorio" filterBy="#{laboratorio.idLaboratorio}" sortBy="#{laboratorio.idLaboratorio}"  >
                 <p:outputLabel value="#{laboratorio.idLaboratorio}"></p:outputLabel>
             </p:column>
