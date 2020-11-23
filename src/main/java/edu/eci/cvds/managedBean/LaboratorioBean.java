@@ -44,6 +44,7 @@ public class LaboratorioBean extends BasePageBean {
     private Usuario usuario;
     private List<Equipo> aAsociar;
     private List<Laboratorio> laboratorios;
+    private List<Laboratorio> laboratoriosSeleccionados;
     private List<Equipo> disponibles;
     private FacesMessage.Severity estado;
     private Subject subject = SecurityUtils.getSubject();
@@ -80,6 +81,19 @@ public class LaboratorioBean extends BasePageBean {
     }
 
     public void cambiarEstado(){
+        try{
+            sinErrores();
+            for(Laboratorio laboratorio:laboratoriosSeleccionados){
+                serviciosLaboratorio.cambiarEstado(usuario.getIdUsuario(),laboratorio);
+            }
+            actualizar();
+        }
+        catch( Exception exception){
+            conErrores(exception.getMessage());
+        }
+    }
+
+    public void cambiarEstadoIndividual(){
         try{
             sinErrores();
             serviciosLaboratorio.cambiarEstado(usuario.getIdUsuario(),labSelec);
@@ -159,5 +173,13 @@ public class LaboratorioBean extends BasePageBean {
 
     public void setLabSelec(Laboratorio labSelec) {
         this.labSelec = labSelec;
+    }
+
+    public List<Laboratorio> getLaboratoriosSeleccionados() {
+        return laboratoriosSeleccionados;
+    }
+
+    public void setLaboratoriosSeleccionados(List<Laboratorio> laboratoriosSeleccionados) {
+        this.laboratoriosSeleccionados = laboratoriosSeleccionados;
     }
 }
