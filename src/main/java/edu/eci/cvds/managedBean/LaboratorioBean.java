@@ -93,6 +93,17 @@ public class LaboratorioBean extends BasePageBean {
         }
     }
 
+    public void cambiarEstadoIndividual(){
+        try{
+            sinErrores();
+            serviciosLaboratorio.cambiarEstado(usuario.getIdUsuario(),labSelec);
+            actualizar();
+        }
+        catch( Exception exception){
+            conErrores(exception.getMessage());
+        }
+    }
+
     public void conErrores( String message ){
         this.message = message;
         estado = FacesMessage.SEVERITY_WARN;
