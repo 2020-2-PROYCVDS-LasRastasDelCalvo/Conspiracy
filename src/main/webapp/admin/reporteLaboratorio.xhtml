@@ -65,6 +65,16 @@
                 <p:outputLabel value="#{laboratorio.estado}"></p:outputLabel>
             </p:column>
         </p:dataTable>
+        <div class="form-group" align="center" >
+            <p:growl id="message" showDetail="true" />
+            <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{laboratorioBean.cambiarEstado}" action="#{laboratorioBean.info}" update="message">
+                <p:confirm header="Confirmation" message="¿Realizar cambio de estado?" icon="pi pi-exclamation-triangle" />
+            </p:commandButton>
+            <p:confirmDialog global="true">
+                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
+                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
+            </p:confirmDialog>
+        </div>
     </h:form>
 </h:body>
 </html>

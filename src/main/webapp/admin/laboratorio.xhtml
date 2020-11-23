@@ -53,7 +53,7 @@
             <f:facet name="header">
                 Laboratorios
             </f:facet>
-            <p:column headerText= "Opc" selectionMode="single" style="width:50px;text-align:center"/>
+            <p:column headerText= "Opc" selectionMode="multiple" style="width:50px;text-align:center"/>
             <p:column headerText="idLaboratorio" filterBy="#{laboratorio.idLaboratorio}"  >
                 <p:outputLabel value="#{laboratorio.idLaboratorio}"></p:outputLabel>
             </p:column>
@@ -66,17 +66,9 @@
         </p:dataTable>
         <div class="form-group" align="center" >
             <p:commandButton class="btn btn-dark" update="consultarLab" value="Actualizar" actionListener="#{laboratorioBean.actualizar}"/>
-            <pr></pr>
-            <p:growl id="message" showDetail="true" />
-            <p:commandButton class="btn btn-dark" value="Cambiar estado." actionListener="#{laboratorioBean.cambiarEstado}" action="#{laboratorioBean.info}" update="message">
-                <p:confirm header="Confirmation" message="¿Realizar cambio de estado?" icon="pi pi-exclamation-triangle" />
-            </p:commandButton>
-
-            <p:confirmDialog global="true">
-                <p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
-                <p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times"/>
-            </p:confirmDialog>
+            <p:commandButton class="btn btn-dark" action="reporteLaboratorio.xhtml" value="Ver reporte" />
         </div>
+
     </h:form>
 </h:body>
 </html>
