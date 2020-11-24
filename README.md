@@ -31,31 +31,59 @@ La aplicación maneja 2 tipos de roles para el inicio de sesión, administrador 
 
 Los servicios con los que cuenta el administrador son:
 
-> **REGISTROS.**
+- Registrar.
+
+- Consultar.
+
+- Asociar.
+
+> #### **REGISTRAR.**
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/serviciosRegistro.png)
 
-* _Registro Equipo._
+* _Registrar Equipo._
+
+_¿Cómo registrar un equipo?_
+
+1. Indicar el número del laboratorio correspondiente (1 si el equipo está libre a la hora del registro).
+
+2. Indicar el número identificador del equipo a registrar (Este no puede ser duplicado).
+
+3. Seleccionar qué elementos hacen parte del equipo a registrar (1 de cada tipo).
+
+4. En caso de no encontrar elementos disponibles de cualquier tipo, clicar en el botón correspondiente.
+
+5. Clicar en el botón "Registrar", en caso de ser válido se registrará, en caso contrario recibirá una notificación.
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Registro_equipo.png)
 
-El registro de un equipo consta con que el administrador dé el número del laboratorio al cuál el equipo va a estar asociado y así mismo el identificador con el cuál va a quedar registrado. 
+* _Registrar Elemento._
 
-Para que se haga válido el registro de un equipo, se deben seleccionar los cuatro elementos fundamentales para su funcionamiento (Torre, Mouse, Pantalla, Teclado), sin haber hecho esto, la aplicación no dejará hacer el registro.
+_¿Cómo registrar un elemento?_
 
-Esta página también ofrece al administrador la opción de poder registrar un elemento nuevo que necesite.
+1. Ingresar el nombre del elemento a registrar.
 
-* _Registro Elemento._
+2. Seleccionar el tipo del elemento.
+
+3. Ingresar la descripción del elemento en cuestión.
+
+4. Clic en el botón "Registrar".
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_elemento.png)
 
-Para el registro de un elemento, se debe ingresar el nombre que se le va a asignar, su tipo y una descripción para conocer mejor la características de este.
+* _Registrar Laboratorio._
 
-* _Registro Laboratorio._
+_¿Cómo registrar un laboratorio?_
+
+1. Ingresar un identificador para el laboratorio.
+
+2. Ingresar el nombre del laboratorio.
+
+3. Seleccionar los equipos que desee asociar al laboratorio (estos se pueden modificar después).
+
+4. Clic en el botón "Registrar".
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Registro_Lab.png)
-
-Para el registro de un laboratorio, se debe ingresar su identificador y el nombre. También, tiene la opción de asociar los equipos que desee para ese laboratorio.
 
 > **CONSULTAS.**
 
