@@ -19,6 +19,7 @@ public interface LaboratorioDAO {
     public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
 
     public Laboratorio consultarLaboratorio( int idLab )throws PersistenceException;
+    public List<Laboratorio> consultarNumeroLaboratoriosPorEstado( String estado) throws PersistenceException;
 
     public void registrarLaboratorio(int idLab, String nombreLab) throws PersistenceException;
 

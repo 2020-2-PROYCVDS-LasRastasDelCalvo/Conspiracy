@@ -19,6 +19,8 @@ public interface ServiciosLaboratorio {
 
     public Laboratorio consultarLaboratorio(int idLab) throws HistorialEquiposException;
 
+    public int consultarNumeroLaboratoriosPorEstado( String estado );
+
     /*
     INSERT
      */

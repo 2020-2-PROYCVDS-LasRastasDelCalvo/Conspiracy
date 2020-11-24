@@ -41,6 +41,16 @@ public class MYBATISLaboratorioDAO implements LaboratorioDAO {
     }
 
     @Override
+    public List<Laboratorio> consultarNumeroLaboratoriosPorEstado(String estado) throws PersistenceException {
+        try{
+            return laboratorioMapper.consultarNumeroLaboratoriosPorEstado( estado );
+        }
+        catch (Exception exception){
+            throw new PersistenceException("Error al consultar los laboratorios ",exception );
+        }
+    }
+
+    @Override
     public void registrarLaboratorio(int idLab, String nombreLab) throws PersistenceException {
         try{
             laboratorioMapper.registrarLaboratorio(idLab, nombreLab);

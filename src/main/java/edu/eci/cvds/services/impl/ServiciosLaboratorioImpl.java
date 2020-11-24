@@ -53,6 +53,16 @@ public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
         }
     }
 
+    @Override
+    public int consultarNumeroLaboratoriosPorEstado(String estado) {
+        try{
+            return laboratorioDAO.consultarNumeroLaboratoriosPorEstado( estado ).size();
+        }
+        catch (PersistenceException persistenceException){
+            return 0;
+        }
+    }
+
     /*
     INSERT
      */
@@ -75,18 +85,6 @@ public class ServiciosLaboratorioImpl implements ServiciosLaboratorio {
         try{
             Optional<Laboratorio> laboratorioOptional = Optional.ofNullable(laboratorioSeleccionado);
             laboratorioOptional.orElseThrow( () -> new HistorialEquiposException(HistorialEquiposException.NO_SELECCION_CERRAR));
-            System.out.println(laboratorioSeleccionado.getEquipos());
-            System.out.println(laboratorioSeleccionado.getEquipos());
-            System.out.println(laboratorioSeleccionado.getEquipos());
-            System.out.println(laboratorioSeleccionado.getEquipos().size());
-            System.out.println(laboratorioSeleccionado.getEquipos().size());
-            System.out.println(laboratorioSeleccionado.getEquipos().size());
-            for(Equipo equipo : laboratorioSeleccionado.getEquipos()){
-                System.out.println(equipo.getIdEquipo());
-                System.out.println(equipo.getIdLab());
-            }
-            System.out.println("Terrminafafdnfaf");
-
             String estado = ( laboratorioSeleccionado.getEstado().equals("ABIERTO")) ? "CERRADO":"ABIERTO";
             laboratorioDAO.cambiarEstado(laboratorioSeleccionado, estado);
 

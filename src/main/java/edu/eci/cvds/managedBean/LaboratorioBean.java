@@ -8,7 +8,7 @@ import edu.eci.cvds.services.ServiciosEquipo;
 import edu.eci.cvds.services.ServiciosLaboratorio;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-
+import org.primefaces.model.chart.PieChartModel;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -46,6 +46,7 @@ public class LaboratorioBean extends BasePageBean {
     private List<Laboratorio> laboratorios;
     private List<Laboratorio> laboratoriosSeleccionados;
     private List<Equipo> disponibles;
+    private PieChartModel pieModel;
     private FacesMessage.Severity estado;
     private Subject subject = SecurityUtils.getSubject();
 
@@ -55,15 +56,36 @@ public class LaboratorioBean extends BasePageBean {
         try {
             usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
             actualizar();
+            createPieModel();
         } catch (Exception exception) {
             conErrores(exception.getMessage());
         }
     }
+
+    private PieChartModel  createPieModel() {
+        pieModel = new PieChartModel();
+
+        pieModel.set("Abiertos",serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("ABIERTO"));
+        pieModel.set("Cerrados",serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("CERRADO"));
+        pieModel.setTitle("");
+        pieModel.setShowDataLabels(true);
+        pieModel.setDataLabelFormatString("%dK");
+        pieModel.setLegendPosition("e");
+        pieModel.setShowDatatip(true);
+        pieModel.setShowDataLabels(true);
+        pieModel.setDataFormat("value");
+        pieModel.setDataLabelFormatString("%d");
+        pieModel.setSeriesColors("ff8c00,87cefa");
+        return pieModel;
+
+    }
+
     public void actualizar(){
         try{
             sinErrores();
             laboratorios = serviciosLaboratorio.consultarLaboratorios();
             disponibles = serviciosEquipo.consultarEquiposDisponibles();
+            pieModel = createPieModel();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -181,5 +203,13 @@ public class LaboratorioBean extends BasePageBean {
 
     public void setLaboratoriosSeleccionados(List<Laboratorio> laboratoriosSeleccionados) {
         this.laboratoriosSeleccionados = laboratoriosSeleccionados;
+    }
+
+    public PieChartModel getPieModel() {
+        return pieModel;
+    }
+
+    public void setPieModel(PieChartModel pieModel) {
+        this.pieModel = pieModel;
     }
 }

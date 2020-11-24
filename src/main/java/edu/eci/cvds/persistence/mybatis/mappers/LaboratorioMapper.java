@@ -20,6 +20,8 @@ public interface LaboratorioMapper {
      */
     public List<Laboratorio> consultarLaboratorios() throws PersistenceException;
 
+    public List<Laboratorio> consultarNumeroLaboratoriosPorEstado( @Param("estado") String estado );
+
     public Laboratorio consultarLaboratorio( @Param("id") int idLab )throws PersistenceException;
 
     public void registrarLaboratorio(@Param ("idLab")int idLab, @Param ("nombreLab") String nombreLab) throws PersistenceException;
