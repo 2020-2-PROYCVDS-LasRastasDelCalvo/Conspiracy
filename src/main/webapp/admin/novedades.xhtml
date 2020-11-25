@@ -36,6 +36,7 @@
     <div align="center">
         <h:form>
             <p:dataTable
+                    id = "TablaNovedades"
                     value="#{novedadBean.novedades}"
                     var="novedad"
                     widgetVar="TablaNovedades"
@@ -43,12 +44,17 @@
                     rowKey="#{novedad.idNovedad}"
                     rows="10"
                     paginator="true"
-                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                    paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown} {Exporters}"
                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                     rowsPerPageTemplate="1,5,10,15">
-
                 <f:facet name="header">
                     Novedades
+                </f:facet>
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <p:graphicImage url="../rsc/img/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="TablaNovedades" fileName="novedades"/>
+                    </h:commandLink>
                 </f:facet>
                 <p:column headerText="idNovedad" filterBy="#{novedad.idNovedad}" filterMatchMode="contains" sortBy="#{novedad.idNovedad}" >
                     <p:outputLabel value="#{novedad.idNovedad}"></p:outputLabel>
