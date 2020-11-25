@@ -9,6 +9,9 @@ import edu.eci.cvds.services.ServiciosLaboratorio;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.primefaces.model.chart.PieChartModel;
+import org.primefaces.model.chart.BarChartModel;
+import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.BarChartSeries;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -47,6 +50,7 @@ public class LaboratorioBean extends BasePageBean {
     private List<Laboratorio> laboratoriosSeleccionados;
     private List<Equipo> disponibles;
     private PieChartModel pieModel;
+    private BarChartModel barModel;
     private FacesMessage.Severity estado;
     private Subject subject = SecurityUtils.getSubject();
 
@@ -56,6 +60,7 @@ public class LaboratorioBean extends BasePageBean {
         try {
             usuario= historialServicios.consultarUsuarioPorCorreo((String) subject.getSession().getAttribute("correo"));
             actualizar();
+            createBarModel();
             createPieModel();
         } catch (Exception exception) {
             conErrores(exception.getMessage());
@@ -80,12 +85,26 @@ public class LaboratorioBean extends BasePageBean {
 
     }
 
+    private BarChartModel createBarModel(){
+        barModel = new BarChartModel();
+
+        for(Laboratorio lab: laboratorios){
+            ChartSeries serie = new BarChartSeries();
+            serie.setLabel(lab.getNombre());
+            serie.set(lab.getNombre(), lab.getEquipos().size());
+
+            barModel.addSeries(serie);
+        }
+        return barModel;
+    }
+
     public void actualizar(){
         try{
             sinErrores();
             laboratorios = serviciosLaboratorio.consultarLaboratorios();
             disponibles = serviciosEquipo.consultarEquiposDisponibles();
             pieModel = createPieModel();
+            barModel = createBarModel();
         }
         catch (Exception exception) {
             conErrores( exception.getMessage());
@@ -211,5 +230,13 @@ public class LaboratorioBean extends BasePageBean {
 
     public void setPieModel(PieChartModel pieModel) {
         this.pieModel = pieModel;
+    }
+
+    public BarChartModel getBarModel() {
+        return barModel;
+    }
+
+    public void setBarModel(BarChartModel barModel) {
+        this.barModel = barModel;
     }
 }
