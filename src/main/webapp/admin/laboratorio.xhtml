@@ -64,15 +64,13 @@
                 <p:outputLabel value="#{laboratorio.estado}"></p:outputLabel>
             </p:column>
             <f:facet name="footer">
-                <p:commandButton class="btn btn-dark" action="graficos.xhtml" value="Ver Graficos"></p:commandButton>
+                <p:commandButton class="btn btn-dark" actionListener="#{laboratorioBean.actualizar}" action="graficos.xhtml" value="Ver Graficos" ></p:commandButton>
             </f:facet>
         </p:dataTable>
         <div class="form-group" align="center" >
             <p:commandButton class="btn btn-dark" update="consultarLab" value="Actualizar" actionListener="#{laboratorioBean.actualizar}" responsive="true"/>
             <p:commandButton class="btn btn-dark" action="reporteLaboratorio.xhtml" value="Ver reporte" />
         </div>
-        <h1 align="center" style="margin-top: 10px">Graficos</h1>
-
     </h:form>
 </h:body>
 </html>

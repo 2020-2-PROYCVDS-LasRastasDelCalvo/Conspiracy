@@ -8,10 +8,7 @@ import edu.eci.cvds.services.ServiciosEquipo;
 import edu.eci.cvds.services.ServiciosLaboratorio;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
-import org.primefaces.model.chart.PieChartModel;
-import org.primefaces.model.chart.BarChartModel;
-import org.primefaces.model.chart.ChartSeries;
-import org.primefaces.model.chart.BarChartSeries;
+import org.primefaces.model.chart.*;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -19,6 +16,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Ana Gabriela Silva
@@ -87,15 +85,27 @@ public class LaboratorioBean extends BasePageBean {
 
     private BarChartModel createBarModel(){
         barModel = new BarChartModel();
-
+        ChartSeries serie = new BarChartSeries();
         for(Laboratorio lab: laboratorios){
-            ChartSeries serie = new BarChartSeries();
-            serie.setLabel(lab.getNombre());
             serie.set(lab.getNombre(), lab.getEquipos().size());
-
-            barModel.addSeries(serie);
         }
+        barModel.addSeries(serie);
+        Axis xAxis = barModel.getAxis(AxisType.X);
+        xAxis.setLabel("Laboratorios");
+
+        Axis yAxis = barModel.getAxis(AxisType.Y);
+        yAxis.setLabel("Cantidad equipos");
+        yAxis.setMin(0);
         return barModel;
+    }
+
+    private String randomColor(){
+        Random obj = new Random();
+        int rand_num = obj.nextInt(0xffffff + 1);
+
+        // format it as hexadecimal string and print
+        String colorCode = String.format("#%06x", rand_num);
+        return colorCode;
     }
 
     public void actualizar(){
