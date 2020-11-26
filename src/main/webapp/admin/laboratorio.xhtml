@@ -63,16 +63,15 @@
             <p:column headerText="Estado" filterBy="#{laboratorio.estado}"  >
                 <p:outputLabel value="#{laboratorio.estado}"></p:outputLabel>
             </p:column>
+            <f:facet name="footer">
+                <p:commandButton class="btn btn-dark" action="graficos.xhtml" value="Ver Graficos"></p:commandButton>
+            </f:facet>
         </p:dataTable>
         <div class="form-group" align="center" >
             <p:commandButton class="btn btn-dark" update="consultarLab" value="Actualizar" actionListener="#{laboratorioBean.actualizar}" responsive="true"/>
             <p:commandButton class="btn btn-dark" action="reporteLaboratorio.xhtml" value="Ver reporte" />
         </div>
         <h1 align="center" style="margin-top: 10px">Graficos</h1>
-        <p:chart  type="pie" model="#{laboratorioBean.pieModel}" style="width: 50%; height: 500px;margin: auto"/>
-        <p:chart type="bar" model="#{laboratorioBean.barModel}" style=" height: 300px;margin: auto" />
-
-
 
     </h:form>
 </h:body>
