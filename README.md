@@ -91,23 +91,35 @@ _¿Cómo registrar un laboratorio?_
 
 * _Consultar Equipo._
 
+_¿Qué encontramos y podemos hacer aquí?_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Consulta_Equipo.png)
 
-Al entrar a la consulta de equipos, encontraremos la tabla de todos lo equipos registrados, cada equipo con su información. Para el cambio de estado de los equipos, se seleccionan los equipos que se quieren cambiar y luego se oprime el botón “Cambiar estado”. También, tenemos la posibilidad de tener un reposte completo de los equipo activos, se obtiene presionando el botón “Reporte”.
-
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_equipo.png)
+
+Encontraremos una lista de todos los equipos registrados en la base de datos en el momento junto a tres botones, que funcionaran respecto a los equipos seleccionados en la tabla:
+
+  - Actualizar: Refrescará la información mostrada si es que algún equipo ha sido de baja o algun otro ha sido agregado.
+  
+  - Ver reporte: Redirigirá a la pagina de reportes de equipo, que mostrará la información de interes de cada equipo y todas las novedades relacionadas a estos (Además de una opción de exportar a Excel esta información).
+  
+  - Cambiar estado: Cambia el estado de los equipos seleccionados, esta acción requiere presionar el botón de Actualizar después.
 
 En el reporte se encuentran los equipos con estado activo y sus respectivas novedades. Estos reportes se pueden exportar a formato Excel presionando la imagen con el logotipo de Excel.
 
 * _Consultar Elemento._
 
+_¿Qué encontramos y podemos hacer aquí?_
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Consulta_elementos.png)
 
-Al entrar a la consulta de elementos, se encuentra cada uno de los elementos registrados con su información. En esta página también está la opción de generar un reporte de los elementos que el administrador seleccione, para obtener el reporte se oprime el botón “Ver reporte”.
+Encontraremos una lista de todos los elementos disponibles junto a su información de interés junto a dos botones:
+
+  - Actualizar: Refresca la información mostrada en la tabla, en caso de que haya algún cambio de estado en algún elemento o se agregue uno nuevo a la base de datos.
+  
+  - Ver reporte: Redirige a la página de reporte de elementos en función de los seleccionados, en esta podremos ver la información relevante de estos junto a las novedades relacionadas, además de poder cambiar el estado de estos con el botón "Cambiar Estado", esto requiere presionar el botón "Actualizar" para mostrar la información correcta (Incluye una opción de exportar a Excel esta información).
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_elemento.png)
-
-En esta página se encontrará el reporte de los elementos seleccionados anteriormente, de igual forma se podrá cambiar el estado de los elementos (Botón “Cambiar estado”) y ver las novedades correspondientes a estos. Los reportes se pueden exportar a formato Excel presionando la imagen con el logotipo de Excel.
  
  * _Consultar laboratorios. **(FALTA PARTE DE REPORTES PARA COMPLETAR)**_
 
@@ -181,7 +193,42 @@ Esta página funciona para asociar equipos previamente registrados a un laborato
 
 ### __Metodología Utilizada:__
 
+Planeamos todos los sprints en la primera reunión de equipo que tuvimos, discutiendo sobre qué y cómo deberiamos hacer el proyecto.
+
+_¿Cómo ordenamos los sprints?:_
+
+Discutimos entre todo el grupo de trabajo qué tareas deberían hacerse primero, guiandonos tan solo por lo que decían como tal, haciendonos preguntas al estilo _¿Cómo vamos a haer reportes o asociaciones sin antes crear cada objeto?_ lo que después nos llevaría a la siguiente organización:
+
+- Sprint 1:
+
+  - Seguridad: login, accesos y permisos de administrador.
+  
+  - Creación: equipos, elementos, laboratorios y novedades.
+  
+- Sprint 2:
+
+  - Asociación: de equipo a laboratorio y de elemento a equipo.
+  
+  - Eliminar asociación: de elemento a laboratorio.
+  
+  - Cambiar estado: de elemento, equipo.
+  
+  - Novedades: cada vez que se realice alguna de las acciones mencionadas anteriormente.
+
+- Sprint 3:
+
+  - Eliminar asociación: de equipo a laboratorio.
+  
+  - Cambiar estado: de laboratorio.
+  
+  - Novedades: cada vez que se realice alguna de las acciones mencionadas anteriormente.
+  
+  - Reportes: de laboratorio, equipo y elemento, exportar a excel.
+  
+  - UI: mejoras del aspecto visual de la página web.
+
 ## __Taiga__
+
 Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equipos-labinfo/timeline) para ver el seguimiento y manejo que dimos al proyecto. 
 
 ## __Release-Burndown Chart:__
@@ -204,6 +251,5 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
 ### __Sprint3:__
 
 ## __Reporte De Pruebas:__
-
 
 ## __Reporte de análisis estático de código:__
