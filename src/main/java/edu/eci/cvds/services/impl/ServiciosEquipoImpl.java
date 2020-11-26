@@ -26,7 +26,7 @@ public class ServiciosEquipoImpl implements ServiciosEquipo {
     private ServiciosElemento serviciosElemento;
 
 
-    public Laboratorio validarLaboratorio( int idLab) throws HistorialEquiposException{
+    private Laboratorio validarLaboratorio( int idLab) throws HistorialEquiposException{
         Optional<Laboratorio> optionalLaboratorio = Optional.ofNullable( serviciosLaboratorio.consultarLaboratorio( idLab ) );
         optionalLaboratorio.orElseThrow(() -> new HistorialEquiposException(HistorialEquiposException.NO_LAB));
         return optionalLaboratorio.get();

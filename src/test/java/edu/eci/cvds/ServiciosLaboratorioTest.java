@@ -88,22 +88,21 @@ public class ServiciosLaboratorioTest {
         }
     }
 
-
-/**
-    public void cambiarEstado(int idUsuario, Laboratorio laboratorioSeleccionado) throws HistorialEquiposException {
+    @Test
+    public void deberiaCambiarEstadoLaboratorio() throws HistorialEquiposException {
+        int idUsuario = 10048240;
+        int idLab = 4;
         try{
-            String estado = ( laboratorioSeleccionado.getEstado().equals("ABIERTO")) ? "CERRADO":"ABIERTO";
-            laboratorioDAO.cambiarEstado(laboratorioSeleccionado, estado);
-            if( estado.equals("CERRADO") && laboratorioSeleccionado.getIdLaboratorio() != 1){
-                for( Equipo equipo: laboratorioSeleccionado.getEquipos()){
-                    serviciosEquipo.asociarEquipo(1, equipo.getIdEquipo());
-                    serviciosNovedad.insertarNovedad( new Novedad(" Retiro de equipo de laboratorio","El equipo con id "+equipo.getIdEquipo()+" fue retirado del laboratorio "+laboratorioSeleccionado.getNombre(),idUsuario,null,equipo.getIdEquipo()));
-                }
-            }
+            Laboratorio laboratorio = serviciosLaboratorio.consultarLaboratorio(idLab);
+            String estado = laboratorio.getEstado();
+            serviciosLaboratorio.cambiarEstado(idUsuario, laboratorio);
+            laboratorio = serviciosLaboratorio.consultarLaboratorio(idLab);
+
+            Assert.assertFalse(estado.equals(laboratorio.getEstado()));
         }
-        catch (PersistenceException persistenceException){
-            throw new HistorialEquiposException(persistenceException.getMessage(),persistenceException );
+        catch (Exception exception){
+            fail();
         }
     }
-*/
+
 }
