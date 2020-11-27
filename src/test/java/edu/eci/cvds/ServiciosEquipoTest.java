@@ -36,6 +36,7 @@ public class ServiciosEquipoTest {
         //deberia dar error ya que no existe el elemnto con id 101
         int[] elementos = {101,6,7,8};
         serviciosEquipo.insertarEquipo( 14,elementos, 1 ,10048240);
+        fail();
     }
 
     @Test
@@ -43,13 +44,7 @@ public class ServiciosEquipoTest {
         //esta prueba deberia fallar ya que los elementos que se intentan asociar al equipo, No se encuentran disponibles
         // torre, mouse, pantalla , teclado
         int[] elementos = {1,3,2,4};
-        try{
-            serviciosEquipo.insertarEquipo( 14,elementos, 1,10048240 );
-        }
-        catch (Exception exception){
-            fail();
-        }
-
+        serviciosEquipo.insertarEquipo( 14,elementos, 1,10048240 );
     }
 
     @Test
@@ -82,7 +77,6 @@ public class ServiciosEquipoTest {
             Assert.assertTrue(serviciosEquipo.consultarEquipo(99) !=null);
         }
     }
-
 
     @Test
     public void deberiaConsultarEquipos() throws HistorialEquiposException{
