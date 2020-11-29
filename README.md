@@ -1,6 +1,8 @@
 # Plataforma Historial de Equipos
 ## CICLOS DE VIDA Y DESARROLLO DE SOFTWARE / 2020-2
 
+[![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://lasrastasdelcalvo.herokuapp.com/)
+
 ## Integrantes
 
 |     Nombre    |     Rol         |
@@ -69,7 +71,7 @@ _¿Cómo registrar un elemento?_
 
 4. Clic en el botón "Registrar".
 
-![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_elemento.png)
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Registro_Elemento.png)
 
 * _Registrar Laboratorio._
 
@@ -160,8 +162,10 @@ Esta página funciona para asociar equipos previamente registrados a un laborato
 ## __Arquitectura y Diseño__ 
 
 ### __Modelo E-R__
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/DIAGRAMAS/ER-HistorialEquipos.png)
 
 ### __Diagrama de clase__
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/DIAGRAMAS/DiagramaClases.png)
 
 
 ### __Tecnologías utilizadas__
@@ -249,6 +253,12 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
  ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/Backlog%20Sprint2.png)
 
 ### __Sprint3:__
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/SPRINT3.png)
+
+* Backlog
+
+ ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/Backlog%20Sprint3.png)
 
 ## __Reporte De Pruebas:__
 
