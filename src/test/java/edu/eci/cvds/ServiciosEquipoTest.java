@@ -1,9 +1,11 @@
 package edu.eci.cvds;
 
 import com.google.inject.Inject;
+import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServiciosFactory;
 import edu.eci.cvds.services.ServiciosEquipo;
+import edu.eci.cvds.services.ServiciosLaboratorio;
 import org.junit.Assert;
 import org.junit.Test;
 import edu.eci.cvds.entities.Equipo;
@@ -21,8 +23,46 @@ public class ServiciosEquipoTest {
     @Inject
     private ServiciosEquipo serviciosEquipo;
 
+    @Inject
+    private ServiciosLaboratorio serviciosLaboratorio;
+
     public ServiciosEquipoTest() {
         serviciosEquipo = HistorialServiciosFactory.getInstance().getServiciosEquipoTesting();
+        serviciosLaboratorio = HistorialServiciosFactory.getInstance().getServiciosLaboratorioTesting();
+    }
+
+    @Test( expected = HistorialEquiposException.class )
+    public void deberiaFallarAlRegistrarElEquipoPorElementoInvalido() throws HistorialEquiposException{
+        //deberia dar error ya que no existe el elemnto con id 101
+        int[] elementos = {101,6,7,8};
+        serviciosEquipo.insertarEquipo( 14,elementos, 1 ,10048240);
+        fail();
+    }
+
+    @Test
+    public void deberiaFallarAlRegistrarElEquipoPorElementoYaAsignado() throws HistorialEquiposException{
+        //esta prueba deberia fallar ya que los elementos que se intentan asociar al equipo, No se encuentran disponibles
+        // torre, mouse, pantalla , teclado
+        int[] elementos = {1,3,2,4};
+        serviciosEquipo.insertarEquipo( 14,elementos, 1,10048240 );
+    }
+
+    @Test
+    public void deberiaFallarAlRegistrarElEquipoPorLaboratorioCerrado() throws HistorialEquiposException{
+        int[] elementos = {5,6,7,8};
+        int idLaboratorio= 5;
+        String message ="No se puede asociar un equipo a un laboratorio cerrado.";
+
+        try {
+            Laboratorio laboratorio = serviciosLaboratorio.consultarLaboratorio( 5 );
+            if( laboratorio.getEstado().equals("ABIERTO") ){ serviciosLaboratorio.cambiarEstado(10048240,laboratorio); }
+            serviciosEquipo.insertarEquipo(new Integer(100),elementos,idLaboratorio,10048240);
+            fail();
+        }
+        catch (HistorialEquiposException historialEquiposException){
+            Assert.assertTrue( historialEquiposException.getMessage().equals(message));
+        }
+
     }
 
     @Test
@@ -30,7 +70,6 @@ public class ServiciosEquipoTest {
         int[] elementos = {5,6,7,8};
         try {
             serviciosEquipo.insertarEquipo(new Integer(99),elementos,1,10048240);
-
         }
         catch (HistorialEquiposException historialEquiposException){
         }
@@ -39,34 +78,13 @@ public class ServiciosEquipoTest {
         }
     }
 
-    @Test( expected = HistorialEquiposException.class )
-    public void deberiaFallarAlRegistrarElEquipoPorElementoInvalido() throws HistorialEquiposException{
-        //deberia dar error ya que no existe el elemnto con id 101
-        int[] elementos = {101,6,7,8};
-        serviciosEquipo.insertarEquipo( 14,elementos, 1 ,10048240);
-    }
-
-    @Test
-    public void deberiaFallarAlRegistrarElEquipoPorElementoYaAsignado() throws HistorialEquiposException{
-        //esta prueba deberia fallar ya que los elementos que se intentan asociar al equipo, No se encuentran disponibles
-        // torre, mouse, pantalla , teclado
-        int[] elementos = {1,3,2,4};
-        try{
-            serviciosEquipo.insertarEquipo( 14,elementos, 1,10048240 );
-        }
-        catch (Exception exception){
-
-        }
-
-    }
-
     @Test
     public void deberiaConsultarEquipos() throws HistorialEquiposException{
         serviciosEquipo.consultarEquipos();
     }
 
     @Test
-    public void noDeberiaConsultarEquipo() throws HistorialEquiposException{
+    public void noDeberiaEncontrarEquipo() throws HistorialEquiposException{
         Assert.assertEquals(serviciosEquipo.consultarEquipo(-1),null);
     }
 

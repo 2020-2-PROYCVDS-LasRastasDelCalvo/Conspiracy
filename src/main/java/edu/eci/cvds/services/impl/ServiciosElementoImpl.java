@@ -103,9 +103,7 @@ public class ServiciosElementoImpl implements ServiciosElemento {
                 throw new HistorialEquiposException("No se puede asociar un elemento a un equipo dado de baja.");
             }
             for (Elemento e: elementosSeleccionados){
-                if (evalElemento.contains(e.getTipo())){
-                    throw new PersistenceException("Cantidad de elementos de un mismo tipo a asociar a un solo equipo no valida.");
-                }
+                if (evalElemento.contains(e.getTipo())){ throw new PersistenceException("Cantidad de elementos de un mismo tipo a asociar a un solo equipo no valida."); }
                 evalElemento.add(e.getTipo());
             }
             for (Elemento e: elementosSeleccionados){
