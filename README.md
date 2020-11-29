@@ -97,8 +97,6 @@ _¿Qué encontramos y podemos hacer aquí?_
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Consulta_Equipo.png)
 
-![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_equipo.png)
-
 Encontraremos una lista de todos los equipos registrados en la base de datos en el momento junto a tres botones, que funcionaran respecto a los equipos seleccionados en la tabla:
 
   - Actualizar: Refrescará la información mostrada si es que algún equipo ha sido de baja o algun otro ha sido agregado.
@@ -108,6 +106,8 @@ Encontraremos una lista de todos los equipos registrados en la base de datos en 
   - Cambiar estado: Cambia el estado de los equipos seleccionados, esta acción requiere presionar el botón de Actualizar después.
 
 En el reporte se encuentran los equipos con estado activo y sus respectivas novedades. Estos reportes se pueden exportar a formato Excel presionando la imagen con el logotipo de Excel.
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_equipo.png)
 
 * _Consultar Elemento._
 
@@ -123,17 +123,27 @@ Encontraremos una lista de todos los elementos disponibles junto a su informaci�
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_elemento.png)
  
- * _Consultar laboratorios. **(FALTA PARTE DE REPORTES PARA COMPLETAR)**_
-
+ * _Consultar laboratorios._
+ 
+ _¿Qué encontramos y podemos hacer aquí?_
+ 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/consulta_lab.png)
 
-Al entrar a la consulta de laboratorios, se encuentran los laboratorios registrados con su información. En este mismo espacio se podrá cambiar el estado de los laboratorios seleccionados. (ABIERTO – CERRADO)
+Encontraremos una lista de todos los elementos disponibles junto a su información de interés junto a dos botones que funcionarán respecto a los laboratorios seleccionados en la tabla:
 
-* _Consultar Novedades. **(FALTA PARTE DE REPORTES PARA COMPLETAR)**_
+  - Actualizar: Refresca la información mostrada en la tabla, en caso de que haya algún cambio de estado en algún laboratorio o se agregue uno nuevo a la base de datos.
+  
+  - Ver reporte: Redirige a la página de reporte de laboratorios en función de los seleccionados, en esta podremos ver la información relevante de estos, además de poder cambiar el estado de estos con el botón "Cambiar Estado" (ABIERTO – CERRADO), esto requiere presionar el botón "Actualizar" para mostrar la información correcta (Incluye una opción de exportar a Excel esta información).
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_laboratorio.png)
+
+* _Consultar Novedades._
+
+ _¿Qué encontramos y podemos hacer aquí?_
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/consulta_nov.png)
 
-Al entrar a la consulta de novedades, se encuentran todas las novedades generadas para los objetos que maneja la aplicación. (Registros, cambios de estado, Asociaciones).
+Encontraremos una lista con todas las novedades generadas a partir de registros, cambios de estado y asociaciones de los objetos utilizados en la aplicación. Además, incluye una opción de exportar a Excel esta información. 
 
 > **ASOCIACIONES**
 
@@ -141,23 +151,27 @@ Al entrar a la consulta de novedades, se encuentran todas las novedades generada
 
 * _Asociación Elemento – Equipo_
 
-![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/ASO_elementoEquipo.png)
+ _¿Cómo asociar elementos a un equipo?_
 
-Esta página funciona para asociar elementos previamente registrados a un equipo, se debe escribir el identificador del equipo al que se le quieren asociar los elementos seleccionados de la tabla, para que se haga efectiva la asociación, se debe presionar el botón “Asociar”.
+1. Indicar el identificador del equipo.
+2. Seleccionar los elementos para asociar.
+3. Clic en el botón "Asociar".
+4. Clic en el botón "Actualizar" para refrescar la tabla con la información de las asociaciones hechas previamente. 
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/ASO_elementoEquipo.png)
 
 * _Asociación Equipo – Laboratorio_
 
+ _¿Cómo asociar equipos a un laboratorio?_
+ 
+1. Indicar el identificador del laboratorio.
+2. Seleccionar los equipos para asociar.
+3. Clic en el botón "Asociar".
+4. Clic en el botón "Actualizar" para refrescar la tabla con la información de las asociaciones hechas previamente. 
+
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/ASO_EquipoLab.png)
 
-Esta página funciona para asociar equipos previamente registrados a un laboratorio, se debe escribir el identificador del laboratorio al que se le quieren asociar los equipos seleccionados de la tabla, para que se haga efectiva la asociación, se debe presionar el botón “Asociar”.
-
-
-**Los botones “Actualizar” en cada una de la páginas tienen la función como su nombre lo indica de actualizar la página con los cambios que se hicieron en ella. (Cambios de estados, asociaciones)** 
-
 --- 
-
-### __Funcionalidades Principales__
-
 
 ## __Arquitectura y Diseño__ 
 
@@ -167,19 +181,12 @@ Esta página funciona para asociar equipos previamente registrados a un laborato
 ### __Diagrama de clase__
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/DIAGRAMAS/DiagramaClases.png)
 
-
 ### __Tecnologías utilizadas__
 
-### _Integración continua_ ✔️
+## _Integración continua_ ✔️
 [![CircleCI](https://circleci.com/gh/PDSW-ECI/base-proyectos.svg?style=svg)](https://app.circleci.com/pipelines/github/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy)
-
-
  
-### _Calidad del código_ 👨‍💻
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a06a6e2b3c104857975f54fcb1997d68)](https://www.codacy.com/gh/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy&amp;utm_campaign=Badge_Grade)
-
- 
-### _Despliegue en Heroku_ 🚀
+## _Despliegue en Heroku_ 🚀
 [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://lasrastasdelcalvo.herokuapp.com/)
 
 
@@ -231,20 +238,20 @@ Discutimos entre todo el grupo de trabajo qué tareas deberían hacerse primero,
   
   - UI: mejoras del aspecto visual de la página web.
 
-## __Taiga__
+### __Taiga__
 
 Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equipos-labinfo/timeline) para ver el seguimiento y manejo que dimos al proyecto. 
 
-## __Release-Burndown Chart:__
+### __Release-Burndown Chart:__
 
-### __Sprint1:__
+#### __Sprint1:__
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/SPRINT1.png)
 
 * Backlog
 
  ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/Backlog%20Sprint1.png)
 
-### __Sprint2:__
+#### __Sprint2:__
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/SPRINT2.png)
 
@@ -252,7 +259,7 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
 
  ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/Backlog%20Sprint2.png)
 
-### __Sprint3:__
+#### __Sprint3:__
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/SPRINT3.png)
 
@@ -260,6 +267,9 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
 
  ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/SPRINTS/Backlog%20Sprint3.png)
 
-## __Reporte De Pruebas:__
+### __Reporte De Pruebas:__
 
-## __Reporte de análisis estático de código:__
+### __Reporte de análisis estático de código:__
+
+#### _Calidad del código_ 👨‍💻
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a06a6e2b3c104857975f54fcb1997d68)](https://www.codacy.com/gh/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy&amp;utm_campaign=Badge_Grade)
