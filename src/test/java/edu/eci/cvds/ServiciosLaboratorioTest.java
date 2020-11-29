@@ -1,12 +1,11 @@
 package edu.eci.cvds;
 
+
 import com.google.inject.Inject;
-import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServiciosFactory;
 import edu.eci.cvds.services.ServiciosLaboratorio;
-import org.codehaus.plexus.interpolation.ObjectBasedValueSource;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -104,8 +103,8 @@ public class ServiciosLaboratorioTest {
 
             Assert.assertFalse(estado.equals(laboratorio.getEstado()));
         }
-        catch (HistorialEquiposException exception){
-            exception.printStackTrace();
+        catch (Exception exception){
+            fail();
         }
     }
 
@@ -139,7 +138,7 @@ public class ServiciosLaboratorioTest {
         int idLab = 4;
         String nombreLab = "Laboratorio Prueba";
         try{
-            serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
+            //serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
             serviciosLaboratorio.registrarLaboratorio(1193156116, 3, "Laboratorio Prueba 2", null );
             serviciosLaboratorio.cambiarEstado(idUsuario, serviciosLaboratorio.consultarLaboratorio(idLab));
             int numeroLabsCerrado = serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("CERRADO");
