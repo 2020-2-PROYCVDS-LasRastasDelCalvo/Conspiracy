@@ -118,8 +118,8 @@ public class ServiciosLaboratorioTest {
 
             Assert.assertEquals(serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("ABIERTO"),1);
         }
-        catch (HistorialEquiposException exception){
-            exception.printStackTrace();
+        catch (Exception exception){
+            fail();
         }
     }
 
