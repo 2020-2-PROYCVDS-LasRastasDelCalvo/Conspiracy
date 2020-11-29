@@ -116,7 +116,7 @@ public class ServiciosLaboratorioTest {
             String nombreLab = "Laboratorio Prueba";
             serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
 
-            Assert.assertTrue(serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("ABIERTO") !=0);
+            Assert.assertTrue(serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("ABIERTO") ==0);
         }
         catch (Exception exception){
             fail();
