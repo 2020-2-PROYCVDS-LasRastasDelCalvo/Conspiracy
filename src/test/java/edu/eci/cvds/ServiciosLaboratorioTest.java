@@ -1,12 +1,16 @@
 package edu.eci.cvds;
 
 import com.google.inject.Inject;
+import com.sun.org.apache.xerces.internal.xs.datatypes.ObjectList;
 import edu.eci.cvds.entities.Laboratorio;
 import edu.eci.cvds.services.HistorialEquiposException;
 import edu.eci.cvds.services.HistorialServiciosFactory;
 import edu.eci.cvds.services.ServiciosLaboratorio;
+import org.codehaus.plexus.interpolation.ObjectBasedValueSource;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.fail;
@@ -100,8 +104,55 @@ public class ServiciosLaboratorioTest {
 
             Assert.assertFalse(estado.equals(laboratorio.getEstado()));
         }
-        catch (Exception exception){
-            fail();
+        catch (HistorialEquiposException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    @Test
+    public void deberiaConsultarNumeroLaboratoriosPorEstado() throws HistorialEquiposException {
+        try{
+            int idUsuario = 10048240;
+            int idLab = new Integer(77);
+            String nombreLab = "Laboratorio Prueba";
+            serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
+
+            Assert.assertEquals(serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("ABIERTO"),1);
+        }
+        catch (HistorialEquiposException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    @Test( expected = HistorialEquiposException.class)
+    public void noDeberiaCrearseUnLaboratorioCerrado() throws HistorialEquiposException {
+        int idUsuario = 10048240;
+        int idLab = new Integer(77);
+        String nombreLab = "Laboratorio Prueba";
+        serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
+        Assert.assertEquals(serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("CERRADO"),1);
+    }
+
+    @Test
+        public void deberiaGenerarUnLaboratorioConTodosLosMetodos() throws HistorialEquiposException {
+        int idUsuario = 10048240;
+        int idLab = 4;
+        String nombreLab = "Laboratorio Prueba";
+        try{
+            serviciosLaboratorio.registrarLaboratorio(idUsuario, idLab, nombreLab, null );
+            serviciosLaboratorio.registrarLaboratorio(1193156116, 3, "Laboratorio Prueba 2", null );
+            serviciosLaboratorio.cambiarEstado(idUsuario, serviciosLaboratorio.consultarLaboratorio(idLab));
+            int numeroLabsCerrado = serviciosLaboratorio.consultarNumeroLaboratoriosPorEstado("CERRADO");
+            List<Laboratorio> LaboratoriosActuales = serviciosLaboratorio.consultarLaboratorios();
+            ArrayList<Object> LaboratorioServer = new ArrayList<Object>();
+            LaboratorioServer.add(numeroLabsCerrado);
+            LaboratorioServer.add(LaboratoriosActuales);
+            LaboratorioServer.add(serviciosLaboratorio.consultarLaboratorio(4));
+            Assert.assertEquals(LaboratorioServer.get(1),1);
+
+        }
+        catch (HistorialEquiposException exception){
+            exception.printStackTrace();
         }
     }
 

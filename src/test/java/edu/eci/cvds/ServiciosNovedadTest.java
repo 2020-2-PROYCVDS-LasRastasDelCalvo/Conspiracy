@@ -43,8 +43,30 @@ public class ServiciosNovedadTest {
     @Test
     public void deberiaConsultarNovedadesPorElemento() throws HistorialEquiposException {
         try{
+            serviciosNovedad.consultarPorElemento(1);
+        }
+        catch (HistorialEquiposException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    @Test
+    public void deberiaConsultarNovedadesPorEquipo() throws HistorialEquiposException {
+        try{
+            serviciosNovedad.consultarPorEquipo(1);
+        }
+        catch (HistorialEquiposException exception){
+            exception.printStackTrace();
+        }
+    }
+
+    @Test
+    public void deberiaConsultarNovedadesPorElementos() throws HistorialEquiposException {
+        try{
             ArrayList<Integer>idelementos= new ArrayList<Integer>();
             idelementos.add(new Integer(1));
+            idelementos.add(new Integer(2));
+            idelementos.add(new Integer(3));
             serviciosNovedad.consultarPorElementos(idelementos);
         }
         catch (Exception exception){
@@ -53,10 +75,12 @@ public class ServiciosNovedadTest {
     }
 
     @Test
-    public void deberiaConsultarNovedadesPorEquipo() throws HistorialEquiposException {
+    public void deberiaConsultarNovedadesPorEquipos() throws HistorialEquiposException {
         try{
             ArrayList<Integer> idEquipos= new ArrayList<Integer>();
             idEquipos.add(new Integer(1));
+            idEquipos.add(new Integer(2));
+            idEquipos.add(new Integer(3));
             serviciosNovedad.consultarPorEquipos(idEquipos);
         }
         catch (Exception exception){
@@ -79,4 +103,6 @@ public class ServiciosNovedadTest {
         serviciosNovedad.consultarPorElemento(idElemento);
         fail();
     }
+
+
 }
