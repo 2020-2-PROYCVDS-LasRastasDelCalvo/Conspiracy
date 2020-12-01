@@ -269,7 +269,7 @@ Enlace de [Taiga](https://tree.taiga.io/project/gabrielaasilva-historial-de-equi
 
 ### __Reporte De Pruebas:__
 
-![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/JACOCO/ReporteJacoco1.png)
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/JACOCO/ReporteJacoco2.png)
 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/JACOCO/ReporteJacoco1.png)
 
