@@ -134,8 +134,22 @@ Encontraremos una lista de todos los elementos disponibles junto a su informaci�
   - Actualizar: Refresca la información mostrada en la tabla, en caso de que haya algún cambio de estado en algún laboratorio o se agregue uno nuevo a la base de datos.
   
   - Ver reporte: Redirige a la página de reporte de laboratorios en función de los seleccionados, en esta podremos ver la información relevante de estos, además de poder cambiar el estado de estos con el botón "Cambiar Estado" (ABIERTO – CERRADO), esto requiere presionar el botón "Actualizar" para mostrar la información correcta (Incluye una opción de exportar a Excel esta información).
-
+ 
 ![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/Reporte_laboratorio.png)
+
+- Ver Graficos: Redirige a la página de los graficos de los laboratorios, en esta pagina nos muestra la información más relevante ilustrada en graficos tomando la información de todos los laboratorios.
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/verGraficos.png)
+
+
+* En el primer grafico encontraremos la información de cuantos laboratorios se encuentran "ABIERTOS" y cuantos se encuentran "CERRADOS" permitiendo tener un panorama más amplio para el usuario del estado de estos.
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/DiagramaCircular.png)
+
+
+* En el segundo grafico encontraremos el número de equipos asociados a cada uno de los laboratorios existentes.
+
+![](https://github.com/2020-2-PROYCVDS-LasRastasDelCalvo/Conspiracy/blob/main/modelos/MANUAL%20DE%20USUARIO/DiagramaBarras.png)
 
 * _Consultar Novedades._
 
